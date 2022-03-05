@@ -4,12 +4,17 @@
   border-style: solid;
   border-width: 1px;
   border-radius: 35px;
+  border-color: var(--footer-background-color);
 
   min-height: 40px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.search-bar-input:hover {
+  border-color: var(--default-text-color);
 }
 
 .search-bar-input form {

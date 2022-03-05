@@ -24,6 +24,10 @@
   height: 115px;
 }
 
+.detail-card-image:hover {
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.3);
+}
+
 .detail-card-title {
   font-size: 24px;
   color: var(--default-text-color);
@@ -62,6 +66,11 @@
   margin-bottom: 5px;
 
   cursor: default;
+}
+
+.detail-card-tag:hover {
+  background-color: var(--card-background-color);
+  color: var(--detail-tag-background-color);
 }
 
 .detail-card-description-wrapper {
