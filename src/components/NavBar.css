@@ -1,0 +1,134 @@
+.navbar-wrapper {
+  margin-bottom: 80px;
+}
+
+.NavBarItems {
+  background-color: var(--navbar-background-color);
+  font-size: 24px;
+  color: var(--default-text-color);
+  align-items: center;
+  height: 77px;
+
+  margin: 0;
+
+  display: flex;
+
+  padding-left: var(--global-window-border-padding);
+  padding-right: var(--global-window-border-padding);
+}
+
+.navbar-logo {
+  flex-grow: 0;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: start;
+
+  cursor: pointer;
+}
+
+.NavBarItems a {
+  text-decoration: none;
+  color: var(--default-text-color);
+}
+
+.NavBarItems li a:hover {
+  color: var(--special-text-color);
+}
+
+.menu-icon {
+  flex-grow: 1;
+
+  padding-right: 5px;
+
+  display: none;
+  justify-content: end;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.menu-icon svg {
+  cursor: pointer;
+}
+
+.nav-menu {
+  flex-grow: 1;
+
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: end;
+  grid-column-gap: 20px;
+
+  list-style: none;
+}
+
+.nav-menu-mobile {
+  display: none;
+  flex-grow: 1;
+  align-content: center;
+  justify-content: right;
+
+  margin: 0;
+  padding-left: var(--global-window-border-padding);
+  padding-right: var(--global-window-border-padding);
+
+  list-style: none;
+}
+
+.nav-menu-mobile a {
+  background-color: var(--footer-background-color);
+  color: var(--default-text-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-style: outset;
+  border-color: black;
+  border-width: 1px;
+  height: 45px;
+
+  cursor: pointer;
+}
+
+.nav-menu-mobile a:hover {
+  background-color: var(--navbar-background-color);
+}
+
+.nav-menu-mobile a {
+  text-decoration: none;
+  align-self: center;
+  color: var(--default-text-color);
+}
+
+/* Max width for tablets */
+@media screen and (max-width: 1400px) {
+}
+
+/* Max width for smart phones */
+@media screen and (max-width: 960px) {
+  .navbar-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-menu-mobile.active {
+    display: block;
+    margin-bottom: 50px;
+  }
+
+  .navbar-items {
+    padding-left: var(--global-window-border-padding-mobile);
+    padding-right: var(--global-window-border-padding-mobile);
+  }
+}

@@ -1,0 +1,258 @@
+.game-detail-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-detail-left-hand-wrapper {
+  flex-grow: 3;
+  flex-basis: 0;
+}
+
+.detail-card-image-title-wrapper {
+  display: flex;
+
+  margin-bottom: 20px;
+}
+
+.detail-card-image-wrapper {
+}
+
+.detail-card-image {
+  box-shadow: 2px 4px 4px 1px rgba(0, 0, 0, 0.3);
+
+  width: 246.05px;
+  height: 115px;
+}
+
+.detail-card-title {
+  font-size: 24px;
+  color: var(--default-text-color);
+  padding-left: 15px;
+  padding-top: 5px;
+}
+
+#game-detail-mobile-title {
+  display: none;
+
+  padding: 0px;
+  margin: 0px;
+
+  padding-bottom: 12px;
+}
+
+.detail-card-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-bottom: 15px;
+}
+
+.detail-card-tag {
+  background-color: var(--detail-tag-background-color);
+  color: var(--card-background-color);
+  font-size: 16px;
+
+  border-radius: 5px;
+
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+
+  cursor: default;
+}
+
+.detail-card-description-wrapper {
+  width: 95%;
+}
+
+.detail-card-description-announcer {
+  font-size: 20px;
+
+  color: var(--default-text-color);
+
+  border-bottom: 2px solid;
+  border-color: var(--card-background-color);
+
+  padding-left: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 5px;
+
+  width: 100%;
+}
+
+.detail-card-description {
+  font-size: 16px;
+  color: var(--default-text-color);
+}
+
+.game-detail-right-hand-wrapper {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.game-detail-additionals {
+  border: 2px solid var(--detail-border-color);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+  align-items: flex-start;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.game-detail-additional-wrapper {
+  font-size: 16px;
+  color: var(--default-text-color);
+
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 10px;
+}
+
+.game-detail-additional-announcer {
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.game-detail-additional-info {
+  font-size: 16px;
+  color: var(--weaker-text-color);
+}
+
+.game-detail-release-date {
+}
+
+.game-detail-developer {
+}
+
+.game-detail-publisher {
+}
+
+.game-detail-source-link-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  margin-top: 15px;
+}
+
+.game-detail-source-button {
+  background-color: var(--detail-sourcebutton-background-color);
+  color: var(--detail-sourcebutton-text-color);
+
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+
+  width: 85%;
+  height: 35px;
+
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  margin-bottom: 10px;
+
+  cursor: pointer;
+}
+
+.game-detail-source-button:hover {
+  background-color: var(--detail-sourcebutton-background-hover-color);
+}
+
+.game-detail-source-image-wrapper {
+  padding-left: 2px;
+  padding-right: 12px;
+}
+
+.game-detail-source-image {
+  width: 30px;
+  height: 30px;
+}
+
+.game-detail-source-name {
+  flex-grow: 1;
+}
+
+.game-detail-source-exit-icon-wrapper {
+  padding-right: 5px;
+}
+
+.game-detail-source-exit-icon {
+}
+
+/* Max width for tablets */
+@media screen and (max-width: 1400px) {
+  .detail-card-image-title-wrapper {
+    display: block;
+  }
+
+  #game-detail-mobile-title {
+    display: block;
+  }
+
+  #game-detail-desktop-title {
+    display: none;
+  }
+
+  .game-detail-source-button {
+    height: 45px;
+  }
+}
+
+/* Max width for smart phones */
+@media screen and (max-width: 960px) {
+  .game-detail-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-detail-right-hand-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  #game-detail-mobile-title {
+    display: inline-block;
+  }
+
+  #game-detail-desktop-title {
+    display: none;
+  }
+
+  .game-detail-additionals {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 0px;
+    margin: 0px;
+
+    width: 40%;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .game-detail-source-button {
+    width: 100%;
+    height: 35px;
+  }
+
+  .game-detail-source-link-wrapper {
+    padding-left: 30px;
+  }
+}

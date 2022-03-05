@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+:root {
+  /*Variable Definition*/
+  /*Main*/
+  --global-background-color: rgba(222, 222, 222, 1);
+  --hexagon-color: rgba(155, 50, 238, 0.95);
+  --navbar-background-color: rgba(210, 210, 210, 0.4);
+  --catchphrase-text-color: rgba(0, 0, 0, 1);
+  --browse-header-text-color: rgba(0, 0, 0, 1);
+  --footer-background-color: rgba(210, 210, 210, 0.795);
+  /*Main Text*/
+  --default-text-color: rgba(50, 50, 50, 1);
+  --weaker-text-color: rgba(86, 86, 86, 1);
+  --special-text-color: rgba(163, 94, 219, 1);
+  /*Main Text*/
+  --searchbar-background-color: rgba(182, 153, 205, 1);
+  --searchbar-text-color: rgba(80, 80, 80, 1);
+  --searchbar-placeholder-color: rgb(87, 87, 87);
+  --search-icon-color: rgba(53, 53, 53, 1);
+  --searchbar-suggestion-background: rgba(210, 210, 210);
+  --searchbar-suggestion-divisionline-color: rgba(50, 50, 50, 1);
+  --searchbar-suggestion-hovercolor: var(--global-background-color);
+  /*Card*/
+  --card-background-color: rgba(80, 46, 107, 1);
+  --card-background-hover-color: rgb(106, 63, 141);
+  --card-title-color: rgba(255, 255, 255, 1);
+  --card-tag-text-color-a: rgba(174, 174, 174, 1);
+  --card-tag-text-color-b: rgba(255, 255, 255, 0.85);
+  --cardbutton-background-color: rgba(163, 94, 219, 1);
+  --cardbutton-background-color-hover: rgb(173, 114, 221);
+  --cardbutton-text-color: rgba(255, 255, 255, 1);
+  --carddate-text-color: rgba(150, 150, 150, 1);
+  /*Filter*/
+  --filter-border-color: rgba(163, 94, 219, 1);
+  --filter-background-color: rgba(182, 153, 205, 1);
+  /*Detail Page*/
+  --detail-tag-background-color: rgba(182, 153, 205, 1);
+  --detail-border-color: rgba(96, 56, 118, 1);
+  --detail-sourcebutton-background-color: rgba(80, 46, 107, 1);
+  --detail-sourcebutton-background-hover-color: rgb(106, 63, 141);
+  --detail-sourcebutton-text-color: rgba(255, 255, 255, 1);
+
+  /* Padding */
+  --global-window-border-padding: 18.75%;
+  --global-window-border-padding-mobile: 5%;
+
+  background-color: var(--global-background-color);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-background {
+  position: fixed;
+  z-index: -100;
 }

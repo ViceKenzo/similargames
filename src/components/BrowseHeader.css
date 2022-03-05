@@ -1,0 +1,80 @@
+.browse-header {
+  display: flex;
+  align-items: center;
+
+  border-style: solid;
+  border-width: 0px;
+  border-bottom-width: 1px;
+  border-color: var(--card-background-color);
+}
+
+.browse-header-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding-left: 4px;
+  padding-bottom: 7px;
+  max-width: 58%;
+}
+
+.browse-header-text-wrapper-mobile {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding-left: 4px;
+  padding-bottom: 7px;
+  display: none;
+
+  text-align: center;
+}
+
+.browse-header-game-announcer {
+  color: var(--browse-header-text-color);
+  font-size: 24px;
+}
+
+.browse-header-selected-title {
+  color: var(--special-text-color);
+  font-size: 24px;
+  max-width: 95%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.browse-search-bar-wrapper {
+  width: 500px;
+  min-width: 400px;
+}
+
+/* Max width for smart phones */
+@media screen and (max-width: 960px) {
+  .browse-header-text-wrapper {
+    display: none;
+  }
+
+  .browse-header-text-wrapper-mobile {
+    display: flex;
+  }
+
+  .browse-header-text-wrapper-mobile {
+    max-width: 90%;
+  }
+
+  .browse-header {
+    flex-direction: column;
+  }
+
+  .browse-header-selected-title {
+    max-width: 100%;
+    align-self: center;
+  }
+
+  .browse-search-bar-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

@@ -1,0 +1,15 @@
+.game-detail-wrapper {
+  padding-left: var(--global-window-border-padding);
+  padding-right: var(--global-window-border-padding);
+
+  min-height: 850px;
+}
+
+@media screen and (max-width: 960px) {
+  .game-detail-wrapper {
+    padding-left: var(--global-window-border-padding-mobile);
+    padding-right: var(--global-window-border-padding-mobile);
+
+    min-height: 500px;
+  }
+}

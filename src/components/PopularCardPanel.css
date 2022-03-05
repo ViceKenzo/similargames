@@ -1,0 +1,118 @@
+.popular-card-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.popular-card-panel-header {
+  color: var(--default-text-color);
+  font-size: 40px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.popular-card-projector {
+  display: grid;
+  grid-template-columns: repeat(3, 325px);
+  grid-row-gap: 30px;
+  grid-column-gap: 30px;
+  justify-content: center;
+}
+
+.popular-card {
+  background-color: var(--card-background-color);
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  height: 400px;
+  padding: 0;
+  margin: 0;
+}
+
+.popular-card-image-wrapper {
+  padding: 0;
+}
+
+.popular-card-image {
+  width: 325px;
+  height: 151.9px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.popular-card-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.popular-card-title {
+  color: var(--card-title-color);
+  font-size: 24px;
+
+  text-align: center;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.popular-card-tags {
+  color: var(--card-tag-text-color-b);
+  font-size: 16px;
+
+  align-items: center;
+  text-align: center;
+}
+
+.popular-card-tags p {
+  margin-top: 10px;
+  margin-bottom: 0;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.popular-card-button {
+  background-color: var(--cardbutton-background-color);
+  text-decoration: none;
+  border-radius: 7px;
+
+  display: flex;
+  justify-content: center;
+
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  cursor: pointer;
+}
+
+.popular-card-button:hover {
+  background-color: var(--cardbutton-background-color-hover);
+}
+
+.popular-card-button-text {
+  color: var(--cardbutton-text-color);
+  font-size: 20px;
+}
+
+/* Max width for tablets */
+@media screen and (max-width: 1400px) {
+  .popular-card-projector {
+    display: grid;
+    grid-template-columns: repeat(2, 325px);
+  }
+}
+
+/* Max width for smart phones */
+@media screen and (max-width: 960px) {
+}

@@ -1,0 +1,75 @@
+.landing-page-search-panel {
+  height: 650px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  flex-grow: 1;
+}
+
+.search-panel-header {
+  color: var(--default-text-color);
+  font-size: 40px;
+  font-weight: bold;
+
+  padding-bottom: 5px;
+}
+
+.search-panel-search-bar {
+  display: block;
+  width: 50%;
+  min-width: 500px;
+
+  padding-bottom: 10px;
+  justify-self: center;
+}
+
+.search-panel-main-phrase {
+  color: var(--catch-phrase-text-color);
+  font-size: 24px;
+
+  padding-bottom: 15px;
+}
+
+.search-panel-footer {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.search-panel-icon-announcer {
+  font-size: 20px;
+  padding-right: 20px;
+}
+
+.search-panel-icon-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-column-gap: 20px;
+  align-items: center;
+}
+
+.logo-epic {
+  width: 50px;
+  height: 76.25px;
+}
+
+.logo-steam {
+  width: 50px;
+  height: 50px;
+}
+
+.logo-gog {
+  width: 50px;
+  height: 50px;
+}
+
+/* Max width for smart phones */
+@media screen and (max-width: 960px) {
+  .landing-page-search-panel {
+    height: 400px;
+  }
+}

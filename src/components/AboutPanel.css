@@ -1,0 +1,160 @@
+.about-panel-wrapper {
+  font-size: 16px;
+  color: var(--default-text-color);
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  align-items: center;
+}
+
+.about-title {
+  font-size: 36px;
+  font-weight: bold;
+
+  margin-bottom: 40px;
+
+  text-align: center;
+}
+
+.about-description-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 40px;
+}
+
+.about-description-panel {
+  border-left: 4px solid var(--detail-border-color);
+  border-right: 4px solid var(--detail-border-color);
+  border-radius: 2px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  padding-left: 3px;
+  padding-right: 3px;
+
+  margin-bottom: 20px;
+
+  max-width: 50%;
+}
+
+.about-description-panel p {
+  padding: 0;
+  margin: 0;
+}
+
+.about-games-source-info-wrapper {
+  border: 2px solid var(--detail-border-color);
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+
+  margin-bottom: 40px;
+
+  max-width: 35%;
+}
+
+.about-games-source-description {
+  font-weight: bold;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  margin-bottom: 8px;
+}
+
+.about-games-source-links-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-column-gap: 35px;
+
+  align-items: center;
+}
+
+.about-games-source-image {
+}
+
+#about-epic-image {
+  width: 59.01px;
+  height: 90px;
+}
+
+#about-gog-image {
+  width: 65px;
+  height: 65px;
+}
+
+#about-steam-image {
+  width: 65px;
+  height: 65px;
+}
+
+.about-contact-request-text {
+  font-weight: bold;
+
+  margin-bottom: 40px;
+
+  text-align: center;
+
+  max-width: 55%;
+}
+
+.about-contact-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-contact-info-announcer {
+  font-weight: bold;
+}
+
+.about-contact-info {
+  font-weight: bold;
+}
+
+/* Max width for tablets */
+@media screen and (max-width: 1400px) {
+  .about-description-panel {
+    max-width: 70%;
+  }
+
+  .about-games-source-info-wrapper {
+    max-width: 55%;
+  }
+
+  .about-contact-request-text {
+    max-width: 75%;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .about-description-panel {
+    max-width: 80%;
+  }
+
+  .about-games-source-info-wrapper {
+    max-width: 65%;
+  }
+
+  .about-contact-request-text {
+    max-width: 85%;
+  }
+}

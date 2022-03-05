@@ -1,0 +1,28 @@
+.error-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-text-wrapper {
+  color: var(--default-text-color);
+  padding-bottom: 15px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-header {
+  font-size: 40px;
+}
+
+.error-report {
+  color: var(--weaker-text-color);
+  font-size: 16px;
+}
+
+.error-image {
+  border-radius: 8px;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.158);
+}

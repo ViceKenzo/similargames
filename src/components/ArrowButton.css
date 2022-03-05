@@ -1,0 +1,33 @@
+.arrow-button {
+  min-width: 50px;
+
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--filter-border-color);
+  border-radius: 5px;
+
+  align-content: flex-end;
+  justify-content: center;
+
+  cursor: pointer;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.arrow-button:hover {
+  background-color: var(--filter-background-color);
+}
+
+.arrow-button.inactive {
+  border-color: var(--searchbar-suggestion-background);
+}
+
+.arrow-button.inactive:hover {
+  background-color: transparent;
+  cursor: auto;
+}
