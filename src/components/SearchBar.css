@@ -4,7 +4,7 @@
   border-style: solid;
   border-width: 1px;
   border-radius: 35px;
-  border-color: var(--footer-background-color);
+  border-color: var(--searchbar-border-color);
 
   min-height: 40px;
 
@@ -14,7 +14,7 @@
 }
 
 .search-bar-input:hover {
-  border-color: var(--default-text-color);
+  border-color: var(--searchbar-hover-border-color);
 }
 
 .search-bar-input form {

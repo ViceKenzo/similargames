@@ -12,9 +12,11 @@
   --weaker-text-color: rgba(86, 86, 86, 1);
   --special-text-color: rgba(163, 94, 219, 1);
   /*Main Text*/
-  --searchbar-background-color: rgba(182, 153, 205, 1);
+  --searchbar-background-color: rgb(247, 247, 247);
   --searchbar-text-color: rgba(80, 80, 80, 1);
   --searchbar-placeholder-color: rgb(87, 87, 87);
+  --searchbar-border-color: rgb(139, 139, 139);
+  --searchbar-hover-border-color: rgb(10, 10, 10);
   --search-icon-color: rgba(53, 53, 53, 1);
   --searchbar-suggestion-background: rgba(210, 210, 210);
   --searchbar-suggestion-divisionline-color: rgba(50, 50, 50, 1);

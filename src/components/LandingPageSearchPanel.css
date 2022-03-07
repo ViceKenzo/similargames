@@ -12,10 +12,10 @@
 
 .search-panel-header {
   color: var(--default-text-color);
-  font-size: 40px;
+  font-size: 56px;
   font-weight: bold;
 
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 
 .search-panel-search-bar {
