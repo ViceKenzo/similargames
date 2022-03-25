@@ -2,7 +2,6 @@ import React, { Component, createRef } from "react";
 import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { GameData } from "../placeholders/GameData.js";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
 
@@ -138,9 +137,9 @@ class SearchBar extends Component {
                   <Link
                     key={index + "result"}
                     className="search-product-result"
-                    to={"/Search?q=" + game.name}
+                    to={"/Search?q=" + game.title}
                     onClick={() => {
-                      this.props.handleSuggestionClick(game.name);
+                      this.props.handleSuggestionClick(game.title);
                     }}
                   >
                     <div
@@ -157,20 +156,20 @@ class SearchBar extends Component {
                         key={index + "result-title"}
                         className="search-product-result-title"
                       >
-                        {game.name}
+                        {game.title}
                       </div>
                       <div
                         key={index + "result-tags"}
                         className="search-product-result-tags"
                       >
-                        {game.tags_short.join(" | ")}
+                        {game.tags.join(" | ")}
                       </div>
                     </div>
                     <div
                       key={index + "result-release"}
                       className="search-product-result-release"
                     >
-                      {game.releaseDate}
+                      {game.release_date}
                     </div>
                   </Link>
                 </div>

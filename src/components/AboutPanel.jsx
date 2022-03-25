@@ -19,10 +19,10 @@ class AboutPanel extends Component {
             <p>What a coincidence!</p>
           </div>
           <div className="about-description-panel">
-            This website was created for just that. To have a place where people
-            can come to, simply to find out about and explore new games they’ve
-            never heard about. Or games they didn’t know were similar to the
-            ones they already liked and played.
+            This website was created exactly for that! To have a place where
+            people can simply explore and find new games they’ve never heard
+            about. Or games they didn’t know were similar to the ones they
+            already liked and played.
           </div>
         </div>
         <div className="about-games-source-info-wrapper">
@@ -61,7 +61,7 @@ class AboutPanel extends Component {
         </div>
         <div className="about-contact-info-wrapper">
           <div className="about-contact-info-announcer">Contact Info</div>
-          <div className="about-contact-info">someone@email.com</div>
+          <div className="about-contact-info">contact@similargames.io</div>
         </div>
       </div>
     );

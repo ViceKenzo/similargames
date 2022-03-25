@@ -17,6 +17,10 @@
   border-color: var(--searchbar-hover-border-color);
 }
 
+.search-bar-input:focus-within {
+  border-color: var(--searchbar-hover-border-color);
+}
+
 .search-bar-input form {
   min-height: 40px;
 

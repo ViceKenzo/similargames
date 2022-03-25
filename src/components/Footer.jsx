@@ -21,7 +21,7 @@ class Footer extends Component {
       <div className="footer">
         <div className="footer-contact">
           <div>Contact & Feedback</div>
-          <div>somecompany@gmail.com</div>
+          <div>contact@similargames.io</div>
         </div>
         <div className="footer-title">
           <Link to="/">SimilarGames</Link>
