@@ -2,7 +2,6 @@ import React, { Component, createRef } from "react";
 import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
-import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
 
 class SearchBar extends Component {
@@ -146,7 +145,13 @@ class SearchBar extends Component {
                       key={index + "result-image"}
                       className="search-product-result-image"
                     >
-                      <img src={ThumbnailImage}></img>
+                      <img
+                        src={
+                          "http://localhost:1234/header_images/" +
+                          game.image_id +
+                          ".jpg"
+                        }
+                      ></img>
                     </div>
                     <div
                       key={index + "result-desc"}

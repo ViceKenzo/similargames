@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import GameDetailCard from "../components/GameDetailCard.jsx";
-import { GameData } from "../placeholders/GameData.js";
 import "./GameDetailPage.css";
 
 class GameDetailPage extends Component {
@@ -15,20 +14,34 @@ class GameDetailPage extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
 
-    let gameName = this.getGameNameFromQueryParameters();
+    let gameId = this.getGameIdFromQueryParameters();
 
-    if (gameName && gameName != "") {
-      let tempGame = GameData.find((game) => {
-        return game.name == gameName;
-      });
-      this.setState({ game: tempGame });
+    if (gameId && gameId != "") {
+      this.requestAndSetGameDetail(gameId);
     } else window.location.href = "/Error";
   }
 
-  getGameNameFromQueryParameters = () => {
-    let qParam = new URLSearchParams(this.props.locationHook.search).get(
-      "name"
-    );
+  requestAndSetGameDetail = (gameId) => {
+    const xhttp = new XMLHttpRequest();
+    let requestUrl = "http://localhost:1234/gamedetail/" + gameId;
+
+    xhttp.open("get", requestUrl, true);
+
+    xhttp.send();
+
+    xhttp.onload = () => {
+      if (xhttp.statusText.toLowerCase() != "ok") {
+        window.location.href = "/Error";
+        return;
+      }
+
+      let requestedGame = JSON.parse(xhttp.response);
+      this.setState({ game: requestedGame });
+    };
+  };
+
+  getGameIdFromQueryParameters = () => {
+    let qParam = new URLSearchParams(this.props.locationHook.search).get("id");
 
     return qParam;
   };

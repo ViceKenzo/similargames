@@ -27,6 +27,9 @@ class LandingPage extends Component {
   };
 
   requestSuggestionsFromServer = () => {
+    if (!this.state.searchInputValue || this.state.searchInputValue == "")
+      return;
+
     const xhttp = new XMLHttpRequest();
 
     xhttp.open(
@@ -44,30 +47,19 @@ class LandingPage extends Component {
   };
 
   handleSearchInputChange = (event) => {
-    // Trigger timeout such that it will only search on the server when the user has not given any input within a given amount of time
-    if (this.timeOut) clearTimeout(this.timeOut);
-
-    this.timeOut = setTimeout(() => {
-      this.requestSuggestionsFromServer();
-    }, 500);
-
+    // Set searchinputvalue
     let newSearchInputValue = event.target.value;
 
     this.setState({
       searchInputValue: newSearchInputValue,
     });
 
-    var newFilterData = GameData.filter((game) => {
-      if (newSearchInputValue == "") {
-        return;
-      }
+    // Trigger timeout such that it will only search on the server when the user has not given any input within a given amount of time
+    if (this.timeOut) clearTimeout(this.timeOut);
 
-      if (game.name.toLowerCase().includes(newSearchInputValue.toLowerCase())) {
-        return game;
-      }
-    });
-
-    this.setState({ searchSuggestions: newFilterData });
+    this.timeOut = setTimeout(() => {
+      this.requestSuggestionsFromServer();
+    }, 500);
   };
 
   handleSuggestionClick = () => {};

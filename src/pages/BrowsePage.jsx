@@ -3,7 +3,6 @@ import BrowseHeader from "../components/BrowseHeader.jsx";
 import BrowseNavigator from "../components/BrowseNavigator.jsx";
 import BrowseFilters from "../components/BrowseFilters.jsx";
 import "./BrowsePage.css";
-import { GameData } from "../placeholders/GameData.js";
 
 class BrowsePage extends Component {
   state = {
@@ -19,10 +18,12 @@ class BrowsePage extends Component {
     totalPages: 1,
 
     searchSuggestions: [],
-    searchResults: GameData,
+    searchResults: [],
 
-    searchResultMessage: "Search for a game to see other games like it!",
+    searchResultMessage: "Search for a game and see others like it!",
   };
+
+  suggestionSearchTimeOut = null;
 
   constructor(props) {
     super(props);
@@ -55,20 +56,72 @@ class BrowsePage extends Component {
 
   // Browse Header
   submitSearch = (event, searchWord) => {
+    console.log("Submit search fired");
     if (event) event.preventDefault();
 
     this.setState({ searchSuggestions: [] });
 
-    if (searchWord) this.setState({ searchWord: searchWord });
-    else {
+    if (searchWord) {
+      this.setState({ searchWord: searchWord });
+      this.requestSimilarGames(searchWord);
+    } else {
       this.setState({
         searchWord: this.state.searchInputValue,
       });
+      this.requestSimilarGames(this.state.searchInputValue);
     }
   };
 
   setSearchSuggestions = (newFilterData) => {
     this.setState({ searchSuggestions: newFilterData });
+  };
+
+  // Server requests
+  requestSimilarGames = (searchWord) => {
+    if (this.state.searchWord != null && this.state.searchWord != "") return;
+
+    const xhttp = new XMLHttpRequest();
+    let requestUrl =
+      "http://localhost:1234/similargames" +
+      "/" +
+      searchWord +
+      "/" +
+      this.state.currentPage +
+      "/" +
+      this.state.matchValue +
+      "/" +
+      this.state.showNSFW +
+      "/" +
+      this.state.showSameDeveloper;
+
+    xhttp.open("get", requestUrl, true);
+
+    xhttp.send();
+
+    xhttp.onload = () => {
+      let similarGames = JSON.parse(xhttp.response);
+      this.setState({ searchResults: similarGames });
+    };
+  };
+
+  requestSuggestionsFromServer = () => {
+    if (!this.state.searchInputValue || this.state.searchInputValue == "")
+      return;
+
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open(
+      "get",
+      "http://localhost:1234/suggestedgames/" + this.state.searchInputValue,
+      true
+    );
+
+    xhttp.send();
+
+    xhttp.onload = () => {
+      let suggestedGames = JSON.parse(xhttp.response);
+      this.setSearchSuggestions(suggestedGames);
+    };
   };
 
   handleSearchInputChange = (event) => {
@@ -78,17 +131,13 @@ class BrowsePage extends Component {
       searchInputValue: newSearchInputValue,
     });
 
-    var newFilterData = GameData.filter((game) => {
-      if (newSearchInputValue == "") {
-        return;
-      }
+    // Trigger suggestionSearchTimeOut such that it will only search on the server when the user has not given any input within a given amount of time
+    if (this.suggestionSearchTimeOut)
+      clearTimeout(this.suggestionSearchTimeOut);
 
-      if (game.name.toLowerCase().includes(newSearchInputValue.toLowerCase())) {
-        return game;
-      }
-    });
-
-    this.setState({ searchSuggestions: newFilterData });
+    this.suggestionSearchTimeOut = setTimeout(() => {
+      this.requestSuggestionsFromServer();
+    }, 500);
   };
 
   handleSuggestionClick = (name) => {
