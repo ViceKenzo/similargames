@@ -157,6 +157,7 @@
 .game-detail-source-button {
   background-color: var(--detail-sourcebutton-background-color);
   color: var(--detail-sourcebutton-text-color);
+  text-decoration: none;
 
   border-radius: 6px;
 

@@ -56,7 +56,6 @@ class BrowsePage extends Component {
 
   // Browse Header
   submitSearch = (event, searchWord) => {
-    console.log("Submit search fired");
     if (event) event.preventDefault();
 
     this.setState({ searchSuggestions: [] });
@@ -78,7 +77,7 @@ class BrowsePage extends Component {
 
   // Server requests
   requestSimilarGames = (searchWord) => {
-    if (this.state.searchWord != null && this.state.searchWord != "") return;
+    if (this.state.searchWord == null) return;
 
     const xhttp = new XMLHttpRequest();
     let requestUrl =
@@ -92,14 +91,49 @@ class BrowsePage extends Component {
       "/" +
       this.state.showNSFW +
       "/" +
-      this.state.showSameDeveloper;
+      this.state.showSameDeveloper +
+      "/" +
+      this.state.sorting;
 
     xhttp.open("get", requestUrl, true);
 
     xhttp.send();
 
     xhttp.onload = () => {
+      if (xhttp.status == 400) {
+        this.setState({
+          searchResultMessage:
+            "The game you entered does not exist in our system.",
+        });
+        this.setState({ searchResults: [] });
+        return;
+      } else if (xhttp.status == 404) {
+        this.setState({
+          searchResultMessage:
+            "The game you entered does not exist in our system.",
+        });
+        this.setState({ searchResults: [] });
+        return;
+      } else if (xhttp.status == 200) {
+        if (!xhttp.response) {
+          this.setState({
+            searchResultMessage: "No similar games were found.",
+          });
+          this.setState({ searchResults: [] });
+          return;
+        }
+      }
+
       let similarGames = JSON.parse(xhttp.response);
+
+      if (similarGames.length <= 0) {
+        this.setState({
+          searchResultMessage: "No similar games were found.",
+        });
+        this.setState({ searchResults: [] });
+        return;
+      }
+
       this.setState({ searchResults: similarGames });
     };
   };
@@ -119,6 +153,8 @@ class BrowsePage extends Component {
     xhttp.send();
 
     xhttp.onload = () => {
+      if (!xhttp.response) return;
+
       let suggestedGames = JSON.parse(xhttp.response);
       this.setSearchSuggestions(suggestedGames);
     };
@@ -146,37 +182,44 @@ class BrowsePage extends Component {
 
   // Browse Navigator
   handleSortChange = (event) => {
-    // Enter back-end for sort change
-
-    this.setState({ sorting: event.target.value });
+    this.setState({ sorting: event.target.value }, () => {
+      this.submitSearch();
+    });
   };
 
   handlePageChange = (newPage) => {
     if (newPage < 1 || newPage > this.state.totalPages) return;
 
-    // Enter back-end for page change
-
-    this.setState({ currentPage: newPage });
+    this.setState({ currentPage: newPage }, () => {
+      this.submitSearch();
+    });
     this.browseNav.current.setPageInputs(newPage);
   };
 
   // Browse Filters
+  matchingTimeout = null;
+
   handleChangeMatching = (event) => {
-    // Enter back-end for matching change
+    // Trigger form submit after the slider hasn't been moved for x amount of time
+    if (this.matchingTimeout) clearTimeout(this.matchingTimeout);
+
+    this.matchingTimeout = setTimeout(() => {
+      this.submitSearch();
+    }, 500);
 
     this.setState({ matchValue: event.target.value });
   };
 
   handleNSFWClick = () => {
-    // Enter back-end for NSFW toggle
-
-    this.setState({ showNSFW: !this.state.showNSFW });
+    this.setState({ showNSFW: !this.state.showNSFW }, () => {
+      this.submitSearch();
+    });
   };
 
   handleSameDeveloperClick = () => {
-    // Enterback-end for NSFW toggle
-
-    this.setState({ showSameDeveloper: !this.state.showSameDeveloper });
+    this.setState({ showSameDeveloper: !this.state.showSameDeveloper }, () => {
+      this.submitSearch();
+    });
   };
 
   render() {

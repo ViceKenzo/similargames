@@ -54,17 +54,28 @@ class GameDetailCard extends Component {
   };
 
   GetSteamButton = () => {
-    if (!this.state.game.sources || this.state.game.sources.length <= 0) return;
+    if (
+      !this.props.game ||
+      !this.props.game.sources ||
+      this.props.game.sources.length <= 0
+    )
+      return;
 
-    for (let i = 0; i < this.state.game.sources.length; ++i) {
+    for (let i = 0; i < this.props.game.sources.length; ++i) {
       if (
-        !this.state.game.sources[i].name ||
-        this.state.game.sources[i].name == ""
-      )
+        !this.props.game.sources[i].name ||
+        this.props.game.sources[i].name == ""
+      ) {
         continue;
-      if (this.state.game.sources[i].name.toLowerCase().Contains("steam")) {
+      }
+
+      if (this.props.game.sources[i].name.toLowerCase().includes("steam")) {
         return (
-          <a className="game-detail-source-button">
+          <a
+            className="game-detail-source-button"
+            href={this.props.game.sources[i].link}
+            target="_blank"
+          >
             <div className="game-detail-source-image-wrapper">
               <img className="game-detail-source-image" src={LogoSteamStore} />
             </div>
@@ -81,9 +92,88 @@ class GameDetailCard extends Component {
     }
   };
 
-  GetGogButton = () => {};
+  GetGogButton = () => {
+    if (
+      !this.props.game ||
+      !this.props.game.sources ||
+      this.props.game.sources.length <= 0
+    )
+      return;
 
-  GetEpicGamesButton = () => {};
+    for (let i = 0; i < this.props.game.sources.length; ++i) {
+      if (
+        !this.props.game.sources[i].name ||
+        this.props.game.sources[i].name == ""
+      ) {
+        continue;
+      }
+
+      if (this.props.game.sources[i].name.toLowerCase().includes("gog")) {
+        return (
+          <a
+            className="game-detail-source-button"
+            href={this.props.game.sources[i].link}
+            target="_blank"
+          >
+            <div className="game-detail-source-image-wrapper">
+              <img className="game-detail-source-image" src={LogoGog} />
+            </div>
+            <div className="game-detail-source-name"> View on Gog</div>
+            <div className="game-detail-source-exit-icon-wrapper">
+              <FontAwesomeIcon
+                className="game-detail-source-exit-icon"
+                icon={faArrowUpRightFromSquare}
+              />
+            </div>
+          </a>
+        );
+      }
+    }
+  };
+
+  GetEpicGamesButton = () => {
+    if (
+      !this.props.game ||
+      !this.props.game.sources ||
+      this.props.game.sources.length <= 0
+    )
+      return;
+
+    for (let i = 0; i < this.props.game.sources.length; ++i) {
+      if (
+        !this.props.game.sources[i].name ||
+        this.props.game.sources[i].name == ""
+      ) {
+        continue;
+      }
+
+      if (
+        this.props.game.sources[i].name.toLowerCase().includes("epic games")
+      ) {
+        return (
+          <a
+            className="game-detail-source-button"
+            href={this.props.game.sources[i].link}
+            target="_blank"
+          >
+            <div className="game-detail-source-image-wrapper">
+              <img
+                className="game-detail-source-image"
+                src={LogoEpicGamesStore}
+              />
+            </div>
+            <div className="game-detail-source-name">View on Epic Games</div>
+            <div className="game-detail-source-exit-icon-wrapper">
+              <FontAwesomeIcon
+                className="game-detail-source-exit-icon"
+                icon={faArrowUpRightFromSquare}
+              />
+            </div>
+          </a>
+        );
+      }
+    }
+  };
 
   render() {
     return (
@@ -126,34 +216,9 @@ class GameDetailCard extends Component {
           </div>
 
           <div className="game-detail-source-link-wrapper">
-            <a className="game-detail-source-button">
-              <div className="game-detail-source-image-wrapper">
-                <img className="game-detail-source-image" src={LogoGog} />
-              </div>
-              <div className="game-detail-source-name"> View on Gog</div>
-              <div className="game-detail-source-exit-icon-wrapper">
-                <FontAwesomeIcon
-                  className="game-detail-source-exit-icon"
-                  icon={faArrowUpRightFromSquare}
-                />
-              </div>
-            </a>
-
-            <a className="game-detail-source-button">
-              <div className="game-detail-source-image-wrapper">
-                <img
-                  className="game-detail-source-image"
-                  src={LogoEpicGamesStore}
-                />
-              </div>
-              <div className="game-detail-source-name">View on Epic Games</div>
-              <div className="game-detail-source-exit-icon-wrapper">
-                <FontAwesomeIcon
-                  className="game-detail-source-exit-icon"
-                  icon={faArrowUpRightFromSquare}
-                />
-              </div>
-            </a>
+            {this.GetSteamButton()}
+            {this.GetGogButton()}
+            {this.GetEpicGamesButton()}
           </div>
         </div>
       </div>

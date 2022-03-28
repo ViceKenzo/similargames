@@ -6,8 +6,30 @@ import { Link } from "react-router-dom";
 
 class PopularCardPanel extends Component {
   state = {
-    popularGames: GameData,
+    popularGames: [],
   };
+
+  requestPopularGames = () => {
+    const xhttp = new XMLHttpRequest();
+
+    let requestUrl = "http://localhost:1234/populargames";
+
+    xhttp.open("get", requestUrl, true);
+
+    xhttp.send();
+
+    xhttp.onload = () => {
+      if (!xhttp.response) return;
+
+      let tempPopularGames = JSON.parse(xhttp.response);
+      this.setState({ popularGames: tempPopularGames });
+    };
+  };
+
+  componentDidMount() {
+    this.requestPopularGames();
+  }
+
   render() {
     return (
       <div className="popular-card-panel">
@@ -23,7 +45,11 @@ class PopularCardPanel extends Component {
                   <img
                     className="popular-card-image"
                     key={index + "card-image"}
-                    src={ThumbnailImage}
+                    src={
+                      "http://localhost:1234/header_images/" +
+                      game.image_id +
+                      ".jpg"
+                    }
                   />
                 </div>
                 <div
@@ -34,16 +60,16 @@ class PopularCardPanel extends Component {
                     className="popular-card-title"
                     key={index + "card-title"}
                   >
-                    {game.name}
+                    {game.title}
                   </div>
                   <div className="popular-card-tags" key={index + "card-tags"}>
-                    <p>{game.tags_short.join(" | ")}</p>
+                    <p>{game.tags.join(" | ")}</p>
                   </div>
                 </div>
                 <Link
                   className="popular-card-button"
                   key={index + "card-button"}
-                  to={"/Game?name=" + game.name}
+                  to={"/Game?id=" + game.id}
                 >
                   <span
                     className="popular-card-button-text"
