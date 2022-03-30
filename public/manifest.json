@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Find related games",
+  "name": "Find games that are related to each other",
   "icons": [
     {
       "src": "favicon.ico",
