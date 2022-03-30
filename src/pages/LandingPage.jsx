@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import LandingPageSearchPanel from "../components/LandingPageSearchPanel.jsx";
 import PopularCardPanel from "../components/PopularCardPanel.jsx";
-import { GameData } from "../placeholders/GameData.js";
 
 class LandingPage extends Component {
   state = {
