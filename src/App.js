@@ -18,9 +18,13 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" exact element={<LandingPage />} />
-          <Route path="/Search" exact element={<BrowsePageWrapper />} />
-          <Route path="/Game" element={<GameDetailPageWrapper />} />
-          <Route path="/About" exact element={<AboutPage />} />
+          <Route
+            path="/find-games-like"
+            exact
+            element={<BrowsePageWrapper />}
+          />
+          <Route path="/game" element={<GameDetailPageWrapper />} />
+          <Route path="/about" exact element={<AboutPage />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <Footer />

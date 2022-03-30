@@ -9,12 +9,12 @@ class NavBar extends Component {
     menuItems: [
       {
         title: "Browse",
-        href: "/Search",
+        href: "/find-games-like",
         cName: "nav-links",
       },
       {
         title: "About",
-        href: "/About",
+        href: "/about",
         cName: "nav-links",
       },
     ],

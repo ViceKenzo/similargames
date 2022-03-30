@@ -72,7 +72,7 @@ class LandingPage extends Component {
       <React.Fragment>
         <Link
           style={{ display: "hidden" }}
-          to={"/Search?q=" + this.state.searchInputValue}
+          to={"/find-games-like?q=" + this.state.searchInputValue}
           ref={this.landingRoutingEl}
         />
         <LandingPageSearchPanel

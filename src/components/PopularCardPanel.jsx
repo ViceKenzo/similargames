@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./PopularCardPanel.css";
-import { GameData } from "../placeholders/GameData.js";
-import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
 
 class PopularCardPanel extends Component {
@@ -69,7 +67,7 @@ class PopularCardPanel extends Component {
                 <Link
                   className="popular-card-button"
                   key={index + "card-button"}
-                  to={"/Game?id=" + game.id}
+                  to={"/game?id=" + game.id}
                 >
                   <span
                     className="popular-card-button-text"

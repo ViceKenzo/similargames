@@ -136,7 +136,7 @@ class SearchBar extends Component {
                   <Link
                     key={index + "result"}
                     className="search-product-result"
-                    to={"/Search?q=" + game.title}
+                    to={"/search?q=" + game.title}
                     onClick={() => {
                       this.props.handleSuggestionClick(game.title);
                     }}

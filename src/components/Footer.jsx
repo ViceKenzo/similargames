@@ -7,11 +7,11 @@ class Footer extends Component {
     menuItems: [
       {
         title: "Browse",
-        href: "/Search",
+        href: "/find-games-like",
       },
       {
         title: "About",
-        href: "/About",
+        href: "/about",
       },
     ],
   };

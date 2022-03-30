@@ -22,7 +22,7 @@ class CardProjector extends Component {
   getSearchResultsProjection = () => {
     return this.props.searchResults.map((game, index) => {
       return (
-        <Link key={index + "card"} className="card" to={"/Game?id=" + game.id}>
+        <Link key={index + "card"} className="card" to={"/game?id=" + game.id}>
           <div
             key={index + "card-image-wrapper"}
             className="card-image-wrapper"
