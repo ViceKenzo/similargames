@@ -20,6 +20,7 @@ class BrowsePage extends Component {
     pageing: 20,
 
     searchSuggestions: [], // The search suggestions that appear when typing in the search bar
+    targetGame: null, // The game for which the similar games have been requested
     gameData: [], // Is where the input data for the games arrives
     searchResults: [], // The gamedata after filters and sorting has been applied
 
@@ -125,6 +126,9 @@ class BrowsePage extends Component {
       }
 
       // Developer
+      if (!this.state.showSameDeveloper) {
+        if (item.developer == this.state.targetGame.developer) return false;
+      }
 
       return true;
     });
@@ -178,17 +182,23 @@ class BrowsePage extends Component {
         }
       }
 
-      let similarGames = JSON.parse(xhttp.response);
+      let responseObj = JSON.parse(xhttp.response);
 
-      if (similarGames.length <= 0) {
+      if (responseObj.game == null || responseObj.similarGames == null) return;
+
+      if (responseObj.similarGames.length <= 0) {
         this.setState({
           searchResultMessage: "No similar games were found.",
         });
-        this.setGameData([]);
+        this.setState({ targetGame: responseObj.game }, () => {
+          this.setGameData([]);
+        });
         return;
       }
 
-      this.setGameData(similarGames);
+      this.setState({ targetGame: responseObj.game }, () => {
+        this.setGameData(responseObj.similarGames);
+      });
     };
   };
 
