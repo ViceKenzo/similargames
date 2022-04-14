@@ -35,7 +35,6 @@ class BrowseNavigator extends Component {
         <CardProjector
           searchResults={this.props.searchResults}
           searchResultMessage={this.props.searchResultMessage}
-          currentPageSearchResults={this.props.currentPageSearchResults}
         />
         <ProjectorControlPanel
           className="projector-control-panel-bottom"
