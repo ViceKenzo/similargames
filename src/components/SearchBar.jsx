@@ -44,7 +44,7 @@ class SearchBar extends Component {
 
   handleIconClick = () => {
     if (this.state.xIconVisible) {
-      this.compSearchInput.current.value = "";
+      this.props.handleSearchInputChange({ target: { value: "" } });
       if (this.props.clearSearchSuggestions)
         this.props.clearSearchSuggestions();
       this.setState({ searchBarHidden: true });
@@ -120,7 +120,9 @@ class SearchBar extends Component {
           <FontAwesomeIcon
             className={this.getSearchIconClass()}
             icon={this.state.xIconVisible ? faXmark : faMagnifyingGlass}
-            onClick={this.handleIconClick}
+            onClick={() => {
+              this.handleIconClick();
+            }}
           />
         </div>
 

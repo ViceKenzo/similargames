@@ -142,8 +142,10 @@ class BrowsePage extends Component {
     let newCurrentPage = 1;
 
     this.setState({ totalPages: newTotalPages });
-    this.setState({ currentPage: newCurrentPage });
+    this.handlePageChange(newCurrentPage);
     this.setState({ searchResults: newSearchResults });
+
+    window.scrollTo(0, 0);
   };
 
   // Server requests
@@ -161,21 +163,21 @@ class BrowsePage extends Component {
       if (xhttp.status == 400) {
         this.setState({
           searchResultMessage:
-            "The game you entered does not exist in our system.",
+            "Sorry! The game you entered does not exist in our system.",
         });
         this.setGameData([]);
         return;
       } else if (xhttp.status == 404) {
         this.setState({
           searchResultMessage:
-            "The game you entered does not exist in our system.",
+            "Sorry! The game you entered does not exist in our system.",
         });
         this.setGameData([]);
         return;
       } else if (xhttp.status == 200) {
         if (!xhttp.response) {
           this.setState({
-            searchResultMessage: "No similar games were found.",
+            searchResultMessage: "Sadly, no similar games were found.",
           });
           this.setGameData([]);
           return;
@@ -254,8 +256,11 @@ class BrowsePage extends Component {
   handlePageChange = (newPage) => {
     if (newPage < 1 || newPage > this.state.totalPages) return;
 
-    this.setState({ currentPage: newPage });
-    this.browseNav.current.setPageInputs(newPage);
+    this.setState({ currentPage: newPage }, () => {
+      this.browseNav.current.setPageInputs(newPage);
+    });
+
+    window.scrollTo(0, 0);
   };
 
   // Browse Filters

@@ -7,7 +7,7 @@ class CardProjector extends Component {
   state = {};
 
   getProjection = () => {
-    if (!this.props.searchResults || this.props.searchResults == []) {
+    if (!this.props.searchResults || this.props.searchResults.length == 0) {
       return this.getNoSearchResultsCard(this.props.searchResultMessage);
     } else {
       return this.getSearchResultsProjection();
