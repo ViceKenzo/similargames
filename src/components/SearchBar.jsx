@@ -153,6 +153,13 @@ class SearchBar extends Component {
                           game.image_id +
                           ".jpg"
                         }
+                        onError={({ currentTarget }) => {
+                          currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                          currentTarget.src =
+                            "http://localhost:1234/header_images/" +
+                            game.image_id +
+                            ".png";
+                        }}
                       ></img>
                     </div>
                     <div

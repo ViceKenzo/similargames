@@ -191,6 +191,13 @@ class GameDetailCard extends Component {
                   this.props.game.image_id +
                   ".jpg"
                 }
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                  currentTarget.src =
+                    "http://localhost:1234/header_images/" +
+                    this.props.game.image_id +
+                    ".png";
+                }}
               />
             </div>
             <div className="detail-card-title" id="game-detail-desktop-title">
