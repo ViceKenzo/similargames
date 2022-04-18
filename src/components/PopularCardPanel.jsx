@@ -7,6 +7,10 @@ class PopularCardPanel extends Component {
     popularGames: [],
   };
 
+  constructor(props) {
+    super(props);
+  }
+
   requestPopularGames = () => {
     const xhttp = new XMLHttpRequest();
 
@@ -44,7 +48,7 @@ class PopularCardPanel extends Component {
                     className="popular-card-image"
                     key={index + "card-image"}
                     src={
-                      this.serverAddress +
+                      this.props.serverAddress +
                       "/header_images/" +
                       game.image_id +
                       ".jpg"
