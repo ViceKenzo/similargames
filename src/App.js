@@ -9,6 +9,7 @@ import Footer from "./components/Footer.jsx";
 import BrowsePageWrapper from "./pages/BrowsePageWrapper";
 import GameDetailPageWrapper from "./pages/GameDetailPageWrapper.jsx";
 import backgroundImage from "./images/main_background.svg";
+import Config from "./config/config.js";
 
 function App() {
   return (
@@ -17,13 +18,22 @@ function App() {
         <img className="main-background" src={backgroundImage} />
         <NavBar />
         <Routes>
-          <Route path="/" exact element={<LandingPage />} />
+          <Route
+            path="/"
+            exact
+            element={<LandingPage serverAddress={Config.serverAddress} />}
+          />
           <Route
             path="/find-games-like"
             exact
-            element={<BrowsePageWrapper />}
+            element={<BrowsePageWrapper serverAddress={Config.serverAddress} />}
           />
-          <Route path="/game" element={<GameDetailPageWrapper />} />
+          <Route
+            path="/game"
+            element={
+              <GameDetailPageWrapper serverAddress={Config.serverAddress} />
+            }
+          />
           <Route path="/about" exact element={<AboutPage />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>

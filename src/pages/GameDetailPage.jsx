@@ -23,7 +23,7 @@ class GameDetailPage extends Component {
 
   requestAndSetGameDetail = (gameId) => {
     const xhttp = new XMLHttpRequest();
-    let requestUrl = "http://localhost:1234/gamedetail/" + gameId;
+    let requestUrl = this.props.serverAddress + "/gamedetail/" + gameId;
 
     xhttp.open("get", requestUrl, true);
 

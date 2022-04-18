@@ -33,7 +33,9 @@ class LandingPage extends Component {
 
     xhttp.open(
       "get",
-      "http://localhost:1234/suggestedgames/" + this.state.searchInputValue,
+      this.props.serverAddress +
+        "/suggestedgames/" +
+        this.state.searchInputValue,
       true
     );
 
@@ -85,7 +87,7 @@ class LandingPage extends Component {
           searchInputValue={this.state.searchInputValue}
           handleSuggestionClick={this.handleSuggestionClick}
         />
-        <PopularCardPanel />
+        <PopularCardPanel serverAddress={this.props.serverAddress} />
       </React.Fragment>
     );
   }

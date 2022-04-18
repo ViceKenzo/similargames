@@ -10,7 +10,7 @@ class PopularCardPanel extends Component {
   requestPopularGames = () => {
     const xhttp = new XMLHttpRequest();
 
-    let requestUrl = "http://localhost:1234/populargames";
+    let requestUrl = this.props.serverAddress + "/populargames";
 
     xhttp.open("get", requestUrl, true);
 
@@ -44,14 +44,16 @@ class PopularCardPanel extends Component {
                     className="popular-card-image"
                     key={index + "card-image"}
                     src={
-                      "http://localhost:1234/header_images/" +
+                      this.serverAddress +
+                      "/header_images/" +
                       game.image_id +
                       ".jpg"
                     }
                     onError={({ currentTarget }) => {
                       currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
                       currentTarget.src =
-                        "http://localhost:1234/header_images/" +
+                        this.serverAddress +
+                        "/header_images/" +
                         game.image_id +
                         ".png";
                     }}

@@ -153,7 +153,8 @@ class BrowsePage extends Component {
     if (this.state.searchWord == null) return;
 
     const xhttp = new XMLHttpRequest();
-    let requestUrl = "http://localhost:1234/similargames" + "/" + searchWord;
+    let requestUrl =
+      this.props.serverAddress + "/similargames" + "/" + searchWord;
 
     xhttp.open("get", requestUrl, true);
 
@@ -212,7 +213,9 @@ class BrowsePage extends Component {
 
     xhttp.open(
       "get",
-      "http://localhost:1234/suggestedgames/" + this.state.searchInputValue,
+      this.props.serverAddress +
+        "/suggestedgames/" +
+        this.state.searchInputValue,
       true
     );
 
