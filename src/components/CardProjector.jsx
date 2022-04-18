@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 class CardProjector extends Component {
   state = {};
 
+  constructor(props) {
+    super(props);
+  }
+
   getProjection = () => {
     if (!this.props.searchResults || this.props.searchResults.length == 0) {
       return this.getNoSearchResultsCard(this.props.searchResultMessage);
@@ -26,12 +30,16 @@ class CardProjector extends Component {
               key={index + "card-image"}
               className="card-image"
               src={
-                "http://localhost:1234/header_images/" + game.image_id + ".jpg"
+                this.props.serverAddress +
+                "/header_images/" +
+                game.image_id +
+                ".jpg"
               }
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
                 currentTarget.src =
-                  "http://localhost:1234/header_images/" +
+                  this.props.serverAddress +
+                  "/header_images/" +
                   game.image_id +
                   ".png";
               }}

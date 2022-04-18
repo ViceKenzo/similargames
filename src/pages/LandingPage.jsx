@@ -86,6 +86,7 @@ class LandingPage extends Component {
           }}
           searchInputValue={this.state.searchInputValue}
           handleSuggestionClick={this.handleSuggestionClick}
+          serverAddress={this.props.serverAddress}
         />
         <PopularCardPanel serverAddress={this.props.serverAddress} />
       </React.Fragment>

@@ -47,7 +47,13 @@ class GameDetailPage extends Component {
   };
 
   getCardRender = () => {
-    if (this.state.game) return <GameDetailCard game={this.state.game} />;
+    if (this.state.game)
+      return (
+        <GameDetailCard
+          serverAddress={this.props.serverAddress}
+          game={this.state.game}
+        />
+      );
   };
 
   render() {

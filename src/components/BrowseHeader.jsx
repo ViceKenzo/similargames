@@ -38,6 +38,7 @@ class BrowseHeader extends Component {
             clearSearchSuggestions={this.props.clearSearchSuggestions}
             searchInputValue={this.props.searchInputValue}
             handleSuggestionClick={this.props.handleSuggestionClick}
+            serverAddress={this.props.serverAddress}
           />
         </div>
         <div className="browse-header-text-wrapper-mobile">

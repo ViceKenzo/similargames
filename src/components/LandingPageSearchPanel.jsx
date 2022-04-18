@@ -8,6 +8,10 @@ import LogoSteamStore from "../images/logo_steam.png";
 class LandingPageSearchPanel extends Component {
   state = {};
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="landing-page-search-panel">
@@ -22,6 +26,7 @@ class LandingPageSearchPanel extends Component {
             clearSearchSuggestions={this.props.clearSearchSuggestions}
             searchInputValue={this.props.searchInputValue}
             handleSuggestionClick={this.props.handleSuggestionClick}
+            serverAddress={this.props.serverAddress}
           ></SearchBar>
         </div>
         <div className="search-panel-main-phrase">

@@ -306,6 +306,7 @@ class BrowsePage extends Component {
           }}
           searchInputValue={this.state.searchInputValue}
           handleSuggestionClick={this.handleSuggestionClick}
+          serverAddress={this.props.serverAddress}
         />
         <div className="browsing-navigation-filter-wrapper">
           <div className="browsing-filters-wrapper-left">
@@ -342,6 +343,7 @@ class BrowsePage extends Component {
               handlePageChange={this.handlePageChange}
               searchResultMessage={this.state.searchResultMessage}
               ref={this.browseNav}
+              serverAddress={this.props.serverAddress}
             />
           </div>
           <div className="browsing-filters-wrapper-right">

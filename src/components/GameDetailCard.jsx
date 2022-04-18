@@ -9,6 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class GameDetailCard extends Component {
   state = {};
 
+  constructor(props) {
+    super(props);
+  }
+
   GetReleaseDateElements = (release_date) => {
     if (release_date) {
       return (
@@ -187,14 +191,16 @@ class GameDetailCard extends Component {
               <img
                 className="detail-card-image"
                 src={
-                  "http://localhost:1234/header_images/" +
+                  this.props.serverAddress +
+                  "/header_images/" +
                   this.props.game.image_id +
                   ".jpg"
                 }
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
                   currentTarget.src =
-                    "http://localhost:1234/header_images/" +
+                    this.props.serverAddress +
+                    "/header_images/" +
                     this.props.game.image_id +
                     ".png";
                 }}
