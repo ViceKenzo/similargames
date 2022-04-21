@@ -31,6 +31,10 @@
   margin: 0;
 }
 
+.popular-card:hover{
+  box-shadow: 0px 0px 20px 5px var(--card-background-hover-color);
+}
+
 .popular-card-image-wrapper {
   padding: 0;
 }
@@ -40,6 +44,12 @@
   height: 151.9px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
+
+  cursor: pointer;
+}
+
+.popular-card-image:hover{
+  box-shadow: 0px 5px 8px 3px rgba(0, 0, 0, 0.342);
 }
 
 .popular-card-text-wrapper {
@@ -50,6 +60,8 @@
   padding-top: 15px;
   padding-left: 10px;
   padding-right: 10px;
+
+  cursor: default;
 }
 
 .popular-card-title {

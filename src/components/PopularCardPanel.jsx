@@ -44,24 +44,26 @@ class PopularCardPanel extends Component {
                   className="popular-card-image-wrapper"
                   key={index + "image-wrapper"}
                 >
-                  <img
-                    className="popular-card-image"
-                    key={index + "card-image"}
-                    src={
-                      this.props.serverAddress +
-                      "/header_images/" +
-                      game.image_id +
-                      ".jpg"
-                    }
-                    onError={({ currentTarget }) => {
-                      currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
-                      currentTarget.src =
-                        this.serverAddress +
+                  <Link to={"/game?id=" + game.id}>
+                    <img
+                      className="popular-card-image"
+                      key={index + "card-image"}
+                      src={
+                        this.props.serverAddress +
                         "/header_images/" +
                         game.image_id +
-                        ".png";
-                    }}
-                  />
+                        ".jpg"
+                      }
+                      onError={({ currentTarget }) => {
+                        currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                        currentTarget.src =
+                          this.serverAddress +
+                          "/header_images/" +
+                          game.image_id +
+                          ".png";
+                      }}
+                    />
+                  </Link>
                 </div>
                 <div
                   className="popular-card-text-wrapper"
@@ -80,7 +82,7 @@ class PopularCardPanel extends Component {
                 <Link
                   className="popular-card-button"
                   key={index + "card-button"}
-                  to={"/game?id=" + game.id}
+                  to={"/find-games-like?q=" + game.title}
                 >
                   <span
                     className="popular-card-button-text"
