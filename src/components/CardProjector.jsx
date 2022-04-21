@@ -37,11 +37,7 @@ class CardProjector extends Component {
               }
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
-                currentTarget.src =
-                  this.props.serverAddress +
-                  "/header_images/" +
-                  game.image_id +
-                  ".png";
+                currentTarget.src = ThumbnailImage;
               }}
             />
           </div>

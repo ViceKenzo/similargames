@@ -3,6 +3,7 @@ import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 class SearchBar extends Component {
   state = {
@@ -156,11 +157,7 @@ class SearchBar extends Component {
                         }
                         onError={({ currentTarget }) => {
                           currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
-                          currentTarget.src =
-                            this.props.serverAddress +
-                            "/header_images/" +
-                            game.image_id +
-                            ".png";
+                          currentTarget.src = ThumbnailImage;
                         }}
                       ></img>
                     </div>

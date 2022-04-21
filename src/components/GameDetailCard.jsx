@@ -5,6 +5,7 @@ import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 class GameDetailCard extends Component {
   state = {};
@@ -198,11 +199,7 @@ class GameDetailCard extends Component {
                 }
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
-                  currentTarget.src =
-                    this.props.serverAddress +
-                    "/header_images/" +
-                    this.props.game.image_id +
-                    ".png";
+                  currentTarget.src = ThumbnailImage;
                 }}
               />
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./PopularCardPanel.css";
 import { Link } from "react-router-dom";
+import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 class PopularCardPanel extends Component {
   state = {
@@ -56,11 +57,7 @@ class PopularCardPanel extends Component {
                       }
                       onError={({ currentTarget }) => {
                         currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
-                        currentTarget.src =
-                          this.serverAddress +
-                          "/header_images/" +
-                          game.image_id +
-                          ".png";
+                        currentTarget.src = ThumbnailImage;
                       }}
                     />
                   </Link>
