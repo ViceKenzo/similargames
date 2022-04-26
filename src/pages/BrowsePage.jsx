@@ -44,15 +44,10 @@ class BrowsePage extends Component {
 
   handleQueryParametersInput = (name) => {
     if (name && name != "") {
-      this.setState({ searchInputValue: name });
-
       this.submitSearch(null, name);
     } else {
       let qParam = new URLSearchParams(this.props.locationHook.search).get("q");
       if (!qParam || qParam == "") return;
-
-      // Set the searchinputvalue of browseheader
-      this.setState({ searchInputValue: qParam });
 
       this.submitSearch(null, qParam);
     }
@@ -201,6 +196,10 @@ class BrowsePage extends Component {
 
       this.setState({ targetGame: responseObj.game }, () => {
         this.setGameData(responseObj.similarGames);
+
+        if (this.state.targetGame)
+          this.setState({ searchInputValue: this.state.targetGame.title });
+        this.setState({ searchWord: this.state.targetGame.title });
       });
     };
   };

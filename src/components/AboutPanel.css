@@ -42,6 +42,12 @@
   margin-bottom: 20px;
 
   max-width: 50%;
+
+  background-color: transparent;
+}
+
+.about-description-panel:hover{
+  background-color: var(--about-block-hover-color);
 }
 
 .about-description-panel p {
@@ -66,6 +72,12 @@
   margin-bottom: 40px;
 
   max-width: 35%;
+
+  background-color: transparent;
+}
+
+.about-games-source-info-wrapper:hover{
+  background-color: var(--about-block-hover-color);
 }
 
 .about-games-source-description {

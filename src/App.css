@@ -40,6 +40,8 @@
   --detail-sourcebutton-background-color: rgba(80, 46, 107, 1);
   --detail-sourcebutton-background-hover-color: rgb(106, 63, 141);
   --detail-sourcebutton-text-color: rgba(255, 255, 255, 1);
+  /*About Page*/
+  --about-block-hover-color: rgba(182, 153, 205, 0.452);
 
   /* Padding */
   --global-window-border-padding: 18.75%;

@@ -79,7 +79,7 @@ class PopularCardPanel extends Component {
                 <Link
                   className="popular-card-button"
                   key={index + "card-button"}
-                  to={"/find-games-like?q=" + game.title}
+                  to={"/find-games-like?q=" + game.web_name}
                 >
                   <span
                     className="popular-card-button-text"
