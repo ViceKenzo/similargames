@@ -75,6 +75,15 @@
 
 .detail-card-description-wrapper {
   width: 95%;
+
+  color: transparent;
+
+  padding: 5px;
+}
+
+.detail-card-description-wrapper:hover{
+  background-color: var(--about-block-hover-color);
+  border-radius: 10px;
 }
 
 .detail-card-description-announcer {
@@ -114,6 +123,12 @@
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
+
+  background-color: transparent;
+}
+
+.game-detail-additionals:hover{
+  background-color: var(--about-block-hover-color);
 }
 
 .game-detail-additional-wrapper {
