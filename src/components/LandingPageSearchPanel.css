@@ -11,9 +11,7 @@
 }
 
 .search-panel-header {
-  color: var(--default-text-color);
-  font-size: 56px;
-  font-weight: bold;
+  width: 700px;
 
   padding-bottom: 15px;
 }
@@ -38,6 +36,13 @@
   display: flex;
   align-items: center;
   justify-items: center;
+  padding: 7px;
+}
+
+.search-panel-footer:hover{
+  border-radius: 10px;
+
+  background-color: var(--about-block-hover-color);
 }
 
 .search-panel-icon-announcer {

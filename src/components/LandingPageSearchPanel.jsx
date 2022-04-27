@@ -4,6 +4,7 @@ import SearchBar from "./SearchBar.jsx";
 import LogoEpicGamesStore from "../images/logo_epicgamesstore.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
+import SimilarGamesHeaderImage from "../images/similargames_title.png";
 
 class LandingPageSearchPanel extends Component {
   state = {};
@@ -15,7 +16,7 @@ class LandingPageSearchPanel extends Component {
   render() {
     return (
       <div className="landing-page-search-panel">
-        <div className="search-panel-header">SimilarGames</div>
+        <img className="search-panel-header" src={SimilarGamesHeaderImage} />
         <div className="search-panel-search-bar">
           <SearchBar
             styleHeight="50px"
