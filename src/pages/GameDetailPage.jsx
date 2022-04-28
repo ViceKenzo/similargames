@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import GameDetailCard from "../components/GameDetailCard.jsx";
 import "./GameDetailPage.css";
+import { GAFirePageView } from "../tracking/GA_Events_Tracker";
 
 class GameDetailPage extends Component {
   state = {
@@ -36,7 +37,11 @@ class GameDetailPage extends Component {
       }
 
       let requestedGame = JSON.parse(xhttp.response);
-      this.setState({ game: requestedGame });
+      this.setState({ game: requestedGame }, () => {
+        GAFirePageView(
+          window.location.pathname + "/" + this.state.game.web_name
+        );
+      });
     };
   };
 

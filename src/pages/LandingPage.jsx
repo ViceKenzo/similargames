@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import LandingPageSearchPanel from "../components/LandingPageSearchPanel.jsx";
 import PopularCardPanel from "../components/PopularCardPanel.jsx";
+import { GAFireEvent, GAFirePageView } from "../tracking/GA_Events_Tracker";
 
 class LandingPage extends Component {
   state = {
@@ -15,6 +16,8 @@ class LandingPage extends Component {
     super(props);
 
     this.landingRoutingEl = React.createRef();
+
+    GAFirePageView(window.location.pathname + window.location.search);
   }
 
   submitSearch = (event) => {
@@ -63,7 +66,9 @@ class LandingPage extends Component {
     }, 500);
   };
 
-  handleSuggestionClick = () => {};
+  handleSuggestionClick = (gameTitle) => {
+    GAFireEvent("Search Suggestion Click", "Landing Page", gameTitle);
+  };
 
   setSearchSuggestions = (newFilterData) => {
     this.setState({ searchSuggestions: newFilterData });

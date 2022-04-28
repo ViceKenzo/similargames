@@ -5,6 +5,7 @@ import LogoEpicGamesStore from "../images/logo_epicgamesstore.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
 import SimilarGamesHeaderImage from "../images/similargames_title.png";
+import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 class LandingPageSearchPanel extends Component {
   state = {};
@@ -36,13 +37,35 @@ class LandingPageSearchPanel extends Component {
         <div className="search-panel-footer">
           <span className="search-panel-icon-announcer">On:</span>
           <div className="search-panel-icon-wrapper">
-            <a href="https://www.epicgames.com/store" target="_blank">
+            <a
+              href="https://www.epicgames.com/store"
+              target="_blank"
+              onClick={() => {
+                GAFireEvent(
+                  "External Link Click",
+                  "Landing Page",
+                  "Epic Games Store"
+                );
+              }}
+            >
               <img className="logo-epic" src={LogoEpicGamesStore} />
             </a>
-            <a href="https://www.gog.com/" target="_blank">
+            <a
+              href="https://www.gog.com/"
+              target="_blank"
+              onClick={() => {
+                GAFireEvent("External Link Click", "Landing Page", "Gog");
+              }}
+            >
               <img className="logo-gog" src={LogoGog} />
             </a>
-            <a href="https://store.steampowered.com/" target="_blank">
+            <a
+              href="https://store.steampowered.com/"
+              target="_blank"
+              onClick={() => {
+                GAFireEvent("External Link Click", "Landing Page", "Steam");
+              }}
+            >
               <img className="logo-steam " src={LogoSteamStore} />
             </a>
           </div>

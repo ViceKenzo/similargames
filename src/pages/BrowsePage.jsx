@@ -3,7 +3,7 @@ import BrowseHeader from "../components/BrowseHeader.jsx";
 import BrowseNavigator from "../components/BrowseNavigator.jsx";
 import BrowseFilters from "../components/BrowseFilters.jsx";
 import "./BrowsePage.css";
-import { counter } from "@fortawesome/fontawesome-svg-core";
+import { GAFirePageView, GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 class BrowsePage extends Component {
   state = {
@@ -40,6 +40,8 @@ class BrowsePage extends Component {
     window.scrollTo(0, 0);
 
     this.handleQueryParametersInput();
+
+    GAFirePageView(window.location.pathname + window.location.search);
   }
 
   handleQueryParametersInput = (name) => {
@@ -245,6 +247,7 @@ class BrowsePage extends Component {
   };
 
   handleSuggestionClick = (name) => {
+    GAFireEvent("Search Suggestion Click", "Browse Page", name);
     this.handleQueryParametersInput(name);
   };
 
@@ -252,6 +255,11 @@ class BrowsePage extends Component {
   handleSortChange = (event) => {
     this.setState({ sorting: event.target.value }, () => {
       this.updateSearchResults();
+      GAFireEvent(
+        "Filter Change",
+        "Sorting: " + this.state.sorting,
+        this.state.targetGame.title
+      );
     });
   };
 
@@ -274,6 +282,11 @@ class BrowsePage extends Component {
 
     this.matchingTimeout = setTimeout(() => {
       this.updateSearchResults();
+      GAFireEvent(
+        "Filter Change",
+        "Matching Value: " + this.state.matchValue,
+        this.state.targetGame.title
+      );
     }, 500);
 
     this.setState({ matchValue: event.target.value });
@@ -282,12 +295,22 @@ class BrowsePage extends Component {
   handleNSFWClick = () => {
     this.setState({ showNSFW: !this.state.showNSFW }, () => {
       this.updateSearchResults();
+      GAFireEvent(
+        "Filter Change",
+        "NSFW: " + this.state.showNSFW,
+        this.state.targetGame.title
+      );
     });
   };
 
   handleSameDeveloperClick = () => {
     this.setState({ showSameDeveloper: !this.state.showSameDeveloper }, () => {
       this.updateSearchResults();
+      GAFireEvent(
+        "Filter Change",
+        "Same Developer: " + this.state.showSameDeveloper,
+        this.state.targetGame.title
+      );
     });
   };
 

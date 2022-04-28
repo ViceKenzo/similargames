@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./CardProjector.css";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
+import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 class CardProjector extends Component {
   state = {};
@@ -29,7 +30,14 @@ class CardProjector extends Component {
   getSearchResultsProjection = () => {
     return this.props.searchResults.map((game, index) => {
       return (
-        <Link key={index + "card"} className="card" to={"/game?id=" + game.id}>
+        <Link
+          key={index + "card"}
+          className="card"
+          to={"/game?id=" + game.id}
+          onClick={() => {
+            GAFireEvent("Similar Game Click", "Browse Page", game.title);
+          }}
+        >
           <div
             key={index + "card-image-wrapper"}
             className="card-image-wrapper"

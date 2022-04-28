@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./PopularCardPanel.css";
 import { Link } from "react-router-dom";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
+import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 class PopularCardPanel extends Component {
   state = {
@@ -45,7 +46,16 @@ class PopularCardPanel extends Component {
                   className="popular-card-image-wrapper"
                   key={index + "image-wrapper"}
                 >
-                  <Link to={"/game?id=" + game.id}>
+                  <Link
+                    to={"/game?id=" + game.id}
+                    onClick={() => {
+                      GAFireEvent(
+                        "Popular Card Click",
+                        "Game Detail",
+                        game.title
+                      );
+                    }}
+                  >
                     <img
                       className="popular-card-image"
                       key={index + "card-image"}
@@ -80,6 +90,13 @@ class PopularCardPanel extends Component {
                   className="popular-card-button"
                   key={index + "card-button"}
                   to={"/find-games-like?q=" + game.web_name}
+                  onClick={() => {
+                    GAFireEvent(
+                      "Popular Card Click",
+                      "Similar Games",
+                      game.title
+                    );
+                  }}
                 >
                   <span
                     className="popular-card-button-text"
