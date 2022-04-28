@@ -96,9 +96,19 @@
   height: 55px;
 }
 
+@media screen and (max-width: 1450px) {
+  .search-panel-header{
+    width: 600px;
+  }
+}
+
 /* Max width for smart phones */
 @media screen and (max-width: 960px) {
   .landing-page-search-panel {
     height: 400px;
+  }
+
+  .search-panel-header{
+    width: 450px;
   }
 }
