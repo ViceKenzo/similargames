@@ -11,7 +11,7 @@ class BrowsePage extends Component {
 
     searchWord: "",
     sorting: "Relevance",
-    matchValue: 50,
+    matchValue: 60,
     showNSFW: false,
     showSameDeveloper: false,
 
@@ -83,6 +83,8 @@ class BrowsePage extends Component {
   };
 
   updateSearchResults = () => {
+    if (!this.state.targetGame) return;
+
     // Define the sorting function (such that we can give it external parameters)
     function sortComparator(sortingDef) {
       return function (a, b) {
@@ -193,15 +195,15 @@ class BrowsePage extends Component {
         this.setState({ targetGame: responseObj.game }, () => {
           this.setGameData([]);
         });
-        return;
       }
 
       this.setState({ targetGame: responseObj.game }, () => {
         this.setGameData(responseObj.similarGames);
 
-        if (this.state.targetGame)
+        if (this.state.targetGame) {
           this.setState({ searchInputValue: this.state.targetGame.title });
-        this.setState({ searchWord: this.state.targetGame.title });
+          this.setState({ searchWord: this.state.targetGame.title });
+        }
       });
     };
   };
@@ -293,6 +295,8 @@ class BrowsePage extends Component {
   };
 
   handleNSFWClick = () => {
+    if (!this.state.targetGame) return;
+
     this.setState({ showNSFW: !this.state.showNSFW }, () => {
       this.updateSearchResults();
       GAFireEvent(
@@ -304,6 +308,8 @@ class BrowsePage extends Component {
   };
 
   handleSameDeveloperClick = () => {
+    if (!this.state.targetGame) return;
+
     this.setState({ showSameDeveloper: !this.state.showSameDeveloper }, () => {
       this.updateSearchResults();
       GAFireEvent(

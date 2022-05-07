@@ -141,7 +141,7 @@ class SearchBar extends Component {
                     className="search-product-result"
                     to={"/find-games-like?q=" + game.web_name}
                     onClick={() => {
-                      this.props.handleSuggestionClick(game.title);
+                      this.props.handleSuggestionClick(game.web_name);
                     }}
                   >
                     <div
