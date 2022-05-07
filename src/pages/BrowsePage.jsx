@@ -100,8 +100,8 @@ class BrowsePage extends Component {
             if (a.title > b.title) return 1;
             if (a.title < b.title) return -1;
             return 0;
-          default:
-            if (a.matching > b.matching) return 1;
+          case "Relevance":
+            if (a.matching < b.matching) return 1;
             if (a.matching > b.matching) return -1;
             return 0;
         }
