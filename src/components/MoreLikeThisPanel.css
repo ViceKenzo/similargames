@@ -1,0 +1,72 @@
+.morelikethis-panel{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.morelikethis-title-wrapper{
+    display: flex;
+    flex-grow: 1;
+    justify-self: flex-start;
+    justify-content: flex-start;
+    align-self: flex-start;
+}
+
+.morelikethis-game-wrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    grid-template-rows: repeat(2, 150px);
+}
+
+.morelikethis-game-wrapper a{
+    text-decoration: none;
+}
+
+.morelikethis-game{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.morelikethis-game-image{
+    width: 275px;
+    height: 133.56px;
+    border-radius: 10px;
+}
+
+.morelikethis-game-image:hover{
+    box-shadow: 0px 0px 20px 5px var(--card-background-hover-color);
+}
+
+.morelikethis-game-title{
+    position: relative;
+    bottom: 50px;
+    background-color: var(--morelikethis-card-color);
+
+    width: 275px;
+    height: 50px;
+
+    border-radius: 10px;
+
+    text-align: center;
+    align-self: center;
+}
+
+.morelikethis-game-title p{
+    font-size: 16px;
+
+    color: var(--card-title-color-weak);
+}
+
+.morelikethis-game:hover .morelikethis-game-title{
+    background-color: var(--card-background-color);
+}
+
+.morelikethis-game:hover .morelikethis-game-title p{
+    color: var(--card-title-color);
+}
