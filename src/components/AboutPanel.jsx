@@ -28,7 +28,7 @@ class AboutPanel extends Component {
         </div>
         <div className="about-games-source-info-wrapper">
           <div className="about-games-source-description">
-            The 21.744 games from our database were found on the following
+            The 27.078 games from our database were found on the following
             sources:
           </div>
           <div className="about-games-source-links-wrapper">

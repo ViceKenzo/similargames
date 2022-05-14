@@ -9,15 +9,47 @@
 .morelikethis-title-wrapper{
     display: flex;
     flex-grow: 1;
-    justify-self: flex-start;
-    justify-content: flex-start;
-    align-self: flex-start;
+    align-self:flex-start;
+    
+    width: 95%;
+
+    color: transparent;
+  
+    padding: 5px;
+    margin-top: 60px;
+}
+
+.morelikethis-title-wrapper a{
+    text-decoration: none;
+}
+
+.morelikethis-title{
+    font-size: 20px;
+
+    color: var(--default-text-color);
+  
+    border-bottom: 2px solid;
+    border-color: var(--card-background-color);
+  
+    padding-left: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 5px;
+  
+    width: 100%;
+
+    cursor: pointer;
+}
+
+.morelikethis-title:hover{
+    color:var(--special-text-color);
 }
 
 .morelikethis-game-wrapper{
     display: grid;
     grid-template-columns: repeat(4, 300px);
     grid-template-rows: repeat(2, 150px);
+
+    margin-top: 10px;
 }
 
 .morelikethis-game-wrapper a{
@@ -27,8 +59,11 @@
 .morelikethis-game{
     display:flex;
     flex-direction:column;
-    justify-content: center;
     align-items: center;
+
+    margin-left: 12.5px;
+    margin-right: 12.5px;
+    margin-bottom: 20px;
 
     cursor: pointer;
 }
@@ -39,7 +74,7 @@
     border-radius: 10px;
 }
 
-.morelikethis-game-image:hover{
+.morelikethis-game:hover .morelikethis-game-image{
     box-shadow: 0px 0px 20px 5px var(--card-background-hover-color);
 }
 
@@ -55,6 +90,8 @@
 
     text-align: center;
     align-self: center;
+
+    text-shadow: 1px 1px black;
 }
 
 .morelikethis-game-title p{
@@ -70,3 +107,22 @@
 .morelikethis-game:hover .morelikethis-game-title p{
     color: var(--card-title-color);
 }
+
+@media screen and (max-width: 1600px) {
+    .morelikethis-game-wrapper{
+        grid-template-columns: repeat(3, 300px);
+        grid-template-rows: repeat(3, 150px);
+    }
+  }
+  
+/* Max width for smart phones */
+@media screen and (max-width: 960px) {
+    .morelikethis-title-wrapper{
+        margin-top: 25px;
+    }
+
+    .morelikethis-game-wrapper{
+        grid-template-columns: repeat(2, 300px);
+        grid-template-rows: repeat(4, 150px);
+    }
+  }

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import GameDetailCard from "../components/GameDetailCard.jsx";
 import "./GameDetailPage.css";
 import { GAFirePageView } from "../tracking/GA_Events_Tracker";
+import MoreLikeThisPanel from "../components/MoreLikeThisPanel.jsx";
 
 class GameDetailPage extends Component {
   state = {
     game: null,
+    moreLikeThisGames: null,
   };
 
   constructor(props) {
@@ -42,6 +44,31 @@ class GameDetailPage extends Component {
           window.location.pathname + "/" + this.state.game.web_name
         );
       });
+
+      this.requestMoreLikeThisGames(gameId);
+    };
+  };
+
+  requestMoreLikeThisGames = (gameId) => {
+    let amountRequested = 8;
+
+    const xhttp = new XMLHttpRequest();
+    let requestUrl =
+      this.props.serverAddress + "/gameslike/" + gameId + "/" + amountRequested;
+
+    xhttp.open("get", requestUrl, true);
+
+    xhttp.send();
+
+    xhttp.onload = () => {
+      if (xhttp.statusText.toLowerCase() != "ok") {
+        window.location.href = "/Error";
+        return;
+      }
+
+      let requestedGames = JSON.parse(xhttp.response);
+
+      this.setState({ moreLikeThisGames: requestedGames.similarGames });
     };
   };
 
@@ -54,10 +81,18 @@ class GameDetailPage extends Component {
   getCardRender = () => {
     if (this.state.game)
       return (
-        <GameDetailCard
-          serverAddress={this.props.serverAddress}
-          game={this.state.game}
-        />
+        <React.Fragment>
+          <GameDetailCard
+            serverAddress={this.props.serverAddress}
+            game={this.state.game}
+          />
+          <MoreLikeThisPanel
+            games={this.state.moreLikeThisGames}
+            serverAddress={this.props.serverAddress}
+            gameClickEvent={this.requestAndSetGameDetail}
+            mainGame={this.state.game}
+          />
+        </React.Fragment>
       );
   };
 

@@ -32,7 +32,7 @@
   --cardbutton-background-color-hover: rgb(173, 114, 221);
   --cardbutton-text-color: rgba(255, 255, 255, 1);
   --carddate-text-color: rgba(150, 150, 150, 1);
-  --morelikethis-card-color: rgba(80, 46, 107, 0.25);
+  --morelikethis-card-color: rgba(80, 46, 107, 0.521);
   /*Filter*/
   --filter-border-color: rgba(163, 94, 219, 1);
   --filter-background-color: rgba(182, 153, 205, 1);
