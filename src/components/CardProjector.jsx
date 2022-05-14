@@ -20,8 +20,6 @@ class CardProjector extends Component {
   };
 
   getReleaseDate = (game) => {
-    console.log(game);
-    console.log(game.release_date);
     if (game.release_date && !game.release_date.includes("1970"))
       return game.release_date;
     else return null;
