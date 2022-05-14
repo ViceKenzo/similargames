@@ -54,6 +54,12 @@ class MoreLikeThisPanel extends Component {
           <Link
             to={"/find-games-like?q=" + this.props.mainGame.web_name}
             className="morelikethis-title"
+            onClick={() => {
+              GAFireEvent(
+                "MoreLikeThis Title (Browse) Click",
+                this.props.mainGame.title
+              );
+            }}
           >
             More like this
           </Link>
