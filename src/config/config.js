@@ -1,5 +1,5 @@
 let Config = {
-  serverAddress: "http://api.similargames.io",
+  serverAddress: "https://api.similargames.io",
 };
 
 export default Config;
