@@ -170,3 +170,10 @@
     max-width: 85%;
   }
 }
+
+@media screen and (max-width: 920px) {
+  .about-games-source-links-wrapper {
+    grid-column-gap: 20px;
+  }
+}
+

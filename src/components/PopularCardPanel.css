@@ -126,5 +126,10 @@
 }
 
 /* Max width for smart phones */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 920px) {
+  .popular-card-projector {
+    display: grid;
+    grid-template-columns: repeat(1, 325px);
+  }
+
 }

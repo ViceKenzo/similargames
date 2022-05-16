@@ -92,3 +92,9 @@
 .navigate-next {
   width: 70px;
 }
+
+@media screen and (max-width: 920px) {
+  .drop-down-wrapper{
+    display: none;
+  }
+}

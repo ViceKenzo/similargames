@@ -205,3 +205,46 @@ input:focus {
     right: auto !important;
   }
 }
+
+/* Max width for smart phones */
+@media screen and (max-width: 960px) {
+  .search-bar-input input {
+    font-size: 18px;
+  }
+
+  ::placeholder {
+    font-size: 18px;
+  }
+
+  .search-panel-search-bar{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-bar{
+    min-width: 400px;
+    width: 400px; 
+  }
+
+  .search-results{
+    min-width: 400px;
+  }
+
+  .search-product-result-image img {
+    width: 150px;
+    height: 70,37px;
+  }
+
+  .search-product-result-title {
+    font-size: 18px;
+  }
+  
+  .search-product-result-tags {
+    font-size: 15px;
+  }
+  
+  .search-product-result-release {
+    display: none;
+  }
+}

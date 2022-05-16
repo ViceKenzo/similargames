@@ -6,6 +6,8 @@
   border-width: 0px;
   border-bottom-width: 1px;
   border-color: var(--card-background-color);
+
+  justify-content: space-between;
 }
 
 .browse-header-text-wrapper {
@@ -46,7 +48,7 @@
 }
 
 .browse-search-bar-wrapper {
-  width: 500px;
+  width: 450px;
   min-width: 400px;
 }
 
@@ -76,5 +78,8 @@
   .browse-search-bar-wrapper {
     margin-top: 20px;
     margin-bottom: 20px;
+
+    display:flex;
+    justify-content: space-evenly;
   }
 }

@@ -196,3 +196,9 @@ input[type="range"]::-moz-range-thumb {
     align-items: center;
   }
 }
+
+@media screen and (max-width: 920px) {
+  .search-filters{
+    flex-wrap: wrap;
+  }
+}

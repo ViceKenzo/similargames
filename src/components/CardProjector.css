@@ -7,7 +7,7 @@
   border-radius: 3px;
   text-decoration: none;
 
-  height: 87px;
+  height: 85px;
 
   display: flex;
 
@@ -104,5 +104,19 @@
 @media screen and (max-width: 960px) {
   .card-release-date {
     padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .card-title{
+    font-size: 19px;
+  }
+
+  .card-tags{
+    font-size: 14px;
+  }
+  
+  .card-release-date{
+    display: none;
   }
 }

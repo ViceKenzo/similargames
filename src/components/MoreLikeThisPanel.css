@@ -98,6 +98,13 @@
     font-size: 16px;
 
     color: var(--card-title-color-weak);
+    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .morelikethis-game:hover .morelikethis-game-title{
@@ -124,5 +131,12 @@
     .morelikethis-game-wrapper{
         grid-template-columns: repeat(2, 300px);
         grid-template-rows: repeat(4, 150px);
+    }
+  }
+
+  @media screen and (max-width: 920px) {
+    .morelikethis-game-wrapper{
+        grid-template-columns: repeat(1, 300px);
+        grid-template-rows: repeat(8, 150px);
     }
   }
