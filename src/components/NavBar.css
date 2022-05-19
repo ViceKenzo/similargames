@@ -79,7 +79,7 @@
 }
 
 .nav-menu-mobile a {
-  background-color: var(--footer-background-color);
+  background-color: var(--searchbar-suggestion-background);
   color: var(--default-text-color);
 
   display: flex;
@@ -95,7 +95,7 @@
 }
 
 .nav-menu-mobile a:hover {
-  background-color: var(--navbar-background-color);
+  background-color: var(--searchbar-background-color);
 }
 
 .nav-menu-mobile a {
@@ -127,7 +127,7 @@
     margin-bottom: 50px;
   }
 
-  .navbar-items {
+  .NavBarItems {
     padding-left: var(--global-window-border-padding-mobile);
     padding-right: var(--global-window-border-padding-mobile);
   }

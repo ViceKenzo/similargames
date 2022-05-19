@@ -20,7 +20,11 @@ class CardProjector extends Component {
   };
 
   getReleaseDate = (game) => {
-    if (game.release_date && !game.release_date.includes("1970"))
+    if (
+      game.release_date &&
+      !game.release_date.includes("1970") &&
+      !game.release_date.includes("1969 ")
+    )
       return game.release_date;
     else return null;
   };
