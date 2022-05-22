@@ -85,11 +85,11 @@ class AboutPanel extends Component {
           <div className="about-description-wrapper">
             <div className="about-description-panel">
               This website is currently in beta. Please keep in mind that there
-              will be bugs, naming errors and so on. If you find any of those,
-              please report them at our contact email. We would also love to
-              hear your feedback and how you think we could improve the website.
-              Our email address can be found at the bottom of any web page on
-              this website.
+              will be bugs, naming errors and that some games might be missing.
+              If you find any of those, please report them at our contact email.
+              We would also love to hear your feedback and how you think we
+              could improve the website. Our email address can be found at the
+              bottom of any web page on this website.
             </div>
           </div>
         </div>
