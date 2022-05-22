@@ -10,20 +10,22 @@ class AboutPanel extends Component {
   render() {
     return (
       <div className="about-panel-wrapper">
-        <div className="about-title">Find the games you’ll love</div>
-        <div className="about-description-wrapper">
-          <div className="about-description-panel">
-            <p>
-              You want to find a game that plays, looks and feels like a game
-              you’ve loved, such that you can fall in love again?
-            </p>
-            <p>What a coincidence!</p>
-          </div>
-          <div className="about-description-panel">
-            This website was created exactly for that! To have a place where
-            people can simply explore and find new games they’ve never heard
-            about. Or games they didn’t know were similar to the ones they
-            already liked and played.
+        <div className="about-partition-wrapper">
+          <div className="about-title">Find the games you’ll love</div>
+          <div className="about-description-wrapper">
+            <div className="about-description-panel">
+              <p>
+                You want to find a game that plays, looks and feels like a game
+                you’ve loved, such that you can fall in love again?
+              </p>
+              <p>What a coincidence!</p>
+            </div>
+            <div className="about-description-panel">
+              This website was created exactly for that! To have a place where
+              people can simply explore and find new games they’ve never of
+              before. Also to find games they didn’t know were similar to the
+              ones they already liked and played.
+            </div>
           </div>
         </div>
         <div className="about-games-source-info-wrapper">
@@ -76,6 +78,45 @@ class AboutPanel extends Component {
                 src={LogoSteamStore}
               />
             </a>
+          </div>
+        </div>
+        <div className="about-partition-wrapper">
+          <div className="about-detail-title">Beta</div>
+          <div className="about-description-wrapper">
+            <div className="about-description-panel">
+              This website is currently in beta. Please keep in mind that there
+              will be bugs, naming errors and so on. If you find any of those,
+              please report them at our contact email. We would also love to
+              hear your feedback and how you think we could improve the website.
+              Our email address can be found at the bottom of any web page on
+              this website.
+            </div>
+          </div>
+        </div>
+        <div className="about-partition-wrapper">
+          <div className="about-detail-title-special">Future Ideas</div>
+          <div className="about-description-wrapper">
+            <div className="about-description-panel">
+              Here’s a brief summary that shows some of the future plans we
+              (currently) have in store for SimilarGames:
+              <ul>
+                <li>Platforms</li>
+                <li>More stores, including consoles!</li>
+                <li>
+                  Games that are not bound to a large store (E.g. World of
+                  Warcraft)
+                </li>
+                <li>
+                  Many, and many different methods to search and explore through
+                  the vast amounts of games out there
+                </li>
+                <li>
+                  Data Expansion. More data to be gathered for each individual
+                  game. For example: Full description, images, ...
+                </li>
+                <li>... And many more!</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="about-contact-request-text">
