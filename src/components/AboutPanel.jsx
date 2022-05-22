@@ -120,7 +120,7 @@ class AboutPanel extends Component {
           </div>
         </div>
         <div className="about-contact-request-text">
-          Once again, if you would like to ask us a question, report a bug, or
+          Once again if you would like to ask us a question, report a bug or
           submit feedback then feel free to send us an email!
         </div>
         <div className="about-contact-info-wrapper">
