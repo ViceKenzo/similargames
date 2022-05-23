@@ -14,7 +14,11 @@ class Error extends Component {
           </div>
         </div>
         <div className="error-image-wrapper">
-          <img className="error-image" src={ErrorImage} />
+          <img
+            className="error-image"
+            src={ErrorImage}
+            alt="Error image and funny meme about a man with sand"
+          />
         </div>
       </div>
     );

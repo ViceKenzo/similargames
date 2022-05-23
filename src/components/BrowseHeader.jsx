@@ -20,9 +20,7 @@ class BrowseHeader extends Component {
     return (
       <div className="browse-header">
         <div className="browse-header-text-wrapper">
-          <div className="browse-header-game-announcer">
-            Games that play like:
-          </div>
+          <div className="browse-header-game-announcer">Games like:</div>
           <div className="browse-header-selected-title">
             {this.getHeaderSelectedTitle()}
           </div>
@@ -42,9 +40,7 @@ class BrowseHeader extends Component {
           />
         </div>
         <div className="browse-header-text-wrapper-mobile">
-          <div className="browse-header-game-announcer">
-            Games that play like:
-          </div>
+          <div className="browse-header-game-announcer">Games like:</div>
           <div className="browse-header-selected-title">
             {this.getHeaderSelectedTitle()}
           </div>

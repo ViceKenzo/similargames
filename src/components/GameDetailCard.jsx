@@ -86,7 +86,11 @@ class GameDetailCard extends Component {
             }}
           >
             <div className="game-detail-source-image-wrapper">
-              <img className="game-detail-source-image" src={LogoSteamStore} />
+              <img
+                className="game-detail-source-image"
+                src={LogoSteamStore}
+                alt={"Find " + this.props.game.title + " on Steam"}
+              />
             </div>
             <div className="game-detail-source-name">View on Steam</div>
             <div className="game-detail-source-exit-icon-wrapper">
@@ -128,7 +132,11 @@ class GameDetailCard extends Component {
             }}
           >
             <div className="game-detail-source-image-wrapper">
-              <img className="game-detail-source-image" src={LogoGog} />
+              <img
+                className="game-detail-source-image"
+                src={LogoGog}
+                alt={"Find " + this.props.game.title + " on Gog"}
+              />
             </div>
             <div className="game-detail-source-name"> View on Gog</div>
             <div className="game-detail-source-exit-icon-wrapper">
@@ -179,6 +187,7 @@ class GameDetailCard extends Component {
               <img
                 className="game-detail-source-image"
                 src={LogoEpicGamesStore}
+                alt={"Find " + this.props.game.title + " on Epic Games"}
               />
             </div>
             <div className="game-detail-source-name">View on Epic Games</div>
@@ -215,6 +224,7 @@ class GameDetailCard extends Component {
                   currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
                   currentTarget.src = ThumbnailImage;
                 }}
+                alt={this.props.game.title + " Image"}
               />
             </div>
             <div className="detail-card-title" id="game-detail-desktop-title">

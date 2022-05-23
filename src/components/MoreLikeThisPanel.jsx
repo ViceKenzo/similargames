@@ -37,6 +37,7 @@ class MoreLikeThisPanel extends Component {
                 currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
                 currentTarget.src = ThumbnailImage;
               }}
+              alt={game.title}
             />
             <div key={index + "title"} className="morelikethis-game-title">
               <p key={index + "title-p"}>{game.title}</p>

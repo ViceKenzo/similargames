@@ -69,6 +69,7 @@ class PopularCardPanel extends Component {
                         currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
                         currentTarget.src = ThumbnailImage;
                       }}
+                      alt={game.title}
                     />
                   </Link>
                 </div>

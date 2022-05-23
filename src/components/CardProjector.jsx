@@ -23,7 +23,7 @@ class CardProjector extends Component {
     if (
       game.release_date &&
       !game.release_date.includes("1970") &&
-      !game.release_date.includes("1969 ")
+      !game.release_date.includes("1969")
     )
       return game.release_date;
     else return null;
@@ -57,6 +57,7 @@ class CardProjector extends Component {
                 currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
                 currentTarget.src = ThumbnailImage;
               }}
+              alt={game.title}
             />
           </div>
           <div key={index + "card-text-wrapper"} className="card-text-wrapper">
@@ -79,7 +80,11 @@ class CardProjector extends Component {
     return (
       <div className="card" id="no-search-result-card">
         <div className="card-image-wrapper">
-          <img className="card-image" src={ThumbnailImage} />
+          <img
+            className="card-image"
+            src={ThumbnailImage}
+            alt="Search For Similar Games Question Mark Image"
+          />
         </div>
         <div className="card-text-wrapper">
           <div className="card-title">{cardDescription}</div>

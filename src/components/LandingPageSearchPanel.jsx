@@ -17,7 +17,11 @@ class LandingPageSearchPanel extends Component {
   render() {
     return (
       <div className="landing-page-search-panel">
-        <img className="search-panel-header" src={SimilarGamesHeaderImage} />
+        <img
+          className="search-panel-header"
+          src={SimilarGamesHeaderImage}
+          alt="Similar Games Logo"
+        />
         <div className="search-panel-search-bar">
           <SearchBar
             styleHeight="50px"
@@ -48,7 +52,11 @@ class LandingPageSearchPanel extends Component {
                 );
               }}
             >
-              <img className="logo-epic" src={LogoEpicGamesStore} />
+              <img
+                className="logo-epic"
+                src={LogoEpicGamesStore}
+                alt="Epic Games Store Logo"
+              />
             </a>
             <a
               href="https://www.gog.com/"
@@ -57,7 +65,7 @@ class LandingPageSearchPanel extends Component {
                 GAFireEvent("External Link Click", "Landing Page", "Gog");
               }}
             >
-              <img className="logo-gog" src={LogoGog} />
+              <img className="logo-gog" src={LogoGog} alt="Gog Logo" />
             </a>
             <a
               href="https://store.steampowered.com/"
@@ -66,7 +74,11 @@ class LandingPageSearchPanel extends Component {
                 GAFireEvent("External Link Click", "Landing Page", "Steam");
               }}
             >
-              <img className="logo-steam " src={LogoSteamStore} />
+              <img
+                className="logo-steam "
+                src={LogoSteamStore}
+                alt="Steam Store Logo"
+              />
             </a>
           </div>
         </div>

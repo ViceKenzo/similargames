@@ -49,6 +49,7 @@ class AboutPanel extends Component {
                 className="about-games-source-image"
                 id="about-epic-image"
                 src={LogoEpicGamesStore}
+                alt="Epic Games Store Logo"
               />
             </a>
             <a
@@ -62,6 +63,7 @@ class AboutPanel extends Component {
                 className="about-games-source-image"
                 id="about-gog-image"
                 src={LogoGog}
+                alt="Gog Logo"
               />
             </a>
 
@@ -76,6 +78,7 @@ class AboutPanel extends Component {
                 className="about-games-source-image"
                 id="about-steam-image"
                 src={LogoSteamStore}
+                alt="Steam Store Logo"
               />
             </a>
           </div>
