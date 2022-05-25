@@ -79,7 +79,7 @@ class NavBar extends Component {
   };
 
   handleSuggestionClick = (gameTitle) => {
-    GAFireEvent("Search Suggestion Click", "Landing Page", gameTitle);
+    GAFireEvent("Search Suggestion Click", "Navbar", gameTitle);
   };
 
   setSearchSuggestions = (newFilterData) => {

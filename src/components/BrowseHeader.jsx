@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./BrowseHeader.css";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
+import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 class BrowseHeader extends Component {
   state = {};
@@ -132,7 +133,19 @@ class BrowseHeader extends Component {
       <div className={this.getBrowseHeaderClass()}>
         <div className="browse-header-search-announcer">Search for a game</div>
         <div className="browse-header-left">
-          <Link to={this.getLinkTo()} className="browse-header-image-wrapper">
+          <Link
+            to={this.getLinkTo()}
+            className="browse-header-image-wrapper"
+            onClick={() => {
+              if (this.props.targetGame) {
+                GAFireEvent(
+                  "Game Detail Click",
+                  "BrowseHeader, Image",
+                  this.props.targetGame.title
+                );
+              }
+            }}
+          >
             <img
               alt={this.getImageAlt()}
               className="browse-header-image"
@@ -145,7 +158,19 @@ class BrowseHeader extends Component {
           </Link>
           <div className="browse-header-announcer-wrapper">
             <div className="browse-header-gameslike-announcer">Games like:</div>
-            <Link to={this.getLinkTo()} className="browse-header-game-title">
+            <Link
+              to={this.getLinkTo()}
+              className="browse-header-game-title"
+              onClick={() => {
+                if (this.props.targetGame) {
+                  GAFireEvent(
+                    "Game Detail Click",
+                    "BrowseHeader, Title",
+                    this.props.targetGame.title
+                  );
+                }
+              }}
+            >
               {this.getGameTitle()}
             </Link>
           </div>

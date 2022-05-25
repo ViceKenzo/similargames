@@ -50,8 +50,8 @@ class PopularCardPanel extends Component {
                     to={"/game?id=" + game.id}
                     onClick={() => {
                       GAFireEvent(
-                        "Popular Card Click",
-                        "Game Detail",
+                        "Game Detail Click",
+                        "Popular Card",
                         game.title
                       );
                     }}

@@ -37,7 +37,11 @@ class CardProjector extends Component {
           className="card"
           to={"/game?id=" + game.id}
           onClick={() => {
-            GAFireEvent("Similar Game Click", "Browse Page", game.title);
+            GAFireEvent(
+              "Game Detail Click",
+              "Browse Page, Simialar Game",
+              game.title
+            );
           }}
         >
           <div
