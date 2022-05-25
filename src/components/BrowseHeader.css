@@ -4,81 +4,189 @@
 
   border-style: solid;
   border-width: 0px;
-  border-bottom-width: 1px;
+  border-bottom-width: 2px;
   border-color: var(--card-background-color);
+
+  padding-bottom: 6px;
 
   justify-content: space-between;
 }
 
-.browse-header-text-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
-  padding-left: 4px;
-  padding-bottom: 7px;
-  max-width: 58%;
+.browse-header-left{
+  display:flex;
 }
 
-.browse-header-text-wrapper-mobile {
+.browse-header-image-wrapper{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-top: 5px;
+}
+
+.browse-header-image{
+  border-radius: 3px;
+
+  width: 175px;
+  height: 85px;
+
+  box-shadow: 1px 3px 4px 1px rgba(0, 0, 0, 0.3);
+}
+
+.browse-header-image:hover{
+  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+.browse-header-announcer-wrapper{
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  justify-content: center;
 
-  padding-left: 4px;
-  padding-bottom: 7px;
+  padding-left: 25px;
+}
+
+.browse-header-gameslike-announcer{
+  font-size: 24px;
+}
+
+.browse-header-game-title{
+  color: var(--special-text-color);
+
+  font-size: 24px;
+
+  text-decoration: none;
+}
+
+.browse-header-game-title:hover{
+  text-decoration: underline;
+}
+
+.browse-header-right{
+  display:flex;
+}
+
+.browse-header-game-info-left{
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  border-right: solid var(--special-text-color) 2px;
+
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.browse-header-game-info-left.no-display{
+  display: none;
+}
+
+.browse-header-game-info-left.no-release-date{
+  border: none;
+}
+
+.browse-header-game-info-left.no-display{
+  display:none;
+  border-right: none;
+}
+
+.browse-header-game-info-right.no-display{
+  display:none;
+}
+
+.browse-header-developer{
+  font-size: 16px;
+}
+
+.browse-header-developer.no-display{
+  display:none;
+}
+
+.browse-header-publisher{
+  font-size: 16px;
+}
+
+.browse-header-publisher.no-display{
+  display: none;
+}
+
+.browse-header-game-info-right{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.browse-header-game-info-right.no-display{
+  display: none;
+}
+
+.browse-header-release-date-announcer{
+  font-size: 16px;
+}
+
+.browse-header-release-date{
+  font-size: 16px;
+}
+
+.browse-header.no-game .browse-header-left{
+  display: none;
+}
+
+.browse-header.no-game .browse-header-right{
+  display: none;
+}
+
+.browse-header.no-game{
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.browse-header-search-announcer{
   display: none;
 
-  text-align: center;
+  color: var(--card-background-color);
+  font-size: 28px;
 }
 
-.browse-header-game-announcer {
-  color: var(--browse-header-text-color);
-  font-size: 24px;
+.browse-header.no-game .browse-header-search-announcer{
+  display:flex;
+  flex-direction: column;
 }
 
-.browse-header-selected-title {
-  color: var(--special-text-color);
-  font-size: 24px;
-  max-width: 95%;
+@media screen and (max-width: 1600px) {
+  .browse-header-game-info-left{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  .browse-header-game-info-right{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
-.browse-search-bar-wrapper {
-  min-width: 400px;
+@media screen and (max-width: 1400px) {
+  .browse-header-game-info-left{
+    border:none;
+
+    padding-left: 10px;
+    padding-right: 0px;
+  }
+
+  .browse-header-game-info-right{
+    display:none;
+  }
 }
 
 /* Max width for smart phones */
 @media screen and (max-width: 960px) {
-  .browse-header-text-wrapper {
-    display: none;
-  }
-
-  .browse-header-text-wrapper-mobile {
-    display: flex;
-  }
-
-  .browse-header-text-wrapper-mobile {
-    max-width: 90%;
-  }
-
   .browse-header {
     flex-direction: column;
   }
 
-  .browse-header-selected-title {
-    max-width: 100%;
-    align-self: center;
-  }
-
-  .browse-search-bar-wrapper {
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    display:flex;
-    justify-content: space-evenly;
+  .browse-header-right{
+    display:none;
   }
 }

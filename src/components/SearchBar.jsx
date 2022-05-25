@@ -142,6 +142,7 @@ class SearchBar extends Component {
                     to={"/find-games-like?q=" + game.web_name}
                     onClick={() => {
                       this.props.handleSuggestionClick(game.web_name);
+                      this.setState({ searchBarHidden: true });
                     }}
                   >
                     <div

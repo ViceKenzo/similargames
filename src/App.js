@@ -1,10 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import NavBar from "./components/NavBar.jsx";
+import NavBarWrapper from "./components/NavBarWrapper";
 import Footer from "./components/Footer.jsx";
 import BrowsePageWrapper from "./pages/BrowsePageWrapper";
 import GameDetailPageWrapper from "./pages/GameDetailPageWrapper.jsx";
@@ -16,7 +15,7 @@ function App() {
     <div className="App">
       <Router>
         <img className="main-background" src={backgroundImage} />
-        <NavBar />
+        <NavBarWrapper serverAddress={Config.serverAddress} />
         <Routes>
           <Route
             path="/"

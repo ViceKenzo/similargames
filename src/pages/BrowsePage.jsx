@@ -25,6 +25,8 @@ class BrowsePage extends Component {
     searchResults: [], // The gamedata after filters and sorting has been applied
 
     searchResultMessage: "Search for a game and see others like it!",
+
+    queryParams: this.props.locationHook.search,
   };
 
   suggestionSearchTimeOut = null;
@@ -42,6 +44,23 @@ class BrowsePage extends Component {
     this.handleQueryParametersInput();
 
     GAFirePageView(window.location.pathname + window.location.search);
+  }
+
+  // The two below functions help each other out. The getDerivedStateFromProps makes sure that the queryParams variable is always in sync with the
+  // actual query params. But it is only after that (on component did update) that the component will register the changes and start adjusting.
+  static getDerivedStateFromProps(props, state) {
+    if (props.locationHook.search != state.queryParams) {
+    }
+
+    return {
+      queryParams: props.locationHook.search,
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.locationHook.search != this.state.queryParams) {
+      this.handleQueryParametersInput();
+    }
   }
 
   handleQueryParametersInput = (name) => {
@@ -335,6 +354,7 @@ class BrowsePage extends Component {
           searchInputValue={this.state.searchInputValue}
           handleSuggestionClick={this.handleSuggestionClick}
           serverAddress={this.props.serverAddress}
+          targetGame={this.state.targetGame}
         />
         <div className="browsing-navigation-filter-wrapper">
           <div className="browsing-filters-wrapper-left">
