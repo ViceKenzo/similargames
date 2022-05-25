@@ -30,6 +30,8 @@ class NavBar extends Component {
 
   constructor(props) {
     super(props);
+
+    this.landingRoutingEl = React.createRef();
   }
 
   submitSearch = (event) => {
@@ -106,6 +108,11 @@ class NavBar extends Component {
             SimilarGames
           </Link>
           <div className={this.getSearchBarNavBarWrapperClass()}>
+            <Link
+              style={{ display: "hidden" }}
+              to={"/find-games-like?q=" + this.state.searchInputValue}
+              ref={this.landingRoutingEl}
+            />
             <SearchBar
               submitSearch={this.submitSearch}
               searchSuggestions={this.state.searchSuggestions} // done

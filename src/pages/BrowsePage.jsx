@@ -59,7 +59,9 @@ class BrowsePage extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.locationHook.search != this.state.queryParams) {
-      this.handleQueryParametersInput();
+      this.setState({ targetGame: null, searchResults: [] }, () => {
+        this.handleQueryParametersInput();
+      });
     }
   }
 
