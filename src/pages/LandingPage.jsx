@@ -32,13 +32,13 @@ class LandingPage extends Component {
     if (!this.state.searchInputValue || this.state.searchInputValue == "")
       return;
 
-    let tempSearchValue = this.state.searchInputValue.replace(/[\W_]+/g, "");
-
     const xhttp = new XMLHttpRequest();
 
     xhttp.open(
       "get",
-      this.props.serverAddress + "/suggestedgames/" + tempSearchValue,
+      this.props.serverAddress +
+        "/suggestedgames/" +
+        this.state.searchInputValue,
       true
     );
 
