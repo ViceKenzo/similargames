@@ -16,6 +16,18 @@ function LandingPage(props) {
     window.scrollTo(0, 0);
   }, []);
 
+  // Handlers
+  const handleSearchInputChange = (event) => {
+    setSearchInputValue(event.target.value);
+
+    // Trigger timeout such that it will only search on the server when the user has (likely) stopped typing
+    if (timeOut) clearTimeout(timeOut);
+
+    timeOut = setTimeout(() => {
+      requestSuggestionsFromServer();
+    }, 500);
+  };
+
   // Functions
   const submitSearch = (event) => {
     if (event) event.preventDefault();
@@ -44,20 +56,6 @@ function LandingPage(props) {
     };
   };
 
-  const handleSearchInputChange = (event) => {
-    // Set searchinputvalue
-    let newSearchInputValue = event.target.value;
-
-    setSearchInputValue(newSearchInputValue);
-
-    // Trigger timeout such that it will only search on the server when the user has not given any input within a given amount of time
-    if (timeOut) clearTimeout(timeOut);
-
-    timeOut = setTimeout(() => {
-      requestSuggestionsFromServer();
-    }, 500);
-  };
-
   return (
     <React.Fragment>
       <Link
@@ -66,7 +64,7 @@ function LandingPage(props) {
       />
       <LandingPageSearchPanel
         submitSearch={submitSearch}
-        searchSuggestions={searchSuggestions} // done
+        searchSuggestions={searchSuggestions}
         handleSearchInputChange={handleSearchInputChange}
         clearSearchSuggestions={() => {
           setSearchSuggestions([]);

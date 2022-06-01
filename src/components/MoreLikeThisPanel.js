@@ -5,7 +5,7 @@ import "../styles/MoreLikeThisPanel.css";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 function MoreLikeThisPanel(props) {
-  // Functions
+  // Element Gets
   const getGamesProjection = () => {
     if (props.games != null && props.games.length > 0) {
       return props.games.map((game, index) => {
@@ -25,7 +25,7 @@ function MoreLikeThisPanel(props) {
                 props.serverAddress + "/header_images/" + game.image_id + ".jpg"
               }
               onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                currentTarget.onerror = null; // This is to prevent accidental looping
                 currentTarget.src = ThumbnailImage;
               }}
               alt={game.title}
@@ -39,6 +39,7 @@ function MoreLikeThisPanel(props) {
     } else return;
   };
 
+  // Functions
   return (
     <div className="morelikethis-panel">
       <div className="morelikethis-title-wrapper">

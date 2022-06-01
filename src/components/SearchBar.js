@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/SearchBar.css";
 
+import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
-import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 function SearchBar(props) {
   // Variables
@@ -29,6 +29,23 @@ function SearchBar(props) {
     };
   }, []);
 
+  // Class Gets
+  const getSearchIconClass = () => {
+    var temp = "search-bar-icon ";
+    temp += temp + xIconVisible ? "sbi-xmark" : "sbi-magnifying-glass";
+
+    return temp;
+  };
+
+  const getSearchResultsClass = () => {
+    var temp = "search-results ";
+
+    if (searchBarHidden) temp += "inactive";
+
+    return temp;
+  };
+
+  // Handlers
   const handleChange = (event) => {
     if (compSearchInput.current.value == "") {
       setSearchBarHidden(true);
@@ -66,29 +83,10 @@ function SearchBar(props) {
     }
   };
 
-  const handleSuggestionClick = (suggestionName) => {
-    compSearchInput.current.value = suggestionName;
-    props.submitSearch();
-  };
-
-  const getSearchIconClass = () => {
-    var temp = "search-bar-icon ";
-    temp += temp + xIconVisible ? "sbi-xmark" : "sbi-magnifying-glass";
-
-    return temp;
-  };
-
-  const getSearchResultsClass = () => {
-    var temp = "search-results ";
-
-    if (searchBarHidden) temp += "inactive";
-
-    return temp;
-  };
-
+  // Functions
   return (
     <div className="search-bar" ref={searchBar}>
-      <div className="search-bar-input" style={{ height: props.styleHeight }}>
+      <div className="search-bar-input">
         <form onSubmit={props.submitSearch}>
           <input
             type="text"
@@ -120,11 +118,7 @@ function SearchBar(props) {
         />
       </div>
 
-      <div
-        className={getSearchResultsClass()}
-        ref={compSearchResults}
-        style={{ right: props.stylingRight }}
-      >
+      <div className={getSearchResultsClass()} ref={compSearchResults}>
         {props.searchSuggestions.length != 0 &&
           props.searchSuggestions.map((game, index) => {
             return (
@@ -150,7 +144,7 @@ function SearchBar(props) {
                         ".jpg"
                       }
                       onError={({ currentTarget }) => {
-                        currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                        currentTarget.onerror = null; // This is to prevent accidental looping
                         currentTarget.src = ThumbnailImage;
                       }}
                     ></img>

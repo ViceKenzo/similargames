@@ -13,7 +13,7 @@ function ProjectorControlPanel(props) {
     setPageInput(props.currentPage);
   }, [props.currentPage]);
 
-  // Functions
+  // Class Gets
   const getDropDownClass = () => {
     var className = "drop-down-wrapper";
 
@@ -24,6 +24,18 @@ function ProjectorControlPanel(props) {
     return className;
   };
 
+  // Element Gets
+  const getArrowLeftActive = () => {
+    if (props.currentPage > 1) return true;
+    else return false;
+  };
+
+  const getArrowRightActive = () => {
+    if (props.currentPage < props.totalPages) return true;
+    else return false;
+  };
+
+  // Handlers
   const handlePageInputChange = (event) => {
     let isNum = /^\d+$/.test(event.target.value);
 
@@ -43,16 +55,6 @@ function ProjectorControlPanel(props) {
         props.handlePageChange(tempPageInput);
       }
     }
-  };
-
-  const getArrowLeftActive = () => {
-    if (props.currentPage > 1) return true;
-    else return false;
-  };
-
-  const getArrowRightActive = () => {
-    if (props.currentPage < props.totalPages) return true;
-    else return false;
   };
 
   const handleNavigateRight = () => {

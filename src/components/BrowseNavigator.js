@@ -24,6 +24,7 @@ function BrowseNavigator(props) {
         serverAddress={props.serverAddress}
       />
       <ProjectorControlPanel
+        sortByIsVisible={false}
         className="projector-control-panel-bottom"
         currentPage={props.currentPage}
         totalPages={props.totalPages}

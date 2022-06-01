@@ -1,27 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/CardProjector.css";
 
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
-import { Link } from "react-router-dom";
 
 function CardProjector(props) {
-  // Functions
+  // Element Gets
   const getProjection = () => {
     if (!props.searchResults || props.searchResults.length == 0) {
       return getNoSearchResultsCard(props.searchResultMessage);
     } else {
       return getSearchResultsProjection();
     }
-  };
-
-  const getReleaseDate = (game) => {
-    if (
-      game.release_date &&
-      !game.release_date.includes("1970") &&
-      !game.release_date.includes("1969")
-    )
-      return game.release_date;
-    else return null;
   };
 
   const getSearchResultsProjection = () => {
@@ -39,7 +29,7 @@ function CardProjector(props) {
                 props.serverAddress + "/header_images/" + game.image_id + ".jpg"
               }
               onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                currentTarget.onerror = null; // This is to prevent accidental looping
                 currentTarget.src = ThumbnailImage;
               }}
               alt={game.title}
@@ -76,6 +66,17 @@ function CardProjector(props) {
         </div>
       </div>
     );
+  };
+
+  // Functions
+  const getReleaseDate = (game) => {
+    if (
+      game.release_date &&
+      !game.release_date.includes("1970") &&
+      !game.release_date.includes("1969")
+    )
+      return game.release_date;
+    else return null;
   };
 
   return <div className="card-projector">{getProjection()}</div>;

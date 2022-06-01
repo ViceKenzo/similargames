@@ -9,7 +9,7 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar(props) {
   // Variables
-  const [menuItems, setMenuItems] = useState([
+  const [menuItems] = useState([
     {
       title: "Browse",
       href: "/find-games-like",
@@ -26,8 +26,38 @@ function NavBar(props) {
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const location = useLocation();
 
+  let timeOut;
+
   // Refs
   const landingRoutingEl = useRef(null);
+
+  // Class Gets
+  const getSearchBarNavBarWrapperClass = () => {
+    if (location.pathname == "/") {
+      return "search-bar-hidden";
+    } else {
+      return "search-bar-visible";
+    }
+  };
+
+  // Handlers
+  const handleSearchInputChange = (event) => {
+    // Set searchinputvalue
+    let newSearchInputValue = event.target.value;
+
+    setSearchInputValue(newSearchInputValue);
+
+    // Trigger timeout such that it will only search on the server when the user has not given any input within a given amount of time
+    if (timeOut) clearTimeout(timeOut);
+
+    timeOut = setTimeout(() => {
+      requestSuggestionsFromServer();
+    }, 500);
+  };
+
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
 
   // Functions
   const submitSearch = (event) => {
@@ -59,33 +89,6 @@ function NavBar(props) {
     };
   };
 
-  let timeOut;
-  const handleSearchInputChange = (event) => {
-    // Set searchinputvalue
-    let newSearchInputValue = event.target.value;
-
-    setSearchInputValue(newSearchInputValue);
-
-    // Trigger timeout such that it will only search on the server when the user has not given any input within a given amount of time
-    if (timeOut) clearTimeout(timeOut);
-
-    timeOut = setTimeout(() => {
-      requestSuggestionsFromServer();
-    }, 500);
-  };
-
-  const getSearchBarNavBarWrapperClass = () => {
-    if (location.pathname == "/") {
-      return "search-bar-hidden";
-    } else {
-      return "search-bar-visible";
-    }
-  };
-
-  const handleClick = () => {
-    setClicked(!clicked);
-  };
-
   return (
     <div className="navbar-wrapper">
       <nav className="NavBarItems">
@@ -100,7 +103,7 @@ function NavBar(props) {
           />
           <SearchBar
             submitSearch={submitSearch}
-            searchSuggestions={searchSuggestions} // done
+            searchSuggestions={searchSuggestions}
             handleSearchInputChange={handleSearchInputChange}
             clearSearchSuggestions={() => {
               setSearchSuggestions([]);
@@ -150,7 +153,7 @@ function NavBar(props) {
       <div className={"search-bar-mobile " + getSearchBarNavBarWrapperClass()}>
         <SearchBar
           submitSearch={submitSearch}
-          searchSuggestions={searchSuggestions} // done
+          searchSuggestions={searchSuggestions}
           handleSearchInputChange={handleSearchInputChange}
           clearSearchSuggestions={() => {
             setSearchSuggestions([]);

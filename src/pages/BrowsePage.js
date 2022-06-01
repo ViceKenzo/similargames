@@ -17,7 +17,7 @@ function BrowsePage(props) {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [pageing, setPageing] = useState(20);
+  const [pageing] = useState(20);
 
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [targetGame, setTargetGame] = useState(null);
@@ -29,17 +29,14 @@ function BrowsePage(props) {
   );
 
   const location = useLocation();
-  const [queryParams, setQueryParams] = location.search;
 
-  let suggestionSearchTimeOut = null;
+  let matchingTimeout = null;
 
   //Effects
   useEffect(() => {
     window.scrollTo(0, 0);
 
     handleQueryParametersInput();
-
-    //GAFirePageView(window.location.pathname + location.search);
   }, []);
 
   useEffect(() => {
@@ -62,7 +59,7 @@ function BrowsePage(props) {
     handleQueryParametersInput();
   }, [location.search]);
 
-  // Functions
+  // Handlers
   const handleQueryParametersInput = (name) => {
     if (name && name != "") {
       submitSearch(null, name);
@@ -74,7 +71,46 @@ function BrowsePage(props) {
     }
   };
 
-  // Browse Header
+  const handleSuggestionClick = (name) => {
+    handleQueryParametersInput(name);
+  };
+
+  const handleSortChange = (event) => {
+    setSorting(event.target.value);
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage < 1 || newPage > totalPages) return;
+
+    setCurrentPage(newPage);
+
+    window.scrollTo(0, 0);
+  };
+
+  const handleChangeMatching = (event) => {
+    // Trigger if slider hasn't been moved for x amount of time
+    if (matchingTimeout) clearTimeout(matchingTimeout);
+
+    matchingTimeout = setTimeout(() => {
+      updateSearchResults();
+    }, 500);
+
+    setMatchValue(event.target.value);
+  };
+
+  const handleNSFWClick = () => {
+    if (!targetGame) return;
+
+    setShowNSFW(!showNSFW);
+  };
+
+  const handleSameDeveloperClick = () => {
+    if (!targetGame) return;
+
+    setShowSameDeveloper(!showSameDeveloper);
+  };
+
+  // Functions
   const submitSearch = (event, searchWord) => {
     if (event) event.preventDefault();
 
@@ -92,7 +128,6 @@ function BrowsePage(props) {
   const updateSearchResults = () => {
     if (!targetGame) return;
 
-    // Define the sorting function (such that we can give it external parameters)
     function sortComparator(sortingDef) {
       return function (a, b) {
         switch (sortingDef) {
@@ -152,7 +187,6 @@ function BrowsePage(props) {
     window.scrollTo(0, 0);
   };
 
-  // Server requests
   const requestSimilarGames = (searchWord) => {
     if (searchWord == null) return;
 
@@ -204,90 +238,12 @@ function BrowsePage(props) {
     };
   };
 
-  const requestSuggestionsFromServer = () => {
-    if (!searchInputValue || searchInputValue == "") return;
-
-    const xhttp = new XMLHttpRequest();
-
-    xhttp.open(
-      "get",
-      props.serverAddress + "/suggestedgames/" + searchInputValue,
-      true
-    );
-
-    xhttp.send();
-
-    xhttp.onload = () => {
-      if (!xhttp.response) return;
-
-      let suggestedGames = JSON.parse(xhttp.response);
-      setSearchSuggestions(suggestedGames);
-    };
-  };
-
-  const handleSearchInputChange = (event) => {
-    let newSearchInputValue = event.target.value;
-
-    setSearchInputValue(newSearchInputValue);
-
-    // Trigger suggestionSearchTimeOut such that it will only search on the server when the user has not given any input within a given amount of time
-    if (suggestionSearchTimeOut) clearTimeout(suggestionSearchTimeOut);
-
-    suggestionSearchTimeOut = setTimeout(() => {
-      requestSuggestionsFromServer();
-    }, 500);
-  };
-
-  const handleSuggestionClick = (name) => {
-    handleQueryParametersInput(name);
-  };
-
-  // Browse Navigator
-  const handleSortChange = (event) => {
-    setSorting(event.target.value);
-  };
-
-  const handlePageChange = (newPage) => {
-    if (newPage < 1 || newPage > totalPages) return;
-
-    setCurrentPage(newPage);
-
-    window.scrollTo(0, 0);
-  };
-
-  // Browse Filters
-  let matchingTimeout = null;
-
-  const handleChangeMatching = (event) => {
-    // Trigger if slider hasn't been moved for x amount of time
-    if (matchingTimeout) clearTimeout(matchingTimeout);
-
-    matchingTimeout = setTimeout(() => {
-      updateSearchResults();
-    }, 500);
-
-    setMatchValue(event.target.value);
-  };
-
-  const handleNSFWClick = () => {
-    if (!targetGame) return;
-
-    setShowNSFW(!showNSFW);
-  };
-
-  const handleSameDeveloperClick = () => {
-    if (!targetGame) return;
-
-    setShowSameDeveloper(!showSameDeveloper);
-  };
-
   return (
     <div className="browsing-wrapper">
       <BrowseHeader
         searchWord={searchWord}
         searchSuggestions={searchSuggestions}
         submitSearch={submitSearch}
-        handleSearchInputChange={handleSearchInputChange}
         clearSearchSuggestions={() => {
           setSearchSuggestions([]);
         }}
@@ -311,7 +267,7 @@ function BrowsePage(props) {
             totalPages={totalPages}
             sorting={sorting}
             searchResults={searchResults.filter(
-              function (item) {
+              function () {
                 let itemIsWorthy = false;
 
                 if (this.count >= this.startIdx && this.count < this.endIdx) {

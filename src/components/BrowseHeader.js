@@ -1,58 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/BrowseHeader.css";
 
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
-import { Link } from "react-router-dom";
 
 function BrowseHeader(props) {
-  // Functions
-  const getGameTitle = () => {
-    if (props.targetGame) {
-      return props.targetGame.title;
-    } else return null;
-  };
-
-  const getDeveloper = () => {
-    if (props.targetGame) {
-      return props.targetGame.developer;
-    } else return null;
-  };
-
-  const getPublisher = () => {
-    if (props.targetGame) {
-      return props.targetGame.publisher;
-    } else return null;
-  };
-
-  const getReleaseDate = () => {
-    if (props.targetGame) {
-      return props.targetGame.release_date;
-    } else return null;
-  };
-
-  const getLinkTo = () => {
-    if (props.targetGame) {
-      return "/game?id=" + props.targetGame.id;
-    } else return "";
-  };
-
-  const getImageAlt = () => {
-    if (props.targetGame) {
-      return props.targetGame.title;
-    } else return "Find games that play like..";
-  };
-
-  const getImageSrc = () => {
-    if (props.targetGame) {
-      return (
-        props.serverAddress +
-        "/header_images/" +
-        props.targetGame.image_id +
-        ".jpg"
-      );
-    } else return { ThumbnailImage };
-  };
-
+  // Class Gets
   const getDeveloperClass = () => {
     let cName = "browse-header-developer";
 
@@ -123,6 +76,55 @@ function BrowseHeader(props) {
     return cName;
   };
 
+  // Element Gets
+  const getGameTitle = () => {
+    if (props.targetGame) {
+      return props.targetGame.title;
+    } else return null;
+  };
+
+  const getDeveloper = () => {
+    if (props.targetGame) {
+      return props.targetGame.developer;
+    } else return null;
+  };
+
+  const getPublisher = () => {
+    if (props.targetGame) {
+      return props.targetGame.publisher;
+    } else return null;
+  };
+
+  const getReleaseDate = () => {
+    if (props.targetGame) {
+      return props.targetGame.release_date;
+    } else return null;
+  };
+
+  const getImageSrc = () => {
+    if (props.targetGame) {
+      return (
+        props.serverAddress +
+        "/header_images/" +
+        props.targetGame.image_id +
+        ".jpg"
+      );
+    } else return { ThumbnailImage };
+  };
+
+  const getImageAlt = () => {
+    if (props.targetGame) {
+      return props.targetGame.title;
+    } else return "Find games that play like..";
+  };
+
+  // Functions
+  const getLinkTo = () => {
+    if (props.targetGame) {
+      return "/game?id=" + props.targetGame.id;
+    } else return "";
+  };
+
   return (
     <div className={getBrowseHeaderClass()}>
       <div className="browse-header-search-announcer">Search for a game</div>
@@ -133,7 +135,7 @@ function BrowseHeader(props) {
             className="browse-header-image"
             src={getImageSrc()}
             onError={({ currentTarget }) => {
-              currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+              currentTarget.onerror = null; // This is to prevent accidental looping
               currentTarget.src = ThumbnailImage;
             }}
           />

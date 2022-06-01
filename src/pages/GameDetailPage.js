@@ -22,6 +22,22 @@ function GameDetailPage(props) {
     } else window.location.href = "/Error";
   }, []);
 
+  // Element Gets
+  const getCardRender = () => {
+    if (game)
+      return (
+        <React.Fragment>
+          <GameDetailCard serverAddress={props.serverAddress} game={game} />
+          <MoreLikeThisPanel
+            games={moreLikeThisGames}
+            serverAddress={props.serverAddress}
+            gameClickEvent={requestAndSetGameDetail}
+            mainGame={game}
+          />
+        </React.Fragment>
+      );
+  };
+
   // Functions
   const requestAndSetGameDetail = (gameId) => {
     const xhttp = new XMLHttpRequest();
@@ -71,21 +87,6 @@ function GameDetailPage(props) {
     let qParam = new URLSearchParams(location.search).get("id");
 
     return qParam;
-  };
-
-  const getCardRender = () => {
-    if (game)
-      return (
-        <React.Fragment>
-          <GameDetailCard serverAddress={props.serverAddress} game={game} />
-          <MoreLikeThisPanel
-            games={moreLikeThisGames}
-            serverAddress={props.serverAddress}
-            gameClickEvent={requestAndSetGameDetail}
-            mainGame={game}
-          />
-        </React.Fragment>
-      );
   };
 
   return <div className="game-detail-wrapper">{getCardRender()}</div>;

@@ -19,7 +19,6 @@ function LandingPageSearchPanel(props) {
       />
       <div className="search-panel-search-bar">
         <SearchBar
-          styleHeight="50px"
           submitSearch={props.submitSearch}
           searchSuggestions={props.searchSuggestions}
           handleSearchInputChange={props.handleSearchInputChange}

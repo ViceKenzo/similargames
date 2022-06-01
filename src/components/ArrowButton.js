@@ -8,13 +8,7 @@ function ArrowButton(props) {
   // Variables
   const [arrowDirection] = useState(props.arrowDirection);
 
-  // Functions
-  const getDirectionArrow = () => {
-    if (!arrowDirection) return faAngleLeft;
-    else if (arrowDirection == "right") return faAngleRight;
-    else return faAngleLeft;
-  };
-
+  // Class Gets
   const getClassName = () => {
     let classText = "arrow-button";
 
@@ -23,6 +17,14 @@ function ArrowButton(props) {
     return classText;
   };
 
+  // Element Gets
+  const getDirectionArrow = () => {
+    if (!arrowDirection) return faAngleLeft;
+    else if (arrowDirection == "right") return faAngleRight;
+    else return faAngleLeft;
+  };
+
+  // Handlers
   const handleClick = () => {
     if (!arrowDirection) return;
     if (arrowDirection == "right") {
@@ -32,6 +34,7 @@ function ArrowButton(props) {
     }
   };
 
+  // Functions
   return (
     <div className={getClassName()} onClick={handleClick}>
       <FontAwesomeIcon icon={getDirectionArrow()} />

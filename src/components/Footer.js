@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../styles/Footer.css";
-
 import { Link } from "react-router-dom";
+
+import "../styles/Footer.css";
 
 function Footer() {
   // Variables

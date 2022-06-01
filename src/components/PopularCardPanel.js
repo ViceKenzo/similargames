@@ -53,7 +53,7 @@ function PopularCardPanel(props) {
                       ".jpg"
                     }
                     onError={({ currentTarget }) => {
-                      currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                      currentTarget.onerror = null; // This is to prevent accidental looping
                       currentTarget.src = ThumbnailImage;
                     }}
                     alt={game.title}

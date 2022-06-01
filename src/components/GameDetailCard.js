@@ -4,12 +4,12 @@ import "../styles/GameDetailCard.css";
 import LogoEpicGamesStore from "../images/logo_epicgames.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
+import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 function GameDetailCard(props) {
-  // Functions
+  // Elemenet gets
   const GetReleaseDateElements = (release_date) => {
     if (release_date) {
       return (
@@ -162,6 +162,7 @@ function GameDetailCard(props) {
     }
   };
 
+  // Functions
   return (
     <div className="game-detail-card">
       <div className="game-detail-left-hand-wrapper">
@@ -179,7 +180,7 @@ function GameDetailCard(props) {
                 ".jpg"
               }
               onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
+                currentTarget.onerror = null; // This is to prevent accidental looping
                 currentTarget.src = ThumbnailImage;
               }}
               alt={props.game.title + " Image"}
