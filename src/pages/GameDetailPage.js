@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/GameDetailPage.css";
 
 import GameDetailCard from "../components/GameDetailCard.js";
@@ -10,17 +10,20 @@ function GameDetailPage(props) {
   const [game, setGame] = useState(null);
   const [moreLikeThisGames, setMoreLikeThisGames] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Effects
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    let gameId = getGameIdFromQueryParameters();
-
-    if (gameId && gameId != "") {
-      requestAndSetGameDetail(gameId);
-    } else window.location.href = "/Error";
   }, []);
+
+  useEffect(() => {
+    let qParam = new URLSearchParams(location.search).get("id");
+
+    if (qParam && qParam > 0) {
+      requestAndSetGameDetail(qParam);
+    } else navigate("/Error");
+  }, [location.search]);
 
   // Element Gets
   const getCardRender = () => {
@@ -83,12 +86,6 @@ function GameDetailPage(props) {
 
       setMoreLikeThisGames(requestedGames.similarGames);
     };
-  };
-
-  const getGameIdFromQueryParameters = () => {
-    let qParam = new URLSearchParams(location.search).get("id");
-
-    return qParam;
   };
 
   return <div className="game-detail-wrapper">{getCardRender()}</div>;

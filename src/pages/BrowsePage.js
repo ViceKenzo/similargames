@@ -8,8 +8,6 @@ import BrowseFilters from "../components/BrowseFilters.js";
 
 function BrowsePage(props) {
   // Variables
-  const [searchInputValue, setSearchInputValue] = useState("");
-  const [searchWord, setSearchWord] = useState("");
   const [sorting, setSorting] = useState("Relevance");
   const [matchValue, setMatchValue] = useState(60);
   const [showNSFW, setShowNSFW] = useState(false);
@@ -35,8 +33,6 @@ function BrowsePage(props) {
   //Effects
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    handleQueryParametersInput();
   }, []);
 
   useEffect(() => {
@@ -56,25 +52,15 @@ function BrowsePage(props) {
   }, [showSameDeveloper]);
 
   useEffect(() => {
-    handleQueryParametersInput();
+    if (location.search && location.search != "") {
+      let qParam = new URLSearchParams(location.search).get("q");
+      if (!qParam || qParam != "") {
+        requestSimilarGames(qParam);
+      }
+    }
   }, [location.search]);
 
   // Handlers
-  const handleQueryParametersInput = (name) => {
-    if (name && name != "") {
-      submitSearch(null, name);
-    } else {
-      let qParam = new URLSearchParams(location.search).get("q");
-      if (!qParam || qParam == "") return;
-
-      submitSearch(null, qParam);
-    }
-  };
-
-  const handleSuggestionClick = (name) => {
-    handleQueryParametersInput(name);
-  };
-
   const handleSortChange = (event) => {
     setSorting(event.target.value);
   };
@@ -111,20 +97,6 @@ function BrowsePage(props) {
   };
 
   // Functions
-  const submitSearch = (event, searchWord) => {
-    if (event) event.preventDefault();
-
-    setSearchSuggestions([]);
-
-    if (searchWord) {
-      setSearchWord(searchWord);
-      requestSimilarGames(searchWord);
-    } else {
-      setSearchWord(searchInputValue);
-      requestSimilarGames(searchInputValue);
-    }
-  };
-
   const updateSearchResults = () => {
     if (!targetGame) return;
 
@@ -187,11 +159,14 @@ function BrowsePage(props) {
     window.scrollTo(0, 0);
   };
 
-  const requestSimilarGames = (searchWord) => {
-    if (searchWord == null) return;
+  const requestSimilarGames = (tempSearchWord) => {
+    if (tempSearchWord == null) return;
+
+    setGameData([]);
 
     const xhttp = new XMLHttpRequest();
-    let requestUrl = props.serverAddress + "/similargames" + "/" + searchWord;
+    let requestUrl =
+      props.serverAddress + "/similargames" + "/" + tempSearchWord;
 
     xhttp.open("get", requestUrl, true);
 
@@ -229,11 +204,6 @@ function BrowsePage(props) {
       } else {
         setTargetGame(responseObj.game);
         setGameData(responseObj.similarGames);
-
-        if (responseObj.game) {
-          setSearchInputValue(responseObj.game.title);
-          setSearchWord(responseObj.game.title);
-        }
       }
     };
   };
@@ -241,14 +211,10 @@ function BrowsePage(props) {
   return (
     <div className="browsing-wrapper">
       <BrowseHeader
-        searchWord={searchWord}
         searchSuggestions={searchSuggestions}
-        submitSearch={submitSearch}
         clearSearchSuggestions={() => {
           setSearchSuggestions([]);
         }}
-        searchInputValue={searchInputValue}
-        handleSuggestionClick={handleSuggestionClick}
         serverAddress={props.serverAddress}
         targetGame={targetGame}
       />

@@ -16,7 +16,6 @@ function MoreLikeThisPanel(props) {
           <a
             key={index + "link"}
             className="morelikethis-game"
-            //to={"/game?id=" + game.id}
             onClick={() => {
               navigate("/game?id=" + game.id);
               props.requestAndSetGameDetail(game.id);
