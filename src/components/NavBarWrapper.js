@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import NavBar from "./NavBar.jsx";
+import React from "react";
+import NavBar from "./NavBar.js";
 import { useLocation } from "react-router-dom";
 
 export default function NavBarWrapper(props) {

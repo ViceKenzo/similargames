@@ -1,14 +1,14 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LandingPage from "./pages/LandingPage.jsx";
-import AboutPage from "./pages/AboutPage.jsx";
-import ErrorPage from "./pages/ErrorPage.jsx";
-import NavBarWrapper from "./components/NavBarWrapper";
-import Footer from "./components/Footer.jsx";
-import BrowsePageWrapper from "./pages/BrowsePageWrapper";
-import GameDetailPageWrapper from "./pages/GameDetailPageWrapper.jsx";
+import LandingPage from "./pages/LandingPage.js";
+import AboutPage from "./pages/AboutPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
+import NavBarWrapper from "./components/NavBarWrapper.js";
+import Footer from "./components/Footer.js";
 import backgroundImage from "./images/main_background.svg";
 import Config from "./config/config.js";
+import BrowsePage from "./pages/BrowsePage.js";
+import GameDetailPage from "./pages/GameDetailPage.js";
 
 function App() {
   return (
@@ -25,13 +25,11 @@ function App() {
           <Route
             path="/find-games-like"
             exact
-            element={<BrowsePageWrapper serverAddress={Config.serverAddress} />}
+            element={<BrowsePage serverAddress={Config.serverAddress} />}
           />
           <Route
             path="/game"
-            element={
-              <GameDetailPageWrapper serverAddress={Config.serverAddress} />
-            }
+            element={<GameDetailPage serverAddress={Config.serverAddress} />}
           />
           <Route path="/about" exact element={<AboutPage />} />
           <Route path="/*" element={<ErrorPage />} />

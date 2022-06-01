@@ -1,25 +1,19 @@
-import React, { Component } from "react";
-import "./CardProjector.css";
+import React from "react";
+import "../styles/CardProjector.css";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
 import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
-class CardProjector extends Component {
-  state = {};
-
-  constructor(props) {
-    super(props);
-  }
-
-  getProjection = () => {
-    if (!this.props.searchResults || this.props.searchResults.length == 0) {
-      return this.getNoSearchResultsCard(this.props.searchResultMessage);
+function CardProjector(props) {
+  const getProjection = () => {
+    if (!props.searchResults || props.searchResults.length == 0) {
+      return getNoSearchResultsCard(props.searchResultMessage);
     } else {
-      return this.getSearchResultsProjection();
+      return getSearchResultsProjection();
     }
   };
 
-  getReleaseDate = (game) => {
+  const getReleaseDate = (game) => {
     if (
       game.release_date &&
       !game.release_date.includes("1970") &&
@@ -29,8 +23,8 @@ class CardProjector extends Component {
     else return null;
   };
 
-  getSearchResultsProjection = () => {
-    return this.props.searchResults.map((game, index) => {
+  const getSearchResultsProjection = () => {
+    return props.searchResults.map((game, index) => {
       return (
         <Link
           key={index + "card"}
@@ -52,10 +46,7 @@ class CardProjector extends Component {
               key={index + "card-image"}
               className="card-image"
               src={
-                this.props.serverAddress +
-                "/header_images/" +
-                game.image_id +
-                ".jpg"
+                props.serverAddress + "/header_images/" + game.image_id + ".jpg"
               }
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // This is to make sure there won't be any accidental looping!
@@ -73,14 +64,14 @@ class CardProjector extends Component {
             </div>
           </div>
           <div key={index + "card-release-date"} className="card-release-date">
-            {this.getReleaseDate(game)}
+            {getReleaseDate(game)}
           </div>
         </Link>
       );
     });
   };
 
-  getNoSearchResultsCard = (cardDescription) => {
+  const getNoSearchResultsCard = (cardDescription) => {
     return (
       <div className="card" id="no-search-result-card">
         <div className="card-image-wrapper">
@@ -97,9 +88,7 @@ class CardProjector extends Component {
     );
   };
 
-  render() {
-    return <div className="card-projector">{this.getProjection()}</div>;
-  }
+  return <div className="card-projector">{getProjection()}</div>;
 }
 
 export default CardProjector;
