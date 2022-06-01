@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import LandingPageSearchPanel from "../components/LandingPageSearchPanel.js";
 import PopularCardPanel from "../components/PopularCardPanel.js";
 
@@ -8,19 +9,18 @@ function LandingPage(props) {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
 
+  let timeOut = null;
+
   // Effects
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  let timeOut = null;
-
+  // Functions
   const submitSearch = (event) => {
     if (event) event.preventDefault();
 
     setSearchSuggestions([]);
-
-    //landingRoutingEl.current.click();
   };
 
   const requestSuggestionsFromServer = () => {

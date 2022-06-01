@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/BrowseFilters.css";
 
 function BrowseFilters(props) {
+  // Functions
   return (
     <div className="search-filters">
       <div className="search-filter-wrapper" id="match-filter-wrapper">

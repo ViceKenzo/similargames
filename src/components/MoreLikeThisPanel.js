@@ -1,10 +1,11 @@
 import React from "react";
-import "../styles/MoreLikeThisPanel.css";
-import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
+import "../styles/MoreLikeThisPanel.css";
+
+import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 function MoreLikeThisPanel(props) {
+  // Functions
   const getGamesProjection = () => {
     if (props.games != null && props.games.length > 0) {
       return props.games.map((game, index) => {
@@ -14,11 +15,6 @@ function MoreLikeThisPanel(props) {
             className="morelikethis-game"
             to={"/game?id=" + game.id}
             onClick={() => {
-              GAFireEvent(
-                "MoreLikeThis Game Click",
-                props.mainGame.title,
-                game.title
-              );
               props.requestAndSetGameDetail(game.id);
             }}
           >
@@ -49,12 +45,6 @@ function MoreLikeThisPanel(props) {
         <Link
           to={"/find-games-like?q=" + props.mainGame.web_name}
           className="morelikethis-title"
-          onClick={() => {
-            GAFireEvent(
-              "MoreLikeThis Title (Browse) Click",
-              props.mainGame.title
-            );
-          }}
         >
           More like this
         </Link>

@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
-import "../styles/PopularCardPanel.css";
 import { Link } from "react-router-dom";
+import "../styles/PopularCardPanel.css";
+
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 function PopularCardPanel(props) {
+  // Variables
   const [popularGames, setPopularGames] = useState([]);
 
+  // Effects
   useEffect(() => {
     requestPopularGames();
   }, []);
 
+  // Functions
   const requestPopularGames = () => {
     const xhttp = new XMLHttpRequest();
 
@@ -39,16 +42,7 @@ function PopularCardPanel(props) {
                 className="popular-card-image-wrapper"
                 key={index + "image-wrapper"}
               >
-                <Link
-                  to={"/game?id=" + game.id}
-                  onClick={() => {
-                    GAFireEvent(
-                      "Game Detail Click",
-                      "Popular Card",
-                      game.title
-                    );
-                  }}
-                >
+                <Link to={"/game?id=" + game.id}>
                   <img
                     className="popular-card-image"
                     key={index + "card-image"}
@@ -81,13 +75,6 @@ function PopularCardPanel(props) {
                 className="popular-card-button"
                 key={index + "card-button"}
                 to={"/find-games-like?q=" + game.web_name}
-                onClick={() => {
-                  GAFireEvent(
-                    "Popular Card Click",
-                    "Similar Games",
-                    game.title
-                  );
-                }}
               >
                 <span
                   className="popular-card-button-text"

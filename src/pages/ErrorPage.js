@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
+
 import Error from "../components/Error.js";
 
-function ErrorPage(props) {
+function ErrorPage() {
+  // Effects
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Functions
   return <Error />;
 }
 

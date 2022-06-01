@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "../styles/ArrowButton.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 function ArrowButton(props) {
-  const [arrowDirection, setArrowDirection] = useState(props.arrowDirection);
+  // Variables
+  const [arrowDirection] = useState(props.arrowDirection);
 
+  // Functions
   const getDirectionArrow = () => {
     if (!arrowDirection) return faAngleLeft;
     else if (arrowDirection == "right") return faAngleRight;

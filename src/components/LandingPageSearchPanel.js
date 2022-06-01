@@ -1,13 +1,15 @@
 import React from "react";
 import "../styles/LandingPageSearchPanel.css";
+
 import SearchBar from "./SearchBar.js";
+
 import LogoEpicGamesStore from "../images/logo_epicgamesstore.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
 import SimilarGamesHeaderImage from "../images/similargames_title.png";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 function LandingPageSearchPanel(props) {
+  // Functions
   return (
     <div className="landing-page-search-panel">
       <img
@@ -32,39 +34,17 @@ function LandingPageSearchPanel(props) {
       <div className="search-panel-footer">
         <span className="search-panel-icon-announcer">On:</span>
         <div className="search-panel-icon-wrapper">
-          <a
-            href="https://www.epicgames.com/store"
-            target="_blank"
-            onClick={() => {
-              // GAFireEvent(
-              //   "External Link Click",
-              //   "Landing Page",
-              //   "Epic Games Store"
-              // );
-            }}
-          >
+          <a href="https://www.epicgames.com/store" target="_blank">
             <img
               className="logo-epic"
               src={LogoEpicGamesStore}
               alt="Epic Games Store Logo"
             />
           </a>
-          <a
-            href="https://www.gog.com/"
-            target="_blank"
-            onClick={() => {
-              //GAFireEvent("External Link Click", "Landing Page", "Gog");
-            }}
-          >
+          <a href="https://www.gog.com/" target="_blank">
             <img className="logo-gog" src={LogoGog} alt="Gog Logo" />
           </a>
-          <a
-            href="https://store.steampowered.com/"
-            target="_blank"
-            onClick={() => {
-              //GAFireEvent("External Link Click", "Landing Page", "Steam");
-            }}
-          >
+          <a href="https://store.steampowered.com/" target="_blank">
             <img
               className="logo-steam "
               src={LogoSteamStore}

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "../styles/ProjectorControlPanel.css";
+
 import ArrowButton from "./ArrowButton.js";
 
 function ProjectorControlPanel(props) {
   // Variables
-  const [sortByIsVisible, setSortByIsVisible] = useState(props.sortByIsVisible);
+  const [sortByIsVisible] = useState(props.sortByIsVisible);
   const [pageInput, setPageInput] = useState(props.currentPage);
 
+  // Effects
   useEffect(() => {
     setPageInput(props.currentPage);
   }, [props.currentPage]);
 
+  // Functions
   const getDropDownClass = () => {
     var className = "drop-down-wrapper";
 

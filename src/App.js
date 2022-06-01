@@ -1,21 +1,24 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+
 import LandingPage from "./pages/LandingPage.js";
 import AboutPage from "./pages/AboutPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
-import NavBarWrapper from "./components/NavBarWrapper.js";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
-import backgroundImage from "./images/main_background.svg";
 import Config from "./config/config.js";
 import BrowsePage from "./pages/BrowsePage.js";
 import GameDetailPage from "./pages/GameDetailPage.js";
 
+import backgroundImage from "./images/main_background.svg";
+
 function App() {
+  // Functions
   return (
     <div className="App">
       <Router>
         <img className="main-background" src={backgroundImage} />
-        <NavBarWrapper serverAddress={Config.serverAddress} />
+        <NavBar serverAddress={Config.serverAddress} />
         <Routes>
           <Route
             path="/"

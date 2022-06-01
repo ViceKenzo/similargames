@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import AboutPanel from "../components/AboutPanel.js";
 import "../styles/AboutPage.css";
-import { GAFirePageView } from "../tracking/GA_Events_Tracker";
 
-function AboutPage(props) {
+import AboutPanel from "../components/AboutPanel.js";
+
+function AboutPage() {
+  // Effects
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    GAFirePageView(window.location.pathname + window.location.search);
   }, []);
 
+  // Functions
   return (
     <div className="about-wrapper">
       <AboutPanel />

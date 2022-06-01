@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/NavBar.css";
+
+import SearchBar from "./SearchBar.js";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Link, useHref } from "react-router-dom";
-import SearchBar from "./SearchBar.js";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 function NavBar(props) {
   // Variables
@@ -23,10 +24,12 @@ function NavBar(props) {
   const [clicked, setClicked] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const location = useLocation();
 
   // Refs
   const landingRoutingEl = useRef(null);
 
+  // Functions
   const submitSearch = (event) => {
     if (event) event.preventDefault();
 
@@ -71,12 +74,8 @@ function NavBar(props) {
     }, 500);
   };
 
-  const handleSuggestionClick = (gameTitle) => {
-    GAFireEvent("Search Suggestion Click", "Navbar", gameTitle);
-  };
-
   const getSearchBarNavBarWrapperClass = () => {
-    if (props.locationHook.pathname == "/") {
+    if (location.pathname == "/") {
       return "search-bar-hidden";
     } else {
       return "search-bar-visible";
@@ -107,7 +106,6 @@ function NavBar(props) {
               setSearchSuggestions([]);
             }}
             searchInputValue={searchInputValue}
-            handleSuggestionClick={handleSuggestionClick}
             serverAddress={props.serverAddress}
           />
         </div>
@@ -158,7 +156,6 @@ function NavBar(props) {
             setSearchSuggestions([]);
           }}
           searchInputValue={searchInputValue}
-          handleSuggestionClick={handleSuggestionClick}
           serverAddress={props.serverAddress}
         />
       </div>

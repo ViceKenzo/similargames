@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/SearchBar.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 function SearchBar(props) {

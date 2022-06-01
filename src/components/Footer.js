@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "../styles/Footer.css";
+
 import { Link } from "react-router-dom";
 
-function Footer(props) {
-  const [menuItems, setMenuItems] = useState([
+function Footer() {
+  // Variables
+  const [menuItems] = useState([
     {
       title: "Browse",
       href: "/find-games-like",
@@ -14,6 +16,7 @@ function Footer(props) {
     },
   ]);
 
+  // Functions
   return (
     <div className="footer">
       <div className="footer-contact">

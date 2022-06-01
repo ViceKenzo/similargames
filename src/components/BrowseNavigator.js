@@ -1,9 +1,11 @@
 import React from "react";
-import ProjectorControlPanel from "./ProjectorControlPanel.js";
-import CardProjector from "./CardProjector.js";
 import "../styles/BrowseNavigator.css";
 
+import ProjectorControlPanel from "./ProjectorControlPanel.js";
+import CardProjector from "./CardProjector.js";
+
 function BrowseNavigator(props) {
+  // Functions
   return (
     <div>
       <div className="projector-control-panel-top">

@@ -1,14 +1,15 @@
 import React from "react";
 import "../styles/GameDetailCard.css";
+
 import LogoEpicGamesStore from "../images/logo_epicgames.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 function GameDetailCard(props) {
+  // Functions
   const GetReleaseDateElements = (release_date) => {
     if (release_date) {
       return (
@@ -68,9 +69,6 @@ function GameDetailCard(props) {
             className="game-detail-source-button"
             href={props.game.sources[i].link}
             target="_blank"
-            onClick={() => {
-              GAFireEvent("External Link Click", "Game Detail", "Steam");
-            }}
           >
             <div className="game-detail-source-image-wrapper">
               <img
@@ -107,9 +105,6 @@ function GameDetailCard(props) {
             className="game-detail-source-button"
             href={props.game.sources[i].link}
             target="_blank"
-            onClick={() => {
-              GAFireEvent("External Link Click", "Game Detail", "Gog");
-            }}
           >
             <div className="game-detail-source-image-wrapper">
               <img
@@ -146,13 +141,6 @@ function GameDetailCard(props) {
             className="game-detail-source-button"
             href={props.game.sources[i].link}
             target="_blank"
-            onClick={() => {
-              GAFireEvent(
-                "External Link Click",
-                "Game Detail",
-                "Epic Games Store"
-              );
-            }}
           >
             <div className="game-detail-source-image-wrapper">
               <img

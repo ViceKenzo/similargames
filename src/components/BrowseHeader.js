@@ -1,10 +1,11 @@
 import React from "react";
 import "../styles/BrowseHeader.css";
+
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 function BrowseHeader(props) {
+  // Functions
   const getGameTitle = () => {
     if (props.targetGame) {
       return props.targetGame.title;
@@ -126,19 +127,7 @@ function BrowseHeader(props) {
     <div className={getBrowseHeaderClass()}>
       <div className="browse-header-search-announcer">Search for a game</div>
       <div className="browse-header-left">
-        <Link
-          to={getLinkTo()}
-          className="browse-header-image-wrapper"
-          onClick={() => {
-            if (props.targetGame) {
-              GAFireEvent(
-                "Game Detail Click",
-                "BrowseHeader, Image",
-                props.targetGame.title
-              );
-            }
-          }}
-        >
+        <Link to={getLinkTo()} className="browse-header-image-wrapper">
           <img
             alt={getImageAlt()}
             className="browse-header-image"
@@ -151,19 +140,7 @@ function BrowseHeader(props) {
         </Link>
         <div className="browse-header-announcer-wrapper">
           <div className="browse-header-gameslike-announcer">Games like:</div>
-          <Link
-            to={getLinkTo()}
-            className="browse-header-game-title"
-            onClick={() => {
-              if (props.targetGame) {
-                GAFireEvent(
-                  "Game Detail Click",
-                  "BrowseHeader, Title",
-                  props.targetGame.title
-                );
-              }
-            }}
-          >
+          <Link to={getLinkTo()} className="browse-header-game-title">
             {getGameTitle()}
           </Link>
         </div>

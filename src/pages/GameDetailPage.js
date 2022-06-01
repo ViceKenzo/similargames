@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import GameDetailCard from "../components/GameDetailCard.js";
-import "../styles/GameDetailPage.css";
-import MoreLikeThisPanel from "../components/MoreLikeThisPanel.js";
 import { useLocation } from "react-router-dom";
+import "../styles/GameDetailPage.css";
+
+import GameDetailCard from "../components/GameDetailCard.js";
+import MoreLikeThisPanel from "../components/MoreLikeThisPanel.js";
 
 function GameDetailPage(props) {
+  // Variables
   const [game, setGame] = useState(null);
   const [moreLikeThisGames, setMoreLikeThisGames] = useState(null);
   const location = useLocation();
 
+  // Effects
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -19,6 +22,7 @@ function GameDetailPage(props) {
     } else window.location.href = "/Error";
   }, []);
 
+  // Functions
   const requestAndSetGameDetail = (gameId) => {
     const xhttp = new XMLHttpRequest();
     let requestUrl = props.serverAddress + "/gamedetail/" + gameId;

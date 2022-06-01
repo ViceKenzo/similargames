@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import "../styles/BrowsePage.css";
+
 import BrowseHeader from "../components/BrowseHeader.js";
 import BrowseNavigator from "../components/BrowseNavigator.js";
 import BrowseFilters from "../components/BrowseFilters.js";
-import "../styles/BrowsePage.css";
-import { useLocation } from "react-router-dom";
 
 function BrowsePage(props) {
   // Variables
@@ -27,7 +28,6 @@ function BrowsePage(props) {
     "Search for a game and see others like it!"
   );
 
-  // Location
   const location = useLocation();
   const [queryParams, setQueryParams] = location.search;
 
@@ -48,27 +48,21 @@ function BrowsePage(props) {
 
   useEffect(() => {
     updateSearchResults();
-    //GAFireEvent("Filter Change", "Sorting: " + sorting, targetGame.title);
   }, [sorting]);
 
   useEffect(() => {
     updateSearchResults();
-    //GAFireEvent("Filter Change", "NSFW: " + showNSFW, targetGame.title);
   }, [showNSFW]);
 
   useEffect(() => {
     updateSearchResults();
-    // GAFireEvent(
-    //   "Filter Change",
-    //   "Same Developer: " + showSameDeveloper,
-    //   targetGame.title
-    // );
   }, [showSameDeveloper]);
 
   useEffect(() => {
     handleQueryParametersInput();
   }, [location.search]);
 
+  // Functions
   const handleQueryParametersInput = (name) => {
     if (name && name != "") {
       submitSearch(null, name);
@@ -198,9 +192,6 @@ function BrowsePage(props) {
         setSearchResultMessage("No similar games were found.");
         setTargetGame(responseObj.game);
         setGameData([]);
-        //setState({ targetGame: responseObj.game }, () => {
-        //  setGameData([]);
-        //});
       } else {
         setTargetGame(responseObj.game);
         setGameData(responseObj.similarGames);
@@ -210,15 +201,6 @@ function BrowsePage(props) {
           setSearchWord(responseObj.game.title);
         }
       }
-
-      // setState({ targetGame: responseObj.game }, () => {
-      //   setGameData(responseObj.similarGames);
-
-      //   if (targetGame) {
-      //     setState({ searchInputValue: targetGame.title });
-      //     setState({ searchWord: targetGame.title });
-      //   }
-      // });
     };
   };
 
@@ -257,7 +239,6 @@ function BrowsePage(props) {
   };
 
   const handleSuggestionClick = (name) => {
-    //GAFireEvent("Search Suggestion Click", "Browse Page", name);
     handleQueryParametersInput(name);
   };
 
@@ -270,9 +251,6 @@ function BrowsePage(props) {
     if (newPage < 1 || newPage > totalPages) return;
 
     setCurrentPage(newPage);
-    // setState({ currentPage: newPage }, () => {
-    //   browseNav.current.setPageInputs(newPage);
-    // });
 
     window.scrollTo(0, 0);
   };
@@ -286,11 +264,6 @@ function BrowsePage(props) {
 
     matchingTimeout = setTimeout(() => {
       updateSearchResults();
-      // GAFireEvent(
-      //   "Filter Change",
-      //   "Matching Value: " + matchValue,
-      //   targetGame.title
-      // );
     }, 500);
 
     setMatchValue(event.target.value);

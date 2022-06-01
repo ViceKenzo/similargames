@@ -1,10 +1,11 @@
 import React from "react";
 import "../styles/CardProjector.css";
+
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 import { Link } from "react-router-dom";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 function CardProjector(props) {
+  // Functions
   const getProjection = () => {
     if (!props.searchResults || props.searchResults.length == 0) {
       return getNoSearchResultsCard(props.searchResultMessage);
@@ -26,18 +27,7 @@ function CardProjector(props) {
   const getSearchResultsProjection = () => {
     return props.searchResults.map((game, index) => {
       return (
-        <Link
-          key={index + "card"}
-          className="card"
-          to={"/game?id=" + game.id}
-          onClick={() => {
-            GAFireEvent(
-              "Game Detail Click",
-              "Browse Page, Simialar Game",
-              game.title
-            );
-          }}
-        >
+        <Link key={index + "card"} className="card" to={"/game?id=" + game.id}>
           <div
             key={index + "card-image-wrapper"}
             className="card-image-wrapper"

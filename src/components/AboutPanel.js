@@ -1,11 +1,12 @@
 import React from "react";
+import "../styles/AboutPanel.css";
+
 import LogoEpicGamesStore from "../images/logo_epicgamesstore.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
-import "../styles/AboutPanel.css";
-import { GAFireEvent } from "../tracking/GA_Events_Tracker";
 
 function AboutPanel(props) {
+  // Functions
   return (
     <div className="about-panel-wrapper">
       <div className="about-partition-wrapper">
@@ -32,17 +33,7 @@ function AboutPanel(props) {
           sources:
         </div>
         <div className="about-games-source-links-wrapper">
-          <a
-            href="https://www.epicgames.com/store"
-            target="_blank"
-            onClick={() => {
-              GAFireEvent(
-                "External Link Click",
-                "About Page",
-                "Epic Games Store"
-              );
-            }}
-          >
+          <a href="https://www.epicgames.com/store" target="_blank">
             <img
               className="about-games-source-image"
               id="about-epic-image"
@@ -50,13 +41,7 @@ function AboutPanel(props) {
               alt="Epic Games Store Logo"
             />
           </a>
-          <a
-            href="https://www.gog.com/"
-            target="_blank"
-            onClick={() => {
-              GAFireEvent("External Link Click", "About Page", "Gog");
-            }}
-          >
+          <a href="https://www.gog.com/" target="_blank">
             <img
               className="about-games-source-image"
               id="about-gog-image"
@@ -65,13 +50,7 @@ function AboutPanel(props) {
             />
           </a>
 
-          <a
-            href="https://store.steampowered.com/"
-            target="_blank"
-            onClick={() => {
-              GAFireEvent("External Link Click", "About Page", "Steam");
-            }}
-          >
+          <a href="https://store.steampowered.com/" target="_blank">
             <img
               className="about-games-source-image"
               id="about-steam-image"

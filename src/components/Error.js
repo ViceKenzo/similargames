@@ -1,8 +1,10 @@
 import React from "react";
 import "../styles/Error.css";
+
 import ErrorImage from "../images/page_not_found.jpg";
 
-function Error(props) {
+function Error() {
+  // Functions
   return (
     <div className="error-wrapper">
       <div className="error-text-wrapper">
