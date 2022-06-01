@@ -16,16 +16,17 @@ function LandingPage(props) {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      requestSuggestionsFromServer();
+    }, 500);
+
+    return () => clearTimeout(delay);
+  }, [searchInputValue]);
+
   // Handlers
   const handleSearchInputChange = (event) => {
     setSearchInputValue(event.target.value);
-
-    // Trigger timeout such that it will only search on the server when the user has (likely) stopped typing
-    if (timeOut) clearTimeout(timeOut);
-
-    timeOut = setTimeout(() => {
-      requestSuggestionsFromServer();
-    }, 500);
   };
 
   // Functions

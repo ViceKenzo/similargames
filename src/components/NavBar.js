@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/NavBar.css";
 
@@ -24,9 +24,17 @@ function NavBar(props) {
   const [clicked, setClicked] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
+
   const location = useLocation();
 
-  let timeOut;
+  // Effects
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      requestSuggestionsFromServer();
+    }, 500);
+
+    return () => clearTimeout(delay);
+  }, [searchInputValue]);
 
   // Refs
   const landingRoutingEl = useRef(null);
@@ -42,17 +50,7 @@ function NavBar(props) {
 
   // Handlers
   const handleSearchInputChange = (event) => {
-    // Set searchinputvalue
-    let newSearchInputValue = event.target.value;
-
-    setSearchInputValue(newSearchInputValue);
-
-    // Trigger timeout such that it will only search on the server when the user has not given any input within a given amount of time
-    if (timeOut) clearTimeout(timeOut);
-
-    timeOut = setTimeout(() => {
-      requestSuggestionsFromServer();
-    }, 500);
+    setSearchInputValue(event.target.value);
   };
 
   const handleClick = () => {
