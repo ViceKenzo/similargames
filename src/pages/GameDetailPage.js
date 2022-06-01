@@ -31,7 +31,7 @@ function GameDetailPage(props) {
           <MoreLikeThisPanel
             games={moreLikeThisGames}
             serverAddress={props.serverAddress}
-            gameClickEvent={requestAndSetGameDetail}
+            requestAndSetGameDetail={requestAndSetGameDetail}
             mainGame={game}
           />
         </React.Fragment>
@@ -40,6 +40,8 @@ function GameDetailPage(props) {
 
   // Functions
   const requestAndSetGameDetail = (gameId) => {
+    setMoreLikeThisGames([]);
+
     const xhttp = new XMLHttpRequest();
     let requestUrl = props.serverAddress + "/gamedetail/" + gameId;
 

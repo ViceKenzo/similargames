@@ -1,20 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/MoreLikeThisPanel.css";
 
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
 
 function MoreLikeThisPanel(props) {
+  // Variables
+  const navigate = useNavigate();
+
   // Element Gets
   const getGamesProjection = () => {
     if (props.games != null && props.games.length > 0) {
       return props.games.map((game, index) => {
         return (
-          <Link
+          <a
             key={index + "link"}
             className="morelikethis-game"
-            to={"/game?id=" + game.id}
+            //to={"/game?id=" + game.id}
             onClick={() => {
+              navigate("/game?id=" + game.id);
               props.requestAndSetGameDetail(game.id);
             }}
           >
@@ -33,7 +37,7 @@ function MoreLikeThisPanel(props) {
             <div key={index + "title"} className="morelikethis-game-title">
               <p key={index + "title-p"}>{game.title}</p>
             </div>
-          </Link>
+          </a>
         );
       });
     } else return;

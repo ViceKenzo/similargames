@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/SearchBar.css";
 
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
@@ -10,6 +10,8 @@ function SearchBar(props) {
   // Variables
   const [searchBarHidden, setSearchBarHidden] = useState(true);
   const [xIconVisible, setXIconVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   // Refs
   const compSearchInput = useRef(null);
@@ -123,12 +125,12 @@ function SearchBar(props) {
           props.searchSuggestions.map((game, index) => {
             return (
               <div key={index}>
-                <Link
+                <a
                   key={index + "result"}
                   className="search-product-result"
-                  to={"/find-games-like?q=" + game.web_name}
-                  onClick={() => {
-                    props.handleSuggestionClick(game.web_name);
+                  onClick={(event) => {
+                    event.preventDefault();
+                    navigate("/find-games-like?q=" + game.web_name);
                     setSearchBarHidden(true);
                   }}
                 >
@@ -172,7 +174,7 @@ function SearchBar(props) {
                   >
                     {game.release_date}
                   </div>
-                </Link>
+                </a>
               </div>
             );
           })}
