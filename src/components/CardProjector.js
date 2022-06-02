@@ -26,7 +26,10 @@ function CardProjector(props) {
               key={index + "card-image"}
               className="card-image"
               src={
-                props.serverAddress + "/header_images/" + game.image_id + ".jpg"
+                props.config.serverAddress +
+                "/header_images/" +
+                game.image_id +
+                ".jpg"
               }
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // This is to prevent accidental looping

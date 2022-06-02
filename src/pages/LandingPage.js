@@ -47,7 +47,7 @@ function LandingPage(props) {
 
     xhttp.open(
       "get",
-      props.serverAddress + "/suggestedgames/" + tempSearchInputValue,
+      props.config.serverAddress + "/suggestedgames/" + tempSearchInputValue,
       true
     );
 
@@ -73,9 +73,9 @@ function LandingPage(props) {
           setSearchSuggestions([]);
         }}
         searchInputValue={searchInputValue}
-        serverAddress={props.serverAddress}
+        serverAddress={props.config.serverAddress}
       />
-      <PopularCardPanel serverAddress={props.serverAddress} />
+      <PopularCardPanel serverAddress={props.config.serverAddress} />
     </React.Fragment>
   );
 }

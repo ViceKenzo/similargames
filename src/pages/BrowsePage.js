@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import ReactGA from "react-ga";
 import "../styles/BrowsePage.css";
 
 import BrowseHeader from "../components/BrowseHeader.js";
@@ -27,8 +28,7 @@ function BrowsePage(props) {
   );
 
   const location = useLocation();
-
-  let matchingTimeout = null;
+  ReactGA.initialize(props.config.GA_TRACKING_CODE);
 
   //Effects
   useEffect(() => {
@@ -60,8 +60,30 @@ function BrowsePage(props) {
     }
   }, [location.search]);
 
+  useEffect(() => {
+    if (targetGame) {
+      const delay = setTimeout(() => {
+        ReactGA.event({
+          category: "Filter Change",
+          action: "Match Value",
+          label: matchValue,
+        });
+        updateSearchResults();
+      }, 500);
+      return () => clearTimeout(delay);
+    }
+  }, [matchValue]);
+
   // Handlers
   const handleSortChange = (event) => {
+    if (targetGame) {
+      ReactGA.event({
+        category: "Filter Change",
+        action: "Sort Change",
+        label: event.target.value,
+      });
+    }
+
     setSorting(event.target.value);
   };
 
@@ -74,24 +96,33 @@ function BrowsePage(props) {
   };
 
   const handleChangeMatching = (event) => {
-    // Trigger if slider hasn't been moved for x amount of time
-    if (matchingTimeout) clearTimeout(matchingTimeout);
-
-    matchingTimeout = setTimeout(() => {
-      updateSearchResults();
-    }, 500);
-
     setMatchValue(event.target.value);
   };
 
   const handleNSFWClick = () => {
     if (!targetGame) return;
 
+    if (targetGame) {
+      ReactGA.event({
+        category: "Filter Change",
+        action: "NSFW Click",
+        label: !showNSFW + "",
+      });
+    }
+
     setShowNSFW(!showNSFW);
   };
 
   const handleSameDeveloperClick = () => {
     if (!targetGame) return;
+
+    if (targetGame) {
+      ReactGA.event({
+        category: "Filter Change",
+        action: "Same Developer Click",
+        label: !showSameDeveloper + "",
+      });
+    }
 
     setShowSameDeveloper(!showSameDeveloper);
   };
@@ -166,7 +197,7 @@ function BrowsePage(props) {
 
     const xhttp = new XMLHttpRequest();
     let requestUrl =
-      props.serverAddress + "/similargames" + "/" + tempSearchWord;
+      props.config.serverAddress + "/similargames" + "/" + tempSearchWord;
 
     xhttp.open("get", requestUrl, true);
 
@@ -215,7 +246,7 @@ function BrowsePage(props) {
         clearSearchSuggestions={() => {
           setSearchSuggestions([]);
         }}
-        serverAddress={props.serverAddress}
+        serverAddress={props.config.serverAddress}
         targetGame={targetGame}
       />
       <div className="browsing-navigation-filter-wrapper">
@@ -252,7 +283,7 @@ function BrowsePage(props) {
             handleSortChange={handleSortChange}
             handlePageChange={handlePageChange}
             searchResultMessage={searchResultMessage}
-            serverAddress={props.serverAddress}
+            config={props.config}
           />
         </div>
         <div className="browsing-filters-wrapper-right">

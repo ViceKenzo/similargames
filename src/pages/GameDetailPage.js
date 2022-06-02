@@ -34,10 +34,13 @@ function GameDetailPage(props) {
     if (game)
       return (
         <React.Fragment>
-          <GameDetailCard serverAddress={props.serverAddress} game={game} />
+          <GameDetailCard
+            serverAddress={props.config.serverAddress}
+            game={game}
+          />
           <MoreLikeThisPanel
             games={moreLikeThisGames}
-            serverAddress={props.serverAddress}
+            serverAddress={props.config.serverAddress}
             requestAndSetGameDetail={requestAndSetGameDetail}
             mainGame={game}
           />
@@ -50,7 +53,7 @@ function GameDetailPage(props) {
     setMoreLikeThisGames([]);
 
     const xhttp = new XMLHttpRequest();
-    let requestUrl = props.serverAddress + "/gamedetail/" + gameId;
+    let requestUrl = props.config.serverAddress + "/gamedetail/" + gameId;
 
     xhttp.open("get", requestUrl, true);
 
@@ -74,7 +77,11 @@ function GameDetailPage(props) {
 
     const xhttp = new XMLHttpRequest();
     let requestUrl =
-      props.serverAddress + "/gameslike/" + gameId + "/" + amountRequested;
+      props.config.serverAddress +
+      "/gameslike/" +
+      gameId +
+      "/" +
+      amountRequested;
 
     xhttp.open("get", requestUrl, true);
 

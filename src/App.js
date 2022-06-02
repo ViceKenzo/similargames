@@ -19,29 +19,23 @@ function App() {
     <div className="App">
       <Router>
         <img className="main-background" src={backgroundImage} />
-        <NavBar serverAddress={Config.serverAddress} />
+        <NavBar config={Config} />
         <Routes>
-          <Route
-            path="/"
-            exact
-            element={<LandingPage serverAddress={Config.serverAddress} />}
-          />
+          <Route path="/" exact element={<LandingPage config={Config} />} />
           <Route
             path="/find-games-like"
             exact
-            element={<BrowsePage serverAddress={Config.serverAddress} />}
+            element={<BrowsePage config={Config} />}
           />
-          <Route
-            path="/game"
-            element={<GameDetailPage serverAddress={Config.serverAddress} />}
-          />
-          <Route path="/about" exact element={<AboutPage />} />
+          <Route path="/game" element={<GameDetailPage config={Config} />} />
+          <Route path="/about" exact element={<AboutPage />} config={Config} />
           <Route
             path="/connection-error"
             exact
             element={<ConnectionErrorPage />}
+            config={Config}
           />
-          <Route path="/*" element={<ErrorPage />} />
+          <Route path="/*" element={<ErrorPage />} config={Config} />
         </Routes>
         <Footer />
       </Router>

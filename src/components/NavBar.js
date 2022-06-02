@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactGA from "react-ga";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/NavBar.css";
 
@@ -27,10 +28,16 @@ function NavBar(props) {
 
   const location = useLocation();
 
+  ReactGA.initialize(props.config.GA_TRACKING_CODE);
+
   // Effects
   useEffect(() => {
     closeMobileMenu();
   }, [location.pathname]);
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.href);
+  }, [location.pathname, location.search]);
 
   useEffect(() => {
     const delay = setTimeout(() => {
@@ -84,7 +91,7 @@ function NavBar(props) {
 
     xhttp.open(
       "get",
-      props.serverAddress + "/suggestedgames/" + tempSearchInputValue,
+      props.config.serverAddress + "/suggestedgames/" + tempSearchInputValue,
       true
     );
 
@@ -116,7 +123,7 @@ function NavBar(props) {
               setSearchSuggestions([]);
             }}
             searchInputValue={searchInputValue}
-            serverAddress={props.serverAddress}
+            serverAddress={props.config.serverAddress}
           />
         </div>
         <div className="menu-icon-wrapper">
@@ -173,7 +180,7 @@ function NavBar(props) {
             setSearchSuggestions([]);
           }}
           searchInputValue={searchInputValue}
-          serverAddress={props.serverAddress}
+          serverAddress={props.config.serverAddress}
         />
       </div>
     </div>

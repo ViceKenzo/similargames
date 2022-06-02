@@ -21,7 +21,7 @@ function BrowseNavigator(props) {
       <CardProjector
         searchResults={props.searchResults}
         searchResultMessage={props.searchResultMessage}
-        serverAddress={props.serverAddress}
+        config={props.config}
       />
       <ProjectorControlPanel
         sortByIsVisible={false}
