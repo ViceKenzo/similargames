@@ -29,6 +29,10 @@ function NavBar(props) {
 
   // Effects
   useEffect(() => {
+    closeMobileMenu();
+  }, [location.pathname]);
+
+  useEffect(() => {
     const delay = setTimeout(() => {
       requestSuggestionsFromServer();
     }, 500);
@@ -58,6 +62,10 @@ function NavBar(props) {
   };
 
   // Functions
+  const closeMobileMenu = () => {
+    setClicked(false);
+  };
+
   const submitSearch = (event) => {
     if (event) event.preventDefault();
 
@@ -111,11 +119,33 @@ function NavBar(props) {
             serverAddress={props.serverAddress}
           />
         </div>
-        <div className="menu-icon">
-          <FontAwesomeIcon
-            onClick={handleClick}
-            icon={clicked ? faXmark : faBars}
-          />
+        <div className="menu-icon-wrapper">
+          <div className="menu-icon">
+            <FontAwesomeIcon
+              onClick={handleClick}
+              icon={clicked ? faXmark : faBars}
+            />
+          </div>
+
+          {/* Mobile Menu, hidden */}
+          <ul
+            className={clicked ? "nav-menu-mobile active" : "nav-menu-mobile"}
+          >
+            {menuItems.map((item, index) => {
+              return (
+                <Link
+                  key={index * 2 + item.cName}
+                  className={item.cName}
+                  to={item.href}
+                  onClick={() => {
+                    closeMobileMenu();
+                  }}
+                >
+                  {item.title}
+                </Link>
+              );
+            })}
+          </ul>
         </div>
         <ul className={clicked ? "nav-menu active" : "nav-menu"}>
           {menuItems.map((item, index) => {
@@ -133,21 +163,6 @@ function NavBar(props) {
           })}
         </ul>
       </nav>
-
-      {/* Mobile Menu, hidden */}
-      <ul className={clicked ? "nav-menu-mobile active" : "nav-menu-mobile"}>
-        {menuItems.map((item, index) => {
-          return (
-            <Link
-              key={index * 2 + item.cName}
-              className={item.cName}
-              to={item.href}
-            >
-              {item.title}
-            </Link>
-          );
-        })}
-      </ul>
 
       <div className={"search-bar-mobile " + getSearchBarNavBarWrapperClass()}>
         <SearchBar

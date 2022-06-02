@@ -18,6 +18,10 @@ function GameDetailPage(props) {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.search]);
+
+  useEffect(() => {
     let qParam = new URLSearchParams(location.search).get("id");
 
     if (qParam && qParam > 0) {

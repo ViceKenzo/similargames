@@ -221,12 +221,15 @@ function GameDetailCard(props) {
         {GetDescriptionElements()}
       </div>
       <div className="game-detail-right-hand-wrapper">
-        {getGameDetailAdditionals()}
+        <div className="extra-info-announcer">Additional Info</div>
+        <div className="extra-info-wrapper">
+          {getGameDetailAdditionals()}
 
-        <div className="game-detail-source-link-wrapper">
-          {GetSteamButton()}
-          {GetGogButton()}
-          {GetEpicGamesButton()}
+          <div className="game-detail-source-link-wrapper">
+            {GetSteamButton()}
+            {GetGogButton()}
+            {GetEpicGamesButton()}
+          </div>
         </div>
       </div>
     </div>

@@ -111,6 +111,10 @@
   flex-basis: 0;
 }
 
+.extra-info-announcer{
+  display:none;
+}
+
 .game-detail-additionals {
   border: 2px solid var(--detail-border-color);
   border-radius: 10px;
@@ -235,19 +239,54 @@
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .game-detail-source-name{
+    font-size: 14px;
+    margin-right: 2px;
+  }
+}
+
 /* Max width for smart phones */
 @media screen and (max-width: 960px) {
   .game-detail-card {
     display: flex;
     flex-direction: column;
+
+    margin-bottom: 40px;
   }
 
   .game-detail-right-hand-wrapper {
     display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .extra-info-announcer{
+    display:block;
+    font-size: 20px;
+
+    color: var(--default-text-color);
+  
+    border-bottom: 2px solid;
+    border-color: var(--card-background-color);
+  
+    padding-left: 2px;
+    padding-bottom: 2px;
+    margin-bottom: 5px;
+  
+    width: 100%;
+  }
+
+  .extra-info-wrapper{
+    display:flex;
     flex-direction: row;
 
     justify-content: center;
     align-items: center;
+
+    margin-left: 30px;
   }
 
   #game-detail-mobile-title {
@@ -272,8 +311,9 @@
 
     width: 40%;
 
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 30px;
   }
 
   .game-detail-source-button {
@@ -282,6 +322,10 @@
   }
 
   .game-detail-source-link-wrapper {
-    padding-left: 30px;
+  }
+
+  .game-detail-source-name{
+    font-size: 16px;
+    margin-right: 0px;
   }
 }

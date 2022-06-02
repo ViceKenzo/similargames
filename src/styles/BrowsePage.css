@@ -3,6 +3,8 @@
   padding-right: var(--global-window-border-padding);
 
   min-height: 500px;
+
+  margin-bottom: 160px;
 }
 
 .browsing-navigation-filter-wrapper {
@@ -21,6 +23,12 @@
 
 .browsing-filters-wrapper-left {
   display: none;
+}
+
+@media screen and (max-width: 960px){
+  .browsing-wrapper {
+    margin-bottom:55%;
+  }
 }
 
 /* Max width for smart phones */

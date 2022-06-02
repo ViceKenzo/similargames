@@ -35,7 +35,12 @@ function BrowseFilters(props) {
                 name="nsfw-checkbox"
                 onClick={props.handleNSFWClick}
               />
-              <div className="search-filter-checkbox-name">NSFW</div>
+              <div
+                className="search-filter-checkbox-name"
+                title="Show games that have an NSFW tag"
+              >
+                NSFW
+              </div>
             </div>
 
             <div className="search-filter-checkbox-wrapper">
@@ -46,7 +51,12 @@ function BrowseFilters(props) {
                 name="same-developer-checkbox"
                 onClick={props.handleSameDeveloperClick}
               />
-              <div className="search-filter-checkbox-name">Same developer</div>
+              <div
+                className="search-filter-checkbox-name"
+                title="Show games that have the same developer as the requested game"
+              >
+                Same Dev.
+              </div>
             </div>
           </div>
         </div>

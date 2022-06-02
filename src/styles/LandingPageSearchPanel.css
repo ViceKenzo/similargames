@@ -123,3 +123,15 @@
     width: 360px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .landing-page-search-panel .search-bar{
+    min-width: 350px;
+  }
+
+  .landing-page-search-panel .search-results{
+    min-width: 350px;
+    max-width: 350px;
+    width: 350px;
+  }
+}

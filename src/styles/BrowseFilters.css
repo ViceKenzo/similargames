@@ -26,10 +26,7 @@
   border-color: var(--filter-border-color);
   border-radius: 10px;
 
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 10px;
 
   margin-left: 5px;
   margin-right: 5px;
@@ -61,7 +58,7 @@ input[type="checkbox"] {
 }
 
 .search-filter-checkbox-name {
-  font-size: 16px;
+  font-size: 14px;
   color: var(--default-text-color);
   padding-left: 2px;
 }

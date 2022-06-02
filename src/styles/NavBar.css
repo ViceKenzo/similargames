@@ -3,7 +3,6 @@
 }
 
 .NavBarItems {
-
   background-color: var(--navbar-background-color);
   font-size: 24px;
   color: var(--default-text-color);
@@ -99,36 +98,35 @@
 }
 
 .nav-menu-mobile {
+  position: absolute;
+  width: 100%;
+  right: 0px;
+
   display: none;
   flex-grow: 1;
-  align-content: center;
-  justify-content: right;
-
-  margin: 0;
-  padding-left: var(--global-window-border-padding);
-  padding-right: var(--global-window-border-padding);
 
   list-style: none;
 }
 
 .nav-menu-mobile a {
-  background-color: var(--searchbar-suggestion-background);
-  color: var(--default-text-color);
+  overflow: hidden;
+  background-color: var(--nav-mobile-background-color);
+  color: var(--nav-mobile-text-color) !important;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   border-style: outset;
-  border-color: black;
+  border-color: var(--nav-mobile-border-color);
   border-width: 1px;
-  height: 45px;
+  height: 50px;
 
   cursor: pointer;
 }
 
 .nav-menu-mobile a:hover {
-  background-color: var(--searchbar-background-color);
+  background-color: var(--nav-mobile-hover-color);
 }
 
 .nav-menu-mobile a {
@@ -218,8 +216,14 @@
 
   .search-bar-mobile .search-product-result{
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
     align-items: center;
+  }
+
+  .search-bar-mobile .search-product-result-desc{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
   }
 
   .search-bar-mobile{
