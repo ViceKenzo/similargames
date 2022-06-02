@@ -4,6 +4,7 @@ import "./App.css";
 import LandingPage from "./pages/LandingPage.js";
 import AboutPage from "./pages/AboutPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
+import ConnectionErrorPage from "./pages/ConnectionErrorPage.js";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
 import Config from "./config/config.js";
@@ -35,6 +36,11 @@ function App() {
             element={<GameDetailPage serverAddress={Config.serverAddress} />}
           />
           <Route path="/about" exact element={<AboutPage />} />
+          <Route
+            path="/connection-error"
+            exact
+            element={<ConnectionErrorPage />}
+          />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <Footer />

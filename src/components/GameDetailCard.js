@@ -10,45 +10,47 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function GameDetailCard(props) {
   // Elemenet gets
-  const GetReleaseDateElements = (release_date) => {
-    if (release_date) {
-      return (
-        <div className="game-detail-additional-wrapper">
-          <div className="game-detail-additional-announcer">Release Date</div>
-          <div className="game-detail-additional-info">{release_date}</div>
+  const GetReleaseDateElements = () => {
+    return (
+      <div className="game-detail-additional-wrapper">
+        <div className="game-detail-additional-announcer">Release Date</div>
+        <div className="game-detail-additional-info">
+          {props.game.release_date}
         </div>
-      );
-    }
+      </div>
+    );
   };
 
-  const GetDeveloperElements = (developer) => {
-    if (developer) {
-      return (
-        <div className="game-detail-additional-wrapper">
-          <div className="game-detail-additional-announcer">Developer</div>
-          <div className="game-detail-additional-info">{developer}</div>
+  const GetDeveloperElements = () => {
+    return (
+      <div className="game-detail-additional-wrapper">
+        <div className="game-detail-additional-announcer">Developer</div>
+        <div className="game-detail-additional-info">
+          {props.game.developer}
         </div>
-      );
-    }
+      </div>
+    );
   };
 
-  const GetPublisherElements = (publisher) => {
-    if (publisher) {
-      return (
-        <div className="game-detail-additional-wrapper">
-          <div className="game-detail-additional-announcer">Publisher</div>
-          <div className="game-detail-additional-info">{publisher}</div>
+  const GetPublisherElements = () => {
+    return (
+      <div className="game-detail-additional-wrapper">
+        <div className="game-detail-additional-announcer">Publisher</div>
+        <div className="game-detail-additional-info">
+          {props.game.publisher}
         </div>
-      );
-    }
+      </div>
+    );
   };
 
   const GetDescriptionElements = (description) => {
-    if (description) {
+    if (props.game && props.game.description) {
       return (
         <div className="detail-card-description-wrapper">
           <div className="detail-card-description-announcer">Description</div>
-          <div className="detail-card-description">{description}</div>
+          <div className="detail-card-description">
+            {props.game.description}
+          </div>
         </div>
       );
     }
@@ -162,6 +164,23 @@ function GameDetailCard(props) {
     }
   };
 
+  const getGameDetailAdditionals = () => {
+    if (
+      props.game &&
+      props.game.release_date &&
+      props.game.developer &&
+      props.game.publisher
+    ) {
+      return (
+        <div className="game-detail-additionals">
+          {GetReleaseDateElements()}
+          {GetDeveloperElements()}
+          {GetPublisherElements()}
+        </div>
+      );
+    }
+  };
+
   // Functions
   return (
     <div className="game-detail-card">
@@ -199,14 +218,10 @@ function GameDetailCard(props) {
             );
           })}
         </div>
-        {GetDescriptionElements(props.game.description)}
+        {GetDescriptionElements()}
       </div>
       <div className="game-detail-right-hand-wrapper">
-        <div className="game-detail-additionals">
-          {GetReleaseDateElements(props.game.release_date)}
-          {GetDeveloperElements(props.game.developer)}
-          {GetPublisherElements(props.game.publisher)}
-        </div>
+        {getGameDetailAdditionals()}
 
         <div className="game-detail-source-link-wrapper">
           {GetSteamButton()}

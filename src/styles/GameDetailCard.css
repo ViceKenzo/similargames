@@ -258,6 +258,10 @@
     display: none;
   }
 
+  .detail-card-description-wrapper{
+    margin-bottom: 25px;
+  }
+
   .game-detail-additionals {
     justify-content: center;
     align-items: center;

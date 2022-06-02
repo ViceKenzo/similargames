@@ -68,6 +68,7 @@ function NavBar(props) {
 
   const requestSuggestionsFromServer = () => {
     if (!searchInputValue || searchInputValue == "") return;
+    setSearchSuggestions([]);
 
     const xhttp = new XMLHttpRequest();
 

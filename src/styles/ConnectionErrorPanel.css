@@ -1,58 +1,66 @@
-.error-wrapper {
+.connection-error-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
-.error-text-wrapper {
+.connection-error-text-wrapper {
   color: var(--default-text-color);
   padding-bottom: 15px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-bottom: 20px;
 }
 
-.error-header {
+.connection-error-header {
   font-size: 40px;
+  padding-bottom: 5px;
 }
 
-.error-report {
+.connection-error-report {
   color: var(--weaker-text-color);
-  font-size: 16px;
+  font-size: 18px;
+  text-align: center;
 }
 
-.error-image {
+.connection-error-image {
   border-radius: 8px;
   box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.158);
 }
 
 @media screen and (max-width: 1400px) {
-  .error-image-wrapper{
+  .connection-error-image-wrapper{
     margin-bottom: 60%;
   }
 
-  .error-image{
+  .connection-error-image{
     width: 600px;
   }
 }
 
 @media screen and (max-width: 980px) {
-  .error-image-wrapper{
+  .connection-error-image-wrapper{
     margin-bottom: 60%;
   }
 
-  .error-image{
+  .connection-error-image{
     width: 500px;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .error-image-wrapper{
+  .connection-error-image-wrapper{
     margin-bottom: 60%;
   }
 
-  .error-image{
+  .connection-error-image{
     width: 300px;
   }
 }

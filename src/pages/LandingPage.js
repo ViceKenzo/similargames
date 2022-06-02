@@ -39,6 +39,8 @@ function LandingPage(props) {
   const requestSuggestionsFromServer = () => {
     if (!searchInputValue || searchInputValue == "") return;
 
+    setSearchSuggestions([]);
+
     const xhttp = new XMLHttpRequest();
 
     const tempSearchInputValue = searchInputValue.replace(/[\W_]+/g, "");

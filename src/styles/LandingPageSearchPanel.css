@@ -103,6 +103,12 @@
 
 /* Max width for smart phones */
 @media screen and (max-width: 960px) {
+  .search-product-result{
+    display: flex;
+    flex-direction: column;;
+    align-items: center;
+  }
+
   .landing-page-search-panel {
     height: 400px;
   }
