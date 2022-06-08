@@ -10,102 +10,131 @@
   flex-grow: 1;
 }
 
-.search-panel-header {
-  width: 700px;
+.landing-page-search-panel .search-panel-search-bar{
+  width: 55%;
+  min-width: 700px;
+}
+
+.landing-page-search-panel .search-bar-input{
+  height: 40px;
+}
+
+.landing-page-search-panel .search-results{
+  width: 55%;
+  min-width: 700px;
+  max-height: 450px;
+}
+
+.landing-page-search-panel .search-product-result{
+  flex-direction: row;
+}
+
+.landing-page-search-panel .search-product-result-desc{
+  align-items: flex-start;
+}
+
+.landing-page-search-panel .search-panel-header {
+  padding-bottom: 15px;
+}
+
+.landing-page-search-panel .search-panel-image-wrapper{
+  margin-left: 35px;
+  margin-right: 35px;
 
   padding-bottom: 15px;
 }
 
-.search-panel-search-bar {
+.landing-page-search-panel .search-panel-search-bar {
   display: block;
-  width: 50%;
 
   padding-bottom: 10px;
   justify-self: center;
 }
 
-.search-panel-main-phrase {
+.landing-page-search-panel .search-panel-main-phrase {
   color: var(--catch-phrase-text-color);
   font-size: 24px;
 
   padding-bottom: 15px;
 }
 
-.search-panel-footer {
+.landing-page-search-panel .search-panel-footer {
   display: flex;
   align-items: center;
   justify-items: center;
   padding: 7px;
 }
 
-.search-panel-footer:hover{
+.landing-page-search-panel .search-panel-footer:hover{
   border-radius: 10px;
 
   background-color: var(--about-block-hover-color);
 }
 
-.search-panel-icon-announcer {
+.landing-page-search-panel .search-panel-icon-announcer {
   font-size: 20px;
   padding-right: 20px;
 }
 
-.search-panel-icon-wrapper {
+.landing-page-search-panel .search-panel-icon-wrapper {
   display: grid;
   grid-template-columns: repeat(3, auto);
   grid-column-gap: 20px;
   align-items: center;
 }
 
-.logo-epic {
-  width: 50px;
-  height: 76.25px;
-
+.landing-page-search-panel .logo-epic {
   padding-left: 2.5px;
   padding-right: 2.5px;
+  width: 50px;
+  height: 76.25px;
 }
 
-.logo-epic:hover {
+.landing-page-search-panel .logo-epic:hover{
   width: 53px;
   height: 76.25px;
 }
 
-.logo-steam {
-  width: 50px;
-  height: 50px;
-
+.landing-page-search-panel .logo-steam {
   padding-left: 2.5px;
   padding-right: 2.5px;
+  width: 50px;
+  height: 50px;
 }
 
-.logo-steam:hover {
+.landing-page-search-panel .logo-steam:hover{
   width: 55px;
   height: 55px;
 }
 
-.logo-gog {
-  width: 50px;
-  height: 50px;
-
+.landing-page-search-panel .logo-gog {
   padding-left: 2.5px;
   padding-right: 2.5px;
+  width: 50px;
+  height: 50px;
 }
 
-.logo-gog:hover {
+.landing-page-search-panel .logo-gog:hover{
   width: 55px;
   height: 55px;
 }
 
 @media screen and (max-width: 1450px) {
-  .search-panel-header{
-    width: 600px;
-  }
 }
 
 /* Max width for smart phones */
 @media screen and (max-width: 960px) {
-  .search-product-result{
-    display: flex;
-    flex-direction: column;;
+  .landing-page-search-panel .search-panel-search-bar{
+    width: 80%;
+    min-width: 450px;
+  }
+
+  .landing-page-search-panel .search-results{
+    width: 80%;
+    min-width: 450px;
+  }
+
+  .landing-page-search-panel .search-product-result-desc{
     align-items: center;
   }
 
@@ -124,14 +153,25 @@
   }
 }
 
-@media screen and (max-width: 500px) {
-  .landing-page-search-panel .search-bar{
+@media screen and (max-width: 800px) {
+  .landing-page-search-panel .search-product-result{
+    flex-direction: column;
+  }
+
+  .landing-page-search-panel .search-product-result-desc{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .landing-page-search-panel .search-panel-search-bar{
     min-width: 350px;
   }
 
   .landing-page-search-panel .search-results{
     min-width: 350px;
-    max-width: 350px;
-    width: 350px;
   }
 }

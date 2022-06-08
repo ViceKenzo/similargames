@@ -100,6 +100,13 @@
   padding: 0px;
   margin: 0px;
 }
+
+@media screen and (max-width: 1250px) {
+  .card-release-date{
+    display:none;
+  }
+}
+
 /* Max width for smart phones */
 @media screen and (max-width: 960px) {
   .card-release-date {
@@ -159,5 +166,14 @@
 
   .card-tags{
     display: none;
+  }
+  
+  #no-search-result-card{
+    height: 200px;
+    padding: 10px;
+  }
+
+  #no-search-result-card .card-text-wrapper{
+    padding: 5px;
   }
 }
