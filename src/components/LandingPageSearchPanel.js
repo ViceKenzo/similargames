@@ -12,11 +12,13 @@ function LandingPageSearchPanel(props) {
   // Functions
   return (
     <div className="landing-page-search-panel">
-      <img
-        className="search-panel-header"
-        src={SimilarGamesHeaderImage}
-        alt="Similar Games Logo"
-      />
+      <div className="search-panel-image-wrapper">
+        <img
+          className="search-panel-header"
+          src={SimilarGamesHeaderImage}
+          alt="Similar Games Logo"
+        />
+      </div>
       <div className="search-panel-search-bar">
         <SearchBar
           submitSearch={props.submitSearch}
@@ -28,7 +30,7 @@ function LandingPageSearchPanel(props) {
         ></SearchBar>
       </div>
       <div className="search-panel-main-phrase">
-        Find the games you'll love.
+        Find the games you&apos;ll love.
       </div>
       <div className="search-panel-footer">
         <span className="search-panel-icon-announcer">On:</span>
@@ -38,16 +40,26 @@ function LandingPageSearchPanel(props) {
               className="logo-epic"
               src={LogoEpicGamesStore}
               alt="Epic Games Store Logo"
+              width={50}
+              height={76.25}
             />
           </a>
           <a href="https://www.gog.com/" target="_blank">
-            <img className="logo-gog" src={LogoGog} alt="Gog Logo" />
+            <img
+              className="logo-gog"
+              src={LogoGog}
+              alt="Gog Logo"
+              width={50}
+              height={50}
+            />
           </a>
           <a href="https://store.steampowered.com/" target="_blank">
             <img
               className="logo-steam "
               src={LogoSteamStore}
               alt="Steam Store Logo"
+              width={50}
+              height={50}
             />
           </a>
         </div>

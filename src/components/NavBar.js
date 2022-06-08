@@ -109,7 +109,9 @@ function NavBar(props) {
         <Link to="/" className="navbar-logo" href="/">
           SimilarGames
         </Link>
-        <div className={getSearchBarNavBarWrapperClass()}>
+        <div
+          className={"search-bar-wrapper " + getSearchBarNavBarWrapperClass()}
+        >
           <Link
             style={{ display: "hidden" }}
             to={"/find-games-like?q=" + searchInputValue}
@@ -131,6 +133,8 @@ function NavBar(props) {
             <FontAwesomeIcon
               onClick={handleClick}
               icon={clicked ? faXmark : faBars}
+              width={21}
+              height={24}
             />
           </div>
 
