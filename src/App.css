@@ -61,3 +61,8 @@
   position: fixed;
   z-index: -100;
 }
+
+html {
+  overflow: -moz-scrollbars-vertical; 
+  overflow-y: scroll;
+}
