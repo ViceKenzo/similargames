@@ -85,7 +85,6 @@ function SearchBar(props) {
     }
   };
 
-  // Functions
   return (
     <div className="search-bar" ref={searchBar}>
       <div className="search-bar-input">
@@ -94,7 +93,7 @@ function SearchBar(props) {
             type="text"
             onChange={handleChange}
             value={props.searchInputValue}
-            placeholder="Search for games that play like..."
+            placeholder={"Search for games like..."}
             ref={compSearchInput}
             onClick={handleClickSearchInput}
             maxLength="100"
