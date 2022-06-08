@@ -9,8 +9,6 @@ function LandingPage(props) {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
 
-  let timeOut = null;
-
   // Effects
   useEffect(() => {
     window.scrollTo(0, 0);

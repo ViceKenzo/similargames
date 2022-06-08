@@ -17,6 +17,8 @@ function LandingPageSearchPanel(props) {
           className="search-panel-header"
           src={SimilarGamesHeaderImage}
           alt="Similar Games Logo"
+          width={700}
+          height={152.17}
         />
       </div>
       <div className="search-panel-search-bar">
