@@ -102,6 +102,10 @@
 }
 
 @media screen and (max-width: 1250px) {
+  .card-text-wrapper{
+    padding-right: 15px;
+  }
+
   .card-release-date{
     display:none;
   }
