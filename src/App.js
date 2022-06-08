@@ -7,7 +7,6 @@ import ErrorPage from "./pages/ErrorPage.js";
 import ConnectionErrorPage from "./pages/ConnectionErrorPage.js";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer.js";
-import Config from "./config/config.js";
 import BrowsePage from "./pages/BrowsePage.js";
 import GameDetailPage from "./pages/GameDetailPage.js";
 
@@ -19,23 +18,18 @@ function App() {
     <div className="App">
       <Router>
         <img className="main-background" src={backgroundImage} />
-        <NavBar config={Config} />
+        <NavBar />
         <Routes>
-          <Route path="/" exact element={<LandingPage config={Config} />} />
-          <Route
-            path="/find-games-like"
-            exact
-            element={<BrowsePage config={Config} />}
-          />
-          <Route path="/game" element={<GameDetailPage config={Config} />} />
-          <Route path="/about" exact element={<AboutPage />} config={Config} />
+          <Route path="/" exact element={<LandingPage />} />
+          <Route path="/find-games-like" exact element={<BrowsePage />} />
+          <Route path="/game" element={<GameDetailPage />} />
+          <Route path="/about" exact element={<AboutPage />} />
           <Route
             path="/connection-error"
             exact
             element={<ConnectionErrorPage />}
-            config={Config}
           />
-          <Route path="/*" element={<ErrorPage />} config={Config} />
+          <Route path="/*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </Router>

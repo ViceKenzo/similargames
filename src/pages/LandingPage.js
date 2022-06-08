@@ -1,8 +1,10 @@
 import React, { Component, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Config from "../config/config";
+import { Helmet } from "react-helmet";
 
 import LandingPageSearchPanel from "../components/LandingPageSearchPanel.js";
 import PopularCardPanel from "../components/PopularCardPanel.js";
+import Config from "../config/config.js";
 
 function LandingPage(props) {
   // Variables
@@ -45,7 +47,7 @@ function LandingPage(props) {
 
     xhttp.open(
       "get",
-      props.config.serverAddress + "/suggestedgames/" + tempSearchInputValue,
+      Config.serverAddress + "/suggestedgames/" + tempSearchInputValue,
       true
     );
 
@@ -59,10 +61,14 @@ function LandingPage(props) {
 
   return (
     <React.Fragment>
-      <Link
-        style={{ display: "hidden" }}
-        to={"/find-games-like?q=" + searchInputValue}
-      />
+      <Helmet>
+        <meta
+          name="description"
+          content="Find games that look, play and feel like other games you’ve played before. With this new and free 'Games Like Engine', you can explore the entire catalog of games found on Gog, Steam and Epic Games Store."
+        />
+        <meta name="keywords" content={Config.metaTags} />
+        <title>SimilarGames - Find Related Games</title>
+      </Helmet>
       <LandingPageSearchPanel
         submitSearch={submitSearch}
         searchSuggestions={searchSuggestions}
@@ -71,9 +77,9 @@ function LandingPage(props) {
           setSearchSuggestions([]);
         }}
         searchInputValue={searchInputValue}
-        serverAddress={props.config.serverAddress}
+        serverAddress={Config.serverAddress}
       />
-      <PopularCardPanel serverAddress={props.config.serverAddress} />
+      <PopularCardPanel serverAddress={Config.serverAddress} />
     </React.Fragment>
   );
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import Config from "../config/config";
 import "../styles/GameDetailPage.css";
 
 import GameDetailCard from "../components/GameDetailCard.js";
@@ -34,13 +36,10 @@ function GameDetailPage(props) {
     if (game)
       return (
         <React.Fragment>
-          <GameDetailCard
-            serverAddress={props.config.serverAddress}
-            game={game}
-          />
+          <GameDetailCard serverAddress={Config.serverAddress} game={game} />
           <MoreLikeThisPanel
             games={moreLikeThisGames}
-            serverAddress={props.config.serverAddress}
+            serverAddress={Config.serverAddress}
             requestAndSetGameDetail={requestAndSetGameDetail}
             mainGame={game}
           />
@@ -53,7 +52,7 @@ function GameDetailPage(props) {
     setMoreLikeThisGames([]);
 
     const xhttp = new XMLHttpRequest();
-    let requestUrl = props.config.serverAddress + "/gamedetail/" + gameId;
+    let requestUrl = Config.serverAddress + "/gamedetail/" + gameId;
 
     xhttp.open("get", requestUrl, true);
 
@@ -77,11 +76,7 @@ function GameDetailPage(props) {
 
     const xhttp = new XMLHttpRequest();
     let requestUrl =
-      props.config.serverAddress +
-      "/gameslike/" +
-      gameId +
-      "/" +
-      amountRequested;
+      Config.serverAddress + "/gameslike/" + gameId + "/" + amountRequested;
 
     xhttp.open("get", requestUrl, true);
 
@@ -99,7 +94,63 @@ function GameDetailPage(props) {
     };
   };
 
-  return <div className="game-detail-wrapper">{getCardRender()}</div>;
+  const getSourcesMetaDesc = () => {
+    if (game.sources.length == 1) return game.sources[0].name;
+    if (game.sources.length == 2)
+      return "" + game.sources[0].name + " and " + game.sources[1].name;
+
+    let output = "" + game.sources[0].name;
+    for (let i = 1; i < game.sources.length - 1; ++i) {
+      output += ", " + game.sources[i].name;
+    }
+    output += " and " + game.sources[game.sources.length - 1].name;
+
+    return output;
+  };
+
+  const getMoreGamesLikeMetaDesc = () => {
+    if (moreLikeThisGames.length == 0) return "";
+
+    let output =
+      "Some other games are similar to " +
+      props.game.title +
+      " are: " +
+      moreLikeThisGames[0].title;
+
+    if (moreLikeThisGames.length == 2)
+      output += " and " + moreLikeThisGames[1].title;
+    else {
+      output +=
+        ", " +
+        moreLikeThisGames[1].title +
+        " and " +
+        moreLikeThisGames[2].title;
+    }
+
+    output += ".";
+
+    return output;
+  };
+
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>SimilerGames - {game.title}</title>
+        <meta
+          name="description"
+          content={
+            game.title +
+            " can be found on " +
+            getSourcesMetaDesc() +
+            ". " +
+            getMoreGamesLikeMetaDesc()
+          }
+        />
+        <meta name="keywords" content={game.title + ", " + Config.metaTags} />
+      </Helmet>
+      <div className="game-detail-wrapper">{getCardRender()}</div>
+    </React.Fragment>
+  );
 }
 
 export default GameDetailPage;

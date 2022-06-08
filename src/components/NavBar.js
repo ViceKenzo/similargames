@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactGA from "react-ga";
 import { Link, useLocation } from "react-router-dom";
+import Config from "../config/config";
 import "../styles/NavBar.css";
 
 import SearchBar from "./SearchBar.js";
@@ -28,7 +29,7 @@ function NavBar(props) {
 
   const location = useLocation();
 
-  ReactGA.initialize(props.config.GA_TRACKING_CODE);
+  ReactGA.initialize(Config.GA_TRACKING_CODE);
 
   // Effects
   useEffect(() => {
@@ -91,7 +92,7 @@ function NavBar(props) {
 
     xhttp.open(
       "get",
-      props.config.serverAddress + "/suggestedgames/" + tempSearchInputValue,
+      Config.serverAddress + "/suggestedgames/" + tempSearchInputValue,
       true
     );
 
@@ -125,7 +126,7 @@ function NavBar(props) {
               setSearchSuggestions([]);
             }}
             searchInputValue={searchInputValue}
-            serverAddress={props.config.serverAddress}
+            serverAddress={Config.serverAddress}
           />
         </div>
         <div className="menu-icon-wrapper">
@@ -184,7 +185,7 @@ function NavBar(props) {
             setSearchSuggestions([]);
           }}
           searchInputValue={searchInputValue}
-          serverAddress={props.config.serverAddress}
+          serverAddress={Config.serverAddress}
         />
       </div>
     </div>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import ReactGA from "react-ga";
+import Config from "../config/config";
 import "../styles/BrowsePage.css";
 
 import BrowseHeader from "../components/BrowseHeader.js";
@@ -28,7 +30,7 @@ function BrowsePage(props) {
   );
 
   const location = useLocation();
-  ReactGA.initialize(props.config.GA_TRACKING_CODE);
+  ReactGA.initialize(Config.GA_TRACKING_CODE);
 
   //Effects
   useEffect(() => {
@@ -197,7 +199,7 @@ function BrowsePage(props) {
 
     const xhttp = new XMLHttpRequest();
     let requestUrl =
-      props.config.serverAddress + "/similargames" + "/" + tempSearchWord;
+      Config.serverAddress + "/similargames" + "/" + tempSearchWord;
 
     xhttp.open("get", requestUrl, true);
 
@@ -239,14 +241,59 @@ function BrowsePage(props) {
     };
   };
 
+  const getDescriptionText = () => {
+    if (targetGame === null || gameData === null || gameData.length === 0)
+      return "Search for any game from Steam, Gog and Epic Games Store to find similar games. Similar Games is the fastest, most efficient 'Games Like' engine out there with more than 21 000 games to compare.";
+
+    let baseText = "Find games that are similar to " + targetGame.title + ".";
+
+    if (searchResults.length === 0) return baseText;
+
+    let additionalText = " Game Suggestions: ";
+    if (searchResults.length === 1)
+      additionalText += searchResults[0].title + ".";
+    if (searchResults.length === 2)
+      additionalText +=
+        searchResults[0].title + " and " + searchResults[1].title + ".";
+    if (searchResults.length === 3) {
+      additionalText +=
+        searchResults[0].title +
+        ", " +
+        searchResults[1].title +
+        " and " +
+        searchResults[2].title +
+        ".";
+    }
+
+    return (
+      baseText +
+      additionalText +
+      "  Similar Games is the fastest, most efficient 'Games Like' engine out there with more than 21 000 games to compare."
+    );
+  };
+
+  const getTitle = () => {
+    if (!targetGame) return "Search for Similar Games";
+
+    return "Games like " + targetGame.title + " - SimilarGames";
+  };
+
   return (
     <div className="browsing-wrapper">
+      <Helmet>
+        <meta name="description" content={getDescriptionText()} />
+        <meta
+          name="keywords"
+          content={targetGame.title + ", " + Config.metaTags}
+        />
+        <title>{getTitle()}</title>
+      </Helmet>
       <BrowseHeader
         searchSuggestions={searchSuggestions}
         clearSearchSuggestions={() => {
           setSearchSuggestions([]);
         }}
-        serverAddress={props.config.serverAddress}
+        serverAddress={Config.serverAddress}
         targetGame={targetGame}
       />
       <div className="browsing-navigation-filter-wrapper">
@@ -283,7 +330,7 @@ function BrowsePage(props) {
             handleSortChange={handleSortChange}
             handlePageChange={handlePageChange}
             searchResultMessage={searchResultMessage}
-            config={props.config}
+            config={Config}
           />
         </div>
         <div className="browsing-filters-wrapper-right">
