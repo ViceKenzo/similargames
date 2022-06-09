@@ -60,6 +60,8 @@
 .main-background {
   position: fixed;
   z-index: -100;
+  top: -160px;
+  left: -10px;
 }
 
 html {
