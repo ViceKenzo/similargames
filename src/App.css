@@ -33,8 +33,8 @@
   --card-title-color-weak: rgb(228, 228, 228);
   --card-tag-text-color-a: rgba(174, 174, 174, 1);
   --card-tag-text-color-b: rgba(255, 255, 255, 0.85);
-  --cardbutton-background-color: rgba(163, 94, 219, 1);
-  --cardbutton-background-color-hover: rgb(173, 114, 221);
+  --cardbutton-background-color: rgb(155, 76, 219);
+  --cardbutton-background-color-hover: rgb(167, 99, 223);
   --cardbutton-text-color: rgba(255, 255, 255, 1);
   --carddate-text-color: rgba(150, 150, 150, 1);
   --morelikethis-card-color: rgba(80, 46, 107, 0.521);

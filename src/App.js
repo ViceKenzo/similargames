@@ -17,7 +17,11 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <img className="main-background" src={backgroundImage} />
+        <img
+          className="main-background"
+          src={backgroundImage}
+          alt="Colorful Hexagon Background"
+        />
         <NavBar />
         <Routes>
           <Route path="/" exact element={<LandingPage />} />
