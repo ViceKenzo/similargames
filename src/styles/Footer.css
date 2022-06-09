@@ -59,6 +59,8 @@
   text-decoration: underline;
 
   padding: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .footer-nav a:hover {
