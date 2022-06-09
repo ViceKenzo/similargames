@@ -57,11 +57,10 @@
   background-color: var(--global-background-color);
 }
 
-.main-background {
-  position: fixed;
-  z-index: -100;
-  top: -160px;
-  left: -10px;
+html{
+  background: url("./images/main_background.svg");
+  background-position-x: -10px;
+  background-position-y: -160px;
 }
 
 html {

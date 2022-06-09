@@ -10,18 +10,11 @@ import Footer from "./components/Footer.js";
 import BrowsePage from "./pages/BrowsePage.js";
 import GameDetailPage from "./pages/GameDetailPage.js";
 
-import backgroundImage from "./images/main_background.svg";
-
 function App() {
   // Functions
   return (
     <div className="App">
       <Router>
-        <img
-          className="main-background"
-          src={backgroundImage}
-          alt="Colorful Hexagon Background"
-        />
         <NavBar />
         <Routes>
           <Route path="/" exact element={<LandingPage />} />
