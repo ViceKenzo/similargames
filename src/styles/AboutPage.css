@@ -5,6 +5,10 @@
   min-height: 650px;
 }
 
+.about-wrapper h1{
+  margin-top: 0;
+}
+
 .about-wrapper #about-epic-image {
   padding-left: 2.5px;
   padding-right: 2.5px;

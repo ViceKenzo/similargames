@@ -3,6 +3,14 @@
   flex-direction: row;
 }
 
+.game-detail-card h1{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: normal;
+}
+
 .game-detail-left-hand-wrapper {
   flex-grow: 3;
   flex-basis: 0;

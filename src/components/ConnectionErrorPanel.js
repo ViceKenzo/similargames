@@ -8,9 +8,9 @@ function ConnectionErrorPanel() {
   return (
     <div className="connection-error-wrapper">
       <div className="connection-error-text-wrapper">
-        <div className="connection-error-header">
+        <h1 className="connection-error-header">
           Could not connect to the server!
-        </div>
+        </h1>
         <div className="connection-error-report">
           Make sure to check your internet connection. If your connection works
           fine then our servers are probably down.

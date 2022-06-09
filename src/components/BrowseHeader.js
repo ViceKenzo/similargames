@@ -141,9 +141,11 @@ function BrowseHeader(props) {
           />
         </Link>
         <div className="browse-header-announcer-wrapper">
-          <div className="browse-header-gameslike-announcer">Games like:</div>
+          <h1 className="browse-header-gameslike-announcer">
+            Games similar to
+          </h1>
           <Link to={getLinkTo()} className="browse-header-game-title">
-            {getGameTitle()}
+            <h2>{getGameTitle()}</h2>
           </Link>
         </div>
       </div>

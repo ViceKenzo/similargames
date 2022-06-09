@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import ReactGA from "react-ga";
 import Config from "../config/config";
 import "../styles/BrowsePage.css";
@@ -241,108 +241,75 @@ function BrowsePage(props) {
     };
   };
 
-  const getDescriptionText = () => {
-    if (targetGame === null || gameData === null || gameData.length === 0)
-      return "Search for any game from Steam, Gog and Epic Games Store to find similar games. Similar Games is the fastest, most efficient 'Games Like' engine out there with more than 21 000 games to compare.";
-
-    let baseText = "Find games that are similar to " + targetGame.title + ".";
-
-    if (searchResults.length === 0) return baseText;
-
-    let additionalText = " Game Suggestions: ";
-    if (searchResults.length === 1)
-      additionalText += searchResults[0].title + ".";
-    if (searchResults.length === 2)
-      additionalText +=
-        searchResults[0].title + " and " + searchResults[1].title + ".";
-    if (searchResults.length === 3) {
-      additionalText +=
-        searchResults[0].title +
-        ", " +
-        searchResults[1].title +
-        " and " +
-        searchResults[2].title +
-        ".";
-    }
-
-    return (
-      baseText +
-      additionalText +
-      "  Similar Games is the fastest, most efficient 'Games Like' engine out there with more than 21 000 games to compare."
-    );
-  };
-
-  const getTitle = () => {
-    if (!targetGame) return "Search for Similar Games";
-
-    return "Games like " + targetGame.title + " - SimilarGames";
-  };
-
   return (
-    <div className="browsing-wrapper">
-      <Helmet>
-        <meta name="description" content={getDescriptionText()} />
-        <meta
-          name="keywords"
-          content={targetGame.title + ", " + Config.metaTags}
+    <HelmetProvider>
+      <div className="browsing-wrapper">
+        <Helmet>
+          <meta
+            name="description"
+            content={
+              "Search for any game from Steam, Gog and Epic Games Store to find similar games. Similar Games is the fastest, most efficient 'Games Like' engine out there with more than 21 000 games to compare."
+            }
+          />
+          <meta name="keywords" content={Config.metaTags} />
+          <title>{"Search for Similar Games"}</title>
+        </Helmet>
+        <BrowseHeader
+          searchSuggestions={searchSuggestions}
+          clearSearchSuggestions={() => {
+            setSearchSuggestions([]);
+          }}
+          serverAddress={Config.serverAddress}
+          targetGame={targetGame}
         />
-        <title>{getTitle()}</title>
-      </Helmet>
-      <BrowseHeader
-        searchSuggestions={searchSuggestions}
-        clearSearchSuggestions={() => {
-          setSearchSuggestions([]);
-        }}
-        serverAddress={Config.serverAddress}
-        targetGame={targetGame}
-      />
-      <div className="browsing-navigation-filter-wrapper">
-        <div className="browsing-filters-wrapper-left">
-          <BrowseFilters
-            matchValue={matchValue}
-            handleChangeMatching={handleChangeMatching}
-            handleNSFWClick={handleNSFWClick}
-            handleSameDeveloperClick={handleSameDeveloperClick}
-          />
-        </div>
-        <div className="browsing-navigator-wrapper">
-          <BrowseNavigator
-            currentPage={currentPage}
-            totalPages={totalPages}
-            sorting={sorting}
-            searchResults={searchResults.filter(
-              function () {
-                let itemIsWorthy = false;
+        <div className="browsing-navigation-filter-wrapper">
+          <div className="browsing-filters-wrapper-left">
+            <BrowseFilters
+              matchValue={matchValue}
+              handleChangeMatching={handleChangeMatching}
+              handleNSFWClick={handleNSFWClick}
+              handleSameDeveloperClick={handleSameDeveloperClick}
+            />
+          </div>
+          <div className="browsing-navigator-wrapper">
+            <BrowseNavigator
+              currentPage={currentPage}
+              totalPages={totalPages}
+              sorting={sorting}
+              searchResults={searchResults.filter(
+                function () {
+                  let itemIsWorthy = false;
 
-                if (this.count >= this.startIdx && this.count < this.endIdx) {
-                  itemIsWorthy = true;
+                  if (this.count >= this.startIdx && this.count < this.endIdx) {
+                    itemIsWorthy = true;
+                  }
+
+                  this.count++;
+                  return itemIsWorthy;
+                },
+                {
+                  count: 0,
+                  startIdx: (currentPage - 1) * pageing,
+                  endIdx: currentPage * pageing,
                 }
-
-                this.count++;
-                return itemIsWorthy;
-              },
-              {
-                count: 0,
-                startIdx: (currentPage - 1) * pageing,
-                endIdx: currentPage * pageing,
-              }
-            )}
-            handleSortChange={handleSortChange}
-            handlePageChange={handlePageChange}
-            searchResultMessage={searchResultMessage}
-            config={Config}
-          />
-        </div>
-        <div className="browsing-filters-wrapper-right">
-          <BrowseFilters
-            matchValue={matchValue}
-            handleChangeMatching={handleChangeMatching}
-            handleNSFWClick={handleNSFWClick}
-            handleSameDeveloperClick={handleSameDeveloperClick}
-          />
+              )}
+              handleSortChange={handleSortChange}
+              handlePageChange={handlePageChange}
+              searchResultMessage={searchResultMessage}
+              config={Config}
+            />
+          </div>
+          <div className="browsing-filters-wrapper-right">
+            <BrowseFilters
+              matchValue={matchValue}
+              handleChangeMatching={handleChangeMatching}
+              handleNSFWClick={handleNSFWClick}
+              handleSameDeveloperClick={handleSameDeveloperClick}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </HelmetProvider>
   );
 }
 

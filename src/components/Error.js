@@ -8,7 +8,7 @@ function Error() {
   return (
     <div className="error-wrapper">
       <div className="error-text-wrapper">
-        <div className="error-header">Page not found!</div>
+        <h1 className="error-header">Page not found!</h1>
         <div className="error-report">
           (If you've found a bug, please report it at our contact email.)
         </div>

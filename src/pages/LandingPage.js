@@ -1,10 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import Config from "../config/config";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import LandingPageSearchPanel from "../components/LandingPageSearchPanel.js";
 import PopularCardPanel from "../components/PopularCardPanel.js";
-import Config from "../config/config.js";
 
 function LandingPage(props) {
   // Variables
@@ -60,7 +59,7 @@ function LandingPage(props) {
   };
 
   return (
-    <React.Fragment>
+    <HelmetProvider>
       <Helmet>
         <meta
           name="description"
@@ -80,7 +79,7 @@ function LandingPage(props) {
         serverAddress={Config.serverAddress}
       />
       <PopularCardPanel serverAddress={Config.serverAddress} />
-    </React.Fragment>
+    </HelmetProvider>
   );
 }
 

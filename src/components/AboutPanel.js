@@ -10,7 +10,7 @@ function AboutPanel(props) {
   return (
     <div className="about-panel-wrapper">
       <div className="about-partition-wrapper">
-        <div className="about-title">Find the games you’ll love</div>
+        <h1 className="about-title">Find the games you’ll love</h1>
         <div className="about-description-wrapper">
           <div className="about-description-panel">
             <p>

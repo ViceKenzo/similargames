@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Config from "../config/config";
 import "../styles/AboutPage.css";
 
@@ -13,7 +13,7 @@ function AboutPage() {
 
   // Functions
   return (
-    <React.Fragment>
+    <HelmetProvider>
       <Helmet>
         <meta
           name="description"
@@ -25,7 +25,7 @@ function AboutPage() {
       <div className="about-wrapper">
         <AboutPanel />
       </div>
-    </React.Fragment>
+    </HelmetProvider>
   );
 }
 

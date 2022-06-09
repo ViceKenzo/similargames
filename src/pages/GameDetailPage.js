@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Config from "../config/config";
 import "../styles/GameDetailPage.css";
 
@@ -133,23 +133,19 @@ function GameDetailPage(props) {
   };
 
   return (
-    <React.Fragment>
+    <HelmetProvider>
       <Helmet>
-        <title>SimilerGames - {game.title}</title>
+        <title>SimilerGames - Game Info</title>
         <meta
           name="description"
           content={
-            game.title +
-            " can be found on " +
-            getSourcesMetaDesc() +
-            ". " +
-            getMoreGamesLikeMetaDesc()
+            "Here you can find basic information about a game, more games that play like it and links to stores that sell them!"
           }
         />
-        <meta name="keywords" content={game.title + ", " + Config.metaTags} />
+        <meta name="keywords" content={Config.metaTags} />
       </Helmet>
       <div className="game-detail-wrapper">{getCardRender()}</div>
-    </React.Fragment>
+    </HelmetProvider>
   );
 }
 

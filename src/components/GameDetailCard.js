@@ -186,9 +186,9 @@ function GameDetailCard(props) {
     <div className="game-detail-card">
       <div className="game-detail-left-hand-wrapper">
         <div className="detail-card-image-title-wrapper">
-          <div className="detail-card-title" id="game-detail-mobile-title">
+          <h1 className="detail-card-title" id="game-detail-mobile-title">
             {props.game.title}
-          </div>
+          </h1>
           <div className="detail-card-image-wrapper">
             <img
               className="detail-card-image"

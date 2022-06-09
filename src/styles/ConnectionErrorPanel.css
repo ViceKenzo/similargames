@@ -8,6 +8,14 @@
   margin-top: 20px;
 }
 
+.connection-error-wrapper h1{
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: normal;
+}
+
 .connection-error-text-wrapper {
   color: var(--default-text-color);
   padding-bottom: 15px;

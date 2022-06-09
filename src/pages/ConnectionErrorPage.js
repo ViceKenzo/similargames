@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import ConnectionErrorPanel from "../components/ConnectionErrorPanel.js";
 
@@ -11,12 +11,12 @@ function ConnectionErrorPage() {
 
   // Functions
   return (
-    <React.Fragment>
+    <HelmetProvider>
       <Helmet>
         <title>Connection Error</title>
       </Helmet>
       <ConnectionErrorPanel />
-    </React.Fragment>
+    </HelmetProvider>
   );
 }
 
