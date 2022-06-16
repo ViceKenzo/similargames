@@ -230,11 +230,21 @@ function BrowsePage(props) {
 
       if (responseObj.game == null || responseObj.similarGames == null) return;
 
-      if (responseObj.similarGames.length <= 0) {
+      if (responseObj.similarGames.length <= 0) {      
+
         setSearchResultMessage("No similar games were found.");
         setTargetGame(responseObj.game);
         setGameData([]);
       } else {
+        let highestMatch = -1;
+        responseObj.similarGames.forEach((game) => {
+          if(highestMatch > game.matching) highestMatch = game.matching;
+        });
+
+        if(highestMatch < 0.6 && highestMatch != -1){
+          setMatchValue(50);
+        }
+
         setTargetGame(responseObj.game);
         setGameData(responseObj.similarGames);
       }
