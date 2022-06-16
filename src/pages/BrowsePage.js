@@ -13,6 +13,7 @@ function BrowsePage(props) {
   // Variables
   const [sorting, setSorting] = useState("Relevance");
   const [matchValue, setMatchValue] = useState(60);
+  const [matchValueInput, setMatchValueInput] = useState(60);
   const [showNSFW, setShowNSFW] = useState(false);
   const [showSameDeveloper, setShowSameDeveloper] = useState(false);
 
@@ -99,7 +100,21 @@ function BrowsePage(props) {
 
   const handleChangeMatching = (event) => {
     setMatchValue(event.target.value);
+    setMatchValueInput(event.target.value);
   };
+
+  const handleChangeMatchingValueInput = (event) => {
+    let isNum = /^\d+$/.test(event.target.value);
+
+    if (isNum || event.target.value == "") setMatchValueInput(event.target.value);
+  }
+
+  const handleMatchingOnSubmit = (event) => {
+    event.preventDefault();
+    if(matchValueInput >= 50 && matchValueInput <= 100){
+      setMatchValue(matchValueInput);
+    } else setMatchValueInput(matchValue);
+  }
 
   const handleNSFWClick = () => {
     if (!targetGame) return;
@@ -242,6 +257,7 @@ function BrowsePage(props) {
         });
 
         if(highestMatch < 0.6 && highestMatch != -1){
+          setMatchValueInput(50);
           setMatchValue(50);
         }
 
@@ -276,6 +292,9 @@ function BrowsePage(props) {
           <div className="browsing-filters-wrapper-left">
             <BrowseFilters
               matchValue={matchValue}
+              matchValueInput={matchValueInput}
+              handleChangeMatchingValueInput={handleChangeMatchingValueInput}
+              handleMatchingOnSubmit={handleMatchingOnSubmit}
               handleChangeMatching={handleChangeMatching}
               handleNSFWClick={handleNSFWClick}
               handleSameDeveloperClick={handleSameDeveloperClick}
@@ -312,6 +331,9 @@ function BrowsePage(props) {
           <div className="browsing-filters-wrapper-right">
             <BrowseFilters
               matchValue={matchValue}
+              matchValueInput={matchValueInput}
+              handleChangeMatchingValueInput={handleChangeMatchingValueInput}
+              handleMatchingOnSubmit={handleMatchingOnSubmit}
               handleChangeMatching={handleChangeMatching}
               handleNSFWClick={handleNSFWClick}
               handleSameDeveloperClick={handleSameDeveloperClick}

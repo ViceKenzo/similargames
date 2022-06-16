@@ -17,8 +17,26 @@ function BrowseFilters(props) {
             value={props.matchValue}
             onChange={props.handleChangeMatching}
           />
-          <div className="search-filter-slider-perctentage">
-            {props.matchValue + "%"}
+          <input
+            type="submit"
+            style={{
+              position: "absolute",
+              left: "-9999px",
+              width: "1px",
+              height: "1px",
+            }}
+            tabIndex="-1"
+          />
+          <div className="search-filter-slider-percentage">
+            <form onSubmit={props.handleMatchingOnSubmit}>
+              <input
+                type="text"
+                className="matching-text-navigator"
+                value={props.matchValueInput}
+                onChange={props.handleChangeMatchingValueInput}
+              />
+            </form>
+            {"%"}
           </div>
         </div>
       </div>
