@@ -51,6 +51,7 @@
   display:flex;
   font-size: 16px;
   color: var(--default-text-color);
+  margin-top: 4px;
 }
 
 input[type="checkbox"] {
@@ -72,6 +73,11 @@ input[type="checkbox"] {
   margin-right: 3px;
 
   text-align: center;
+}
+
+.matching-beta-announcer{
+  margin-top: 10px;
+  color: var(--weaker-text-color);
 }
 
 .matching-text-navigator:hover {
@@ -206,7 +212,7 @@ input[type="range"]::-moz-range-thumb {
     flex-wrap: nowrap;
 
     width: auto;
-    height: 40px;
+    height: 65px;
 
     justify-content: center;
     align-items: center;

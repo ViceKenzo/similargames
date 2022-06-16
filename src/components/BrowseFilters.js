@@ -36,8 +36,9 @@ function BrowseFilters(props) {
                 onChange={props.handleChangeMatchingValueInput}
               />
             </form>
-            {"%"}
+            %
           </div>
+          <div className="matching-beta-announcer">Beta</div>
         </div>
       </div>
 
