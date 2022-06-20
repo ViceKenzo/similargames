@@ -15,22 +15,21 @@ function AboutPanel(props) {
           <div className="about-description-panel">
             <p>
               You want to find a game that plays, looks and feels like a game
-              you’ve loved, such that you can fall in love again?
+              you’ve loved such that you can fall in love again?
             </p>
             <p>What a coincidence!</p>
           </div>
           <div className="about-description-panel">
-            This website was created exactly for that! To have a place where
-            people can simply explore and find new games they’ve never of
-            before. Also to find games they didn’t know were similar to the ones
-            they already liked and played.
+            This website was created exactly for that! It's a place where people
+            can simply explore and find new games they’ve never heard of before.
+            To find games they didn’t know were similar to the ones they already
+            liked and played.
           </div>
         </div>
       </div>
       <div className="about-games-source-info-wrapper">
         <div className="about-games-source-description">
-          The 27.078 games from our database were found on the following
-          sources:
+          The 27.000+ games in our database were found on the following sources:
         </div>
         <div className="about-games-source-links-wrapper">
           <a href="https://www.epicgames.com/store" target="_blank">
@@ -65,9 +64,9 @@ function AboutPanel(props) {
         <div className="about-description-wrapper">
           <div className="about-description-panel">
             This website is currently in beta. Please keep in mind that there
-            will be bugs, naming errors and that some games might be missing. If
-            you find any of those, please report them at our contact email. We
-            would also love to hear your feedback and how you think we could
+            will be bugs, naming errors, and that some games might be missing.
+            If you find any of those, please report them at our contact email.
+            We would also love to hear your feedback and how you think we could
             improve the website. Our email address can be found at the bottom of
             any web page on this website.
           </div>
@@ -92,7 +91,7 @@ function AboutPanel(props) {
               </li>
               <li>
                 Data Expansion. More data to be gathered for each individual
-                game. For example: Full description, images, ...
+                game. For example: Full description, more images, ...
               </li>
               <li>... And many more!</li>
             </ul>
