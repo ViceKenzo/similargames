@@ -106,15 +106,16 @@ function BrowsePage(props) {
   const handleChangeMatchingValueInput = (event) => {
     let isNum = /^\d+$/.test(event.target.value);
 
-    if (isNum || event.target.value == "") setMatchValueInput(event.target.value);
-  }
+    if (isNum || event.target.value == "")
+      setMatchValueInput(event.target.value);
+  };
 
   const handleMatchingOnSubmit = (event) => {
     event.preventDefault();
-    if(matchValueInput >= 50 && matchValueInput <= 100){
+    if (matchValueInput >= 50 && matchValueInput <= 100) {
       setMatchValue(matchValueInput);
     } else setMatchValueInput(matchValue);
-  }
+  };
 
   const handleNSFWClick = () => {
     if (!targetGame) return;
@@ -244,19 +245,17 @@ function BrowsePage(props) {
       let responseObj = JSON.parse(xhttp.response);
 
       if (responseObj.game == null || responseObj.similarGames == null) return;
-
-      if (responseObj.similarGames.length <= 0) {      
-
+      if (responseObj.similarGames.length <= 0) {
         setSearchResultMessage("No similar games were found.");
         setTargetGame(responseObj.game);
         setGameData([]);
       } else {
         let highestMatch = -1;
         responseObj.similarGames.forEach((game) => {
-          if(highestMatch > game.matching) highestMatch = game.matching;
+          if (highestMatch < game.matching) highestMatch = game.matching;
         });
 
-        if(highestMatch < 0.6 && highestMatch != -1){
+        if (highestMatch < 60 && highestMatch != -1) {
           setMatchValueInput(50);
           setMatchValue(50);
         }
