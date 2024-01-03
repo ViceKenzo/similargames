@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/AboutPanel.css";
 
-import LogoEpicGamesStore from "../images/logo_epicgamesstore.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
 
@@ -29,17 +28,9 @@ function AboutPanel(props) {
       </div>
       <div className="about-games-source-info-wrapper">
         <div className="about-games-source-description">
-          The 27.000+ games in our database were found on the following sources:
+          The 53.000+ games in our database were found on the following sources:
         </div>
         <div className="about-games-source-links-wrapper">
-          <a href="https://www.epicgames.com/store" target="_blank">
-            <img
-              className="about-games-source-image"
-              id="about-epic-image"
-              src={LogoEpicGamesStore}
-              alt="Epic Games Store Logo"
-            />
-          </a>
           <a href="https://www.gog.com/" target="_blank">
             <img
               className="about-games-source-image"

@@ -3,7 +3,6 @@ import "../styles/LandingPageSearchPanel.css";
 
 import SearchBar from "./SearchBar.js";
 
-import LogoEpicGamesStore from "../images/logo_epicgamesstore.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
 import SimilarGamesHeaderImage from "../images/similargames_title.png";
@@ -37,15 +36,6 @@ function LandingPageSearchPanel(props) {
       <div className="search-panel-footer">
         <span className="search-panel-icon-announcer">On:</span>
         <div className="search-panel-icon-wrapper">
-          <a href="https://www.epicgames.com/store" target="_blank">
-            <img
-              className="logo-epic"
-              src={LogoEpicGamesStore}
-              alt="Epic Games Store Logo"
-              width={50}
-              height={76.25}
-            />
-          </a>
           <a href="https://www.gog.com/" target="_blank">
             <img
               className="logo-gog"

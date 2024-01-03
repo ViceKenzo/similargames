@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/GameDetailCard.css";
 
-import LogoEpicGamesStore from "../images/logo_epicgames.png";
 import LogoGog from "../images/logo_gog.png";
 import LogoSteamStore from "../images/logo_steam.png";
 import ThumbnailImage from "../placeholders/thumbnail.jpg";
@@ -128,42 +127,6 @@ function GameDetailCard(props) {
     }
   };
 
-  const GetEpicGamesButton = () => {
-    if (!props.game || !props.game.sources || props.game.sources.length <= 0)
-      return;
-
-    for (let i = 0; i < props.game.sources.length; ++i) {
-      if (!props.game.sources[i].name || props.game.sources[i].name == "") {
-        continue;
-      }
-
-      if (props.game.sources[i].name.toLowerCase().includes("epic games")) {
-        return (
-          <a
-            className="game-detail-source-button"
-            href={props.game.sources[i].link}
-            target="_blank"
-          >
-            <div className="game-detail-source-image-wrapper">
-              <img
-                className="game-detail-source-image"
-                src={LogoEpicGamesStore}
-                alt={"Find " + props.game.title + " on Epic Games"}
-              />
-            </div>
-            <div className="game-detail-source-name">View on Epic Games</div>
-            <div className="game-detail-source-exit-icon-wrapper">
-              <FontAwesomeIcon
-                className="game-detail-source-exit-icon"
-                icon={faArrowUpRightFromSquare}
-              />
-            </div>
-          </a>
-        );
-      }
-    }
-  };
-
   const getGameDetailAdditionals = () => {
     if (
       props.game &&
@@ -228,7 +191,6 @@ function GameDetailCard(props) {
           <div className="game-detail-source-link-wrapper">
             {GetSteamButton()}
             {GetGogButton()}
-            {GetEpicGamesButton()}
           </div>
         </div>
       </div>

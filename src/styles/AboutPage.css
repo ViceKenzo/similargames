@@ -9,18 +9,6 @@
   margin-top: 0;
 }
 
-.about-wrapper #about-epic-image {
-  padding-left: 2.5px;
-  padding-right: 2.5px;
-  width: 50px;
-  height: 76.25px;
-}
-
-.about-wrapper #about-epic-image:hover{
-  width: 53px;
-  height: 76.25px;
-}
-
 .about-wrapper #about-steam-image {
   padding-left: 2.5px;
   padding-right: 2.5px;

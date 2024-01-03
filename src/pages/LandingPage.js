@@ -63,7 +63,7 @@ function LandingPage(props) {
       <Helmet>
         <meta
           name="description"
-          content="Find games that look, play and feel like other games you’ve played before. With this new and free 'Games Like Engine', you can explore the entire catalog of games found on Gog, Steam and Epic Games Store."
+          content="Find games that look, play and feel like other games you’ve played before. With this new and free 'Games Like Engine', you can explore the entire catalog of games found on both Gog and Steam Store."
         />
         <meta name="keywords" content={Config.metaTags} />
         <title>SimilarGames - Find Related Games</title>
