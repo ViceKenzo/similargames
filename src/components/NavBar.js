@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactGA from "react-ga";
 import { Link, useLocation } from "react-router-dom";
 import Config from "../config/config";
 import "../styles/NavBar.css";
@@ -28,10 +29,16 @@ function NavBar(props) {
 
   const location = useLocation();
 
+  ReactGA.initialize(Config.GA_TRACKING_CODE);
+
   // Effects
   useEffect(() => {
     closeMobileMenu();
   }, [location.pathname]);
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.href);
+  }, [location.pathname, location.search]);
 
   useEffect(() => {
     const delay = setTimeout(() => {

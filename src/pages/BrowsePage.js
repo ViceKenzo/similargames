@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import ReactGA from "react-ga";
 import Config from "../config/config";
 import "../styles/BrowsePage.css";
 
@@ -30,6 +31,7 @@ function BrowsePage(props) {
   );
 
   const location = useLocation();
+  ReactGA.initialize(Config.GA_TRACKING_CODE);
 
   //Effects
   useEffect(() => {
@@ -64,6 +66,12 @@ function BrowsePage(props) {
   useEffect(() => {
     if (targetGame) {
       const delay = setTimeout(() => {
+        ReactGA.event({
+          category: "Filter Change",
+          action: "Match Value",
+          label: matchValue,
+        });
+
         updateSearchResults();
       }, 500);
       return () => clearTimeout(delay);
@@ -72,6 +80,14 @@ function BrowsePage(props) {
 
   // Handlers
   const handleSortChange = (event) => {
+    if (targetGame) {
+      ReactGA.event({
+        category: "Filter Change",
+        action: "Sort Change",
+        label: event.target.value,
+      });
+    }
+
     setSorting(event.target.value);
   };
 
@@ -105,11 +121,27 @@ function BrowsePage(props) {
   const handleNSFWClick = () => {
     if (!targetGame) return;
 
+    if (targetGame) {
+      ReactGA.event({
+        category: "Filter Change",
+        action: "NSFW Click",
+        label: !showNSFW + "",
+      });
+    }
+
     setShowNSFW(!showNSFW);
   };
 
   const handleSameDeveloperClick = () => {
     if (!targetGame) return;
+
+    if (targetGame) {
+      ReactGA.event({
+        category: "Filter Change",
+        action: "Same Developer Click",
+        label: !showSameDeveloper + "",
+      });
+    }
 
     setShowSameDeveloper(!showSameDeveloper);
   };
