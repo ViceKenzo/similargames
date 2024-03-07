@@ -267,18 +267,29 @@ function BrowsePage(props) {
     };
   };
 
+  const getHeaderTitle = () => {
+    if (targetGame) return "Games like " + targetGame.title;
+    else return "Search for Similar Games";
+  };
+
+  const getHeaderDescription = () => {
+    if (targetGame)
+      return (
+        "A list of games that are similar to " +
+        targetGame.title +
+        ". The resulting games can be found on Steam and Gog!"
+      );
+    else
+      return "Search for any game from Gog and Steam Store to find similar games. Similar Games is the fastest, most efficient 'Games Like' engine out there with more than 53 000 games to compare.";
+  };
+
   return (
     <HelmetProvider>
       <div className="browsing-wrapper">
         <Helmet>
-          <meta
-            name="description"
-            content={
-              "Search for any game from Gog and Steam Store to find similar games. Similar Games is the fastest, most efficient 'Games Like' engine out there with more than 53 000 games to compare."
-            }
-          />
+          <meta name="description" content={getHeaderDescription()} />
           <meta name="keywords" content={Config.metaTags} />
-          <title>{"Search for Similar Games"}</title>
+          <title>{getHeaderTitle()}</title>
         </Helmet>
         <BrowseHeader
           searchSuggestions={searchSuggestions}
